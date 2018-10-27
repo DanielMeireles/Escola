@@ -7,8 +7,8 @@ package cesjf.br.model;
 
 import cesjf.br.enums.EnsinoEnum;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,10 +17,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-@Entity(name = "TURMA")
-@Table(name = "TURMA")
+@Entity
 public class Turma implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,10 +33,12 @@ public class Turma implements Serializable {
     private EnsinoEnum ensino;
     @Column(name="ANO_TURMA", nullable = false)
     private int ano;
-    @OneToMany(mappedBy = "TURMA",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @OneToMany
     private List<Aluno> alunos;
+
+    public Turma() {
+        alunos = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;

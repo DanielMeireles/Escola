@@ -33,7 +33,7 @@ public class AlunoDAO {
     
     public List<Aluno> pesquisar(Aluno aluno){
         EntityManager em = Connection.getEntityManager();
-        StringBuilder sql = new StringBuilder("from aluno a where 1=1");
+        StringBuilder sql = new StringBuilder("from Aluno a where 1=1");
         
         if(aluno.getMatricula()!=null){
             sql.append("and a.matricula_aluno = :matricula");

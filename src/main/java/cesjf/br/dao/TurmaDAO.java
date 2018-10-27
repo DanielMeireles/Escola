@@ -33,7 +33,7 @@ public class TurmaDAO {
     
     public List<Turma> pesquisar(Turma turma){
         EntityManager em = Connection.getEntityManager();
-        StringBuilder sql = new StringBuilder("from turma t where 1=1");
+        StringBuilder sql = new StringBuilder("from Turma t where 1=1");
         
         if(turma.getId()!=null){
             sql.append("and t.id_turma = :id");
@@ -55,21 +55,6 @@ public class TurmaDAO {
         if(turma.getAno()>0){
             query.setParameter("ano", "%" + turma.getAno());
         }
-        return query.getResultList();
-    }
-    
-    public List<String> getAnos(){
-        EntityManager em = Connection.getEntityManager();
-        String sql = "select distinct(ano_turma) from turma";
-        Query query = em.createQuery(sql);
-        return query.getResultList();
-    }
-    
-    public List<String> getNomeTurmasAno(String ano){
-        EntityManager em = Connection.getEntityManager();
-        String sql = "select t.nome_turma from turma t where t.ano_turma = :ano";
-        Query query = em.createQuery(sql);
-        query.setParameter("ano", "%" + ano);
         return query.getResultList();
     }
 }

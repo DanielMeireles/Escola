@@ -7,6 +7,7 @@ package cesjf.br.view;
 
 import cesjf.br.dao.TurmaDAO;
 import cesjf.br.model.Turma;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -56,7 +57,6 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         lbAno.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbAno.setText("Ano:");
 
-        cbAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
         cbAno.setSelectedIndex(-1);
         cbAno.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -107,17 +107,22 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         lbMatricula.setText("Matrícula:");
 
         tfMatricula.setEditable(false);
+        tfMatricula.setEnabled(false);
 
         lbNome.setText("Nome:");
+
+        tfNome.setEnabled(false);
 
         lbAnoNascimento.setText("Ano Nascimento:");
 
         tfAnoNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        tfAnoNascimento.setEnabled(false);
 
         lbPcd.setText("PCD:");
 
         cbPcd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
         cbPcd.setSelectedIndex(-1);
+        cbPcd.setEnabled(false);
 
         btcadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btcadastrar.setText("Cadastrar");
@@ -213,15 +218,15 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
     private void cbTurmaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTurmaItemStateChanged
         if(cbTurma.getSelectedIndex()>=0){
-            tfMatricula.setEnabled(false);
-            tfNome.setEnabled(false);
-            tfAnoNascimento.setEnabled(false);
-            cbPcd.setEnabled(false);
-        }else{
             tfMatricula.setEnabled(true);
             tfNome.setEnabled(true);
             tfAnoNascimento.setEnabled(true);
             cbPcd.setEnabled(true);
+        }else{
+            tfMatricula.setEnabled(false);
+            tfNome.setEnabled(false);
+            tfAnoNascimento.setEnabled(false);
+            cbPcd.setEnabled(false);
         }
     }//GEN-LAST:event_cbTurmaItemStateChanged
 
@@ -245,16 +250,23 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btsairActionPerformed
 
     private void populaAno(){
-        for(String a: turmaDAO.getAnos()){
-            cbAno.addItem(a);
+        ArrayList anos = new ArrayList<>();
+        for(Turma t: turmas){
+            if(!anos.contains(t.getAno())){
+                anos.add(t.getAno());
+                cbAno.addItem(Integer.toString(t.getAno()));
+            }
         }
+        cbAno.setSelectedIndex(-1);
     }
     
     private void populaTurma(){
-        cbTurma.removeAllItems();
-        for(String n: turmaDAO.getNomeTurmasAno(cbAno.getSelectedItem().toString())){
-            cbTurma.addItem(n);
+        for(Turma t: turmas){
+            if(t.getAno()==Integer.parseInt(cbAno.getSelectedItem().toString())){
+                cbTurma.addItem(t.getNome());
+            }
         }
+        cbTurma.setSelectedIndex(-1);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
