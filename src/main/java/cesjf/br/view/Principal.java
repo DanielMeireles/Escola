@@ -5,11 +5,8 @@
  */
 package cesjf.br.view;
 
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author Daniel Meireles
- */
 public class Principal extends javax.swing.JFrame {
 
     /**
@@ -40,7 +37,6 @@ public class Principal extends javax.swing.JFrame {
         mniBuscarAluno = new javax.swing.JMenuItem();
         mniTurmasPcd = new javax.swing.JMenuItem();
         mniListaAlunos = new javax.swing.JMenuItem();
-        mniListaTurmas = new javax.swing.JMenuItem();
         mnSobre = new javax.swing.JMenu();
         mniAjuda = new javax.swing.JMenuItem();
         mniSobre = new javax.swing.JMenuItem();
@@ -85,19 +81,30 @@ public class Principal extends javax.swing.JFrame {
 
         mniBuscarAluno.setMnemonic('t');
         mniBuscarAluno.setText("Buscar Aluno");
+        mniBuscarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniBuscarAlunoActionPerformed(evt);
+            }
+        });
         mnBusca.add(mniBuscarAluno);
 
         mniTurmasPcd.setMnemonic('y');
-        mniTurmasPcd.setText("Listar turmas com alunos PCD");
+        mniTurmasPcd.setText("Buscar Turmas");
+        mniTurmasPcd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniTurmasPcdActionPerformed(evt);
+            }
+        });
         mnBusca.add(mniTurmasPcd);
 
         mniListaAlunos.setMnemonic('p');
-        mniListaAlunos.setText("Imprimir lista de alunos");
+        mniListaAlunos.setText("Buscar Alunos por Turma");
+        mniListaAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaAlunosActionPerformed(evt);
+            }
+        });
         mnBusca.add(mniListaAlunos);
-
-        mniListaTurmas.setMnemonic('d');
-        mniListaTurmas.setText("Imprimir lista de turmas");
-        mnBusca.add(mniListaTurmas);
 
         menuBar.add(mnBusca);
 
@@ -132,7 +139,10 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(opcao == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void mniCadastrarTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCadastrarTurmaActionPerformed
@@ -146,6 +156,24 @@ public class Principal extends javax.swing.JFrame {
         this.desktopPane.add(matricularAluno);
         matricularAluno.setVisible(true);
     }//GEN-LAST:event_mniMatricularAlunoActionPerformed
+
+    private void mniBuscarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBuscarAlunoActionPerformed
+        BuscarAluno buscarAluno = new BuscarAluno();
+        this.desktopPane.add(buscarAluno);
+        buscarAluno.setVisible(true);
+    }//GEN-LAST:event_mniBuscarAlunoActionPerformed
+
+    private void mniTurmasPcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTurmasPcdActionPerformed
+        BuscarTurmas buscarTurmas = new BuscarTurmas();
+        this.desktopPane.add(buscarTurmas);
+        buscarTurmas.setVisible(true);
+    }//GEN-LAST:event_mniTurmasPcdActionPerformed
+
+    private void mniListaAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaAlunosActionPerformed
+        BuscarAlunosTurma buscarAlunosTurma = new BuscarAlunosTurma();
+        this.desktopPane.add(buscarAlunosTurma);
+        buscarAlunosTurma.setVisible(true);
+    }//GEN-LAST:event_mniListaAlunosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,7 +222,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniBuscarAluno;
     private javax.swing.JMenuItem mniCadastrarTurma;
     private javax.swing.JMenuItem mniListaAlunos;
-    private javax.swing.JMenuItem mniListaTurmas;
     private javax.swing.JMenuItem mniMatricularAluno;
     private javax.swing.JMenu mniSair;
     private javax.swing.JMenuItem mniSobre;

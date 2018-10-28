@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class MatricularAluno extends javax.swing.JInternalFrame {
+public class BuscarAluno extends javax.swing.JInternalFrame {
 
     private final TurmaDAO turmaDAO;
     private final List<Turma> turmas;
     /**
      * Creates new form CadastrarAluno
      */
-    public MatricularAluno() {
+    public BuscarAluno() {
         initComponents();
         turmaDAO = new TurmaDAO();
         turmas = turmaDAO.pesquisar(new Turma());
@@ -48,9 +48,10 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         lbPcd = new javax.swing.JLabel();
         cbPcd = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        btcadastrar = new javax.swing.JButton();
+        btRemover = new javax.swing.JButton();
         btlimpar = new javax.swing.JButton();
         btsair = new javax.swing.JButton();
+        btBuscar = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Turma", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -106,9 +107,6 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         lbMatricula.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbMatricula.setText("Matrícula:");
 
-        tfMatricula.setEditable(false);
-        tfMatricula.setEnabled(false);
-
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome:");
 
@@ -127,14 +125,9 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         cbPcd.setSelectedIndex(-1);
         cbPcd.setEnabled(false);
 
-        btcadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btcadastrar.setText("Cadastrar");
-        btcadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btcadastrarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btcadastrar);
+        btRemover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btRemover.setText("Remover");
+        jPanel2.add(btRemover);
 
         btlimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btlimpar.setText("Limpar");
@@ -154,6 +147,9 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         });
         jPanel2.add(btsair);
 
+        btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btBuscar.setText("Buscar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,7 +162,10 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbMatricula)
-                            .addComponent(tfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscar))
                             .addComponent(lbNome)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbAnoNascimento)
@@ -184,11 +183,11 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbMatricula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -201,9 +200,11 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfAnoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbPcd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -232,10 +233,6 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
             cbPcd.setEnabled(false);
         }
     }//GEN-LAST:event_cbTurmaItemStateChanged
-
-    private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
-        //
-    }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
         cbAno.setSelectedIndex(-1);
@@ -273,7 +270,8 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btcadastrar;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btRemover;
     private javax.swing.JButton btlimpar;
     private javax.swing.JButton btsair;
     private javax.swing.JComboBox<String> cbAno;
