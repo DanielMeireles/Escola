@@ -5,7 +5,9 @@
  */
 package cesjf.br.view;
 
+import cesjf.br.dao.TurmaDAO;
 import cesjf.br.enums.EnsinoEnum;
+import cesjf.br.model.Turma;
 import javax.swing.JOptionPane;
 
 public class CadastrarTurma extends javax.swing.JInternalFrame {
@@ -127,7 +129,13 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
-        //
+        Turma turma = new Turma();
+        turma.setAno(Integer.parseInt(tfAno.getText()));
+        turma.setNome(tfNome.getText());
+        turma.setEnsino( EnsinoEnum.valueOf( (String)  cbEnsino.getSelectedItem()) );
+        
+        TurmaDAO Tdao = new TurmaDAO();
+        Tdao.salvarAtualizar(turma);
     }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed

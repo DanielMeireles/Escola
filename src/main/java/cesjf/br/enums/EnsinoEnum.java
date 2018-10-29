@@ -6,9 +6,9 @@
 package cesjf.br.enums;
 
 public enum EnsinoEnum {
-    FundamentalI("Fundamental I"),
+    FundamentalI("FundamentalI"),
     Fundamental("Fundamental"),
-    Medio("Médio");
+    Medio("Medio");
     
     private final String descricao;
     
