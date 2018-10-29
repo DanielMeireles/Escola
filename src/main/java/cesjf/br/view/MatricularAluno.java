@@ -5,7 +5,9 @@
  */
 package cesjf.br.view;
 
+import cesjf.br.dao.AlunoDAO;
 import cesjf.br.dao.TurmaDAO;
+import cesjf.br.model.Aluno;
 import cesjf.br.model.Turma;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,7 @@ import javax.swing.JOptionPane;
 public class MatricularAluno extends javax.swing.JInternalFrame {
 
     private final TurmaDAO turmaDAO;
-    private final List<Turma> turmas;
+    private final List<Turma> turmas;    
     /**
      * Creates new form CadastrarAluno
      */
@@ -210,7 +212,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbAnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAnoItemStateChanged
-        if(cbAno.getSelectedIndex()>=0){
+        if(cbAno.getSelectedIndex()>=0){            
             cbTurma.setEnabled(true);
             populaTurma();
         }else{
@@ -224,7 +226,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
             tfMatricula.setEnabled(true);
             tfNome.setEnabled(true);
             tfAnoNascimento.setEnabled(true);
-            cbPcd.setEnabled(true);
+            cbPcd.setEnabled(true);            
         }else{
             tfMatricula.setEnabled(false);
             tfNome.setEnabled(false);
@@ -234,7 +236,22 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbTurmaItemStateChanged
 
     private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
-        //
+        Aluno aluno = new Aluno();
+        aluno.setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));        
+        aluno.setNome(tfNome.getText());
+               
+        if(cbPcd.getSelectedIndex() != -1){
+            if(cbPcd.getSelectedIndex() == 0){
+                aluno.setPcd(0);
+            }else{
+                aluno.setPcd(1);
+            }
+            
+            AlunoDAO ADao = new AlunoDAO();
+            ADao.salvarAtualizar(aluno);
+        }else{        
+            JOptionPane.showMessageDialog(null, "Selecione a Opção do PCD", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }       
     }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
@@ -264,6 +281,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
     }
     
     private void populaTurma(){
+        cbTurma.removeAllItems();        
         for(Turma t: turmas){
             if(t.getAno()==Integer.parseInt(cbAno.getSelectedItem().toString())){
                 cbTurma.addItem(t.getNome());
