@@ -27,8 +27,7 @@ public class Aluno implements Serializable {
     @Column(name="ANO_NASC_ALUNO", nullable = false)
     private int anoNasc;
     @Column(name="PCD_ALUNO", nullable = false)
-    private int pcd;
-    
+    private int pcd;    
     @ManyToOne    
     private Turma turma;
 

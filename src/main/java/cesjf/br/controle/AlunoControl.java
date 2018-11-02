@@ -83,7 +83,7 @@ public class AlunoControl {
     
     public final void pesquisar(){
         alunosTabela.clear();
-        alunosTabela.addAll(alunoDao.pesquisar(alunoDigitado));
+        alunosTabela.addAll(alunoDao.pesquisar(alunoSelecionado));
     }
     
     public void addPropertyChangeListener(PropertyChangeListener e){

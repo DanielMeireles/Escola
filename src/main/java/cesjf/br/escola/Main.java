@@ -26,7 +26,7 @@ public class Main {
         
         Turma turma = new Turma();
         turma.setNome("Teste");
-        turma.setEnsino(EnsinoEnum.Medio);
+        turma.setEnsino("Medio");
         turma.setAno(2018);
         
         daoTurma.salvarAtualizar(turma);

@@ -5,21 +5,31 @@
  */
 package cesjf.br.view;
 
-import cesjf.br.dao.TurmaDAO;
+import cesjf.br.controle.TurmaControl;
 import cesjf.br.enums.EnsinoEnum;
-import cesjf.br.model.Turma;
+import cesjf.br.util.ValidacaoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javassist.tools.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 public class CadastrarTurma extends javax.swing.JInternalFrame {
+    
+    private TurmaControl turmaControl;  
 
     /**
      * Creates new form CadastrarTurma
      */
     public CadastrarTurma() {
-        initComponents();
+        turmaControl = new TurmaControl();        
+        initComponents();        
         cbEnsino.setModel(new javax.swing.DefaultComboBoxModel(EnsinoEnum.enumsToStringArray()));
         cbEnsino.setSelectedIndex(-1);
-    }
+    } 
+
+    public TurmaControl getTurmaControl() {
+        return turmaControl;
+    }       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,6 +39,7 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         lbNome = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
@@ -41,13 +52,25 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
         btlimpar = new javax.swing.JButton();
         btsair = new javax.swing.JButton();
 
+        setBorder(null);
+        setClosable(true);
+        setIconifiable(true);
+        setResizable(true);
+
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome:");
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaControl.turmaDigitada.nome}"), tfNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         lbensino.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbensino.setText("Ensino:");
 
-        cbEnsino.setSelectedItem(new javax.swing.DefaultComboBoxModel(EnsinoEnum.values()));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaControl.turmaDigitada.ensino}"), cbEnsino, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaControl.turmaDigitada.ano}"), tfAno, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         lbAno.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbAno.setText("Ano:");
@@ -86,7 +109,7 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbNome)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -122,20 +145,34 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
                         .addComponent(cbEnsino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
-        Turma turma = new Turma();
-        turma.setAno(Integer.parseInt(tfAno.getText()));
-        turma.setNome(tfNome.getText());
-        turma.setEnsino( EnsinoEnum.valueOf( (String)  cbEnsino.getSelectedItem()) );
-        
-        TurmaDAO Tdao = new TurmaDAO();
-        Tdao.salvarAtualizar(turma);
+        try {            
+            turmaControl.salvar();            
+            JOptionPane.showMessageDialog(this, 
+                "Turma salva com sucesso",
+                "Salvar cliente",
+                JOptionPane.INFORMATION_MESSAGE);              
+        } catch(ValidacaoException ex) {
+            JOptionPane.showMessageDialog(this, 
+                ex.getMessage(),
+                "Falha de Validação",
+                JOptionPane.WARNING_MESSAGE);              
+        } catch(RemoteException e ){
+            JOptionPane.showMessageDialog(this,
+                    "Erro "+e.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (java.rmi.RemoteException ex) {
+            Logger.getLogger(CadastrarTurma.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
@@ -164,5 +201,6 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbensino;
     private javax.swing.JTextField tfAno;
     private javax.swing.JTextField tfNome;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

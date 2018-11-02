@@ -35,6 +35,10 @@ public class AlunoDAO {
         EntityManager em = Connection.getEntityManager();
         StringBuilder sql = new StringBuilder("from Aluno a where 1=1");
         
+        if(aluno.getTurma().getId() != null){
+            sql.append("and a.getTurma().getId() = :getTurma().getId()");
+        }
+        
         if(aluno.getMatricula()!=null){
             sql.append("and a.matricula_aluno = :matricula");
         }

@@ -5,14 +5,28 @@
  */
 package cesjf.br.view;
 
+import cesjf.br.controle.AlunoControl;
+
 public class BuscarAlunosTurma extends javax.swing.JInternalFrame {
+    
+    private AlunoControl alunoControl;
 
     /**
      * Creates new form BuscarTurmas
      */
     public BuscarAlunosTurma() {
+        
+        alunoControl = new AlunoControl();
         initComponents();
     }
+
+    public AlunoControl getAlunoControl() {
+        return alunoControl;
+    }
+
+    public void setAlunoControl(AlunoControl alunoControl) {
+        this.alunoControl = alunoControl;
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -22,6 +36,7 @@ public class BuscarAlunosTurma extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         bgPcd = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -33,15 +48,35 @@ public class BuscarAlunosTurma extends javax.swing.JInternalFrame {
         tfTurma = new javax.swing.JTextField();
         btPesquisar = new javax.swing.JButton();
 
-        tbAlunos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${alunoControl.alunosTabelas}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbAlunos);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${anoNasc}"));
+        columnBinding.setColumnName("Ano Nasc");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${matricula}"));
+        columnBinding.setColumnName("Matricula");
+        columnBinding.setColumnClass(Long.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
+        columnBinding.setColumnName("Nome");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${pcd}"));
+        columnBinding.setColumnName("Pcd");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${turma}"));
+        columnBinding.setColumnName("Turma");
+        columnBinding.setColumnClass(cesjf.br.model.Turma.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControl.alunoSelecionado}"), tbAlunos, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
 
-            },
-            new String [] {
-
-            }
-        ));
         jScrollPane1.setViewportView(tbAlunos);
+        if (tbAlunos.getColumnModel().getColumnCount() > 0) {
+            tbAlunos.getColumnModel().getColumn(0).setResizable(false);
+            tbAlunos.getColumnModel().getColumn(1).setResizable(false);
+            tbAlunos.getColumnModel().getColumn(2).setResizable(false);
+            tbAlunos.getColumnModel().getColumn(3).setResizable(false);
+            tbAlunos.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         btAlunosTurma.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAlunosTurma.setText("Alunos turma");
@@ -54,8 +89,16 @@ public class BuscarAlunosTurma extends javax.swing.JInternalFrame {
         lbTurma.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbTurma.setText("Turma:");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControl.alunoDigitado.turma}"), tfTurma, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         btPesquisar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btPesquisar.setText("Pesquisar");
+        btPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,8 +133,14 @@ public class BuscarAlunosTurma extends javax.swing.JInternalFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
+        alunoControl.pesquisar();
+    }//GEN-LAST:event_btPesquisarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -104,5 +153,6 @@ public class BuscarAlunosTurma extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbTurma;
     private javax.swing.JTable tbAlunos;
     private javax.swing.JTextField tfTurma;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

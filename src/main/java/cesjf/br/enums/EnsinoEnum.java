@@ -18,7 +18,7 @@ public enum EnsinoEnum {
     
     public String getDescricao() {
         return descricao;
-    }
+    }      
     
     public static String[] enumsToStringArray() {
         String[] results = new String[EnsinoEnum.values().length];
@@ -28,5 +28,5 @@ public enum EnsinoEnum {
             count++;
         }
         return results;
-    }
+    }    
 }

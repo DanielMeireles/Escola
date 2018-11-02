@@ -29,10 +29,9 @@ public class Turma implements Serializable {
     @Column(name="ID_TURMA")
     private Long id;
     @Column(name="NOME_TURMA", length = 100, nullable = false)
-    private String nome;
-    @Enumerated(EnumType.STRING)
+    private String nome;    
     @Column(name="ENSINO_TURMA", length = 13, nullable = false)
-    private EnsinoEnum ensino;
+    private String ensino;
     @Column(name="ANO_TURMA", nullable = false)
     private int ano;
     @OneToMany(mappedBy = "turma",
@@ -60,11 +59,11 @@ public class Turma implements Serializable {
         this.nome = nome;
     }
 
-    public EnsinoEnum getEnsino() {
+    public String getEnsino() {
         return ensino;
     }
 
-    public void setEnsino(EnsinoEnum ensino) {
+    public void setEnsino(String ensino) {
         this.ensino = ensino;
     }
 
