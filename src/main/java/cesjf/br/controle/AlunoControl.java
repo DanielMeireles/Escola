@@ -31,8 +31,8 @@ public class AlunoControl {
     public AlunoControl() {
         alunoDao = new AlunoDAO();
         alunosTabela = ObservableCollections.observableList(new ArrayList<Aluno>());
-        //novo();
-        //pesquisar();
+        novo();
+        pesquisar();
     }
 
     public Aluno getAlunoDigitado() {
@@ -62,15 +62,7 @@ public class AlunoControl {
 
     public void setAlunosTabelas(List<Aluno> clientesTabelas) {
         this.alunosTabela = clientesTabelas;
-    }
-
-    public AlunoDAO getAlunodao() {
-        return alunoDao;
-    }
-
-    public void setAlunodao(AlunoDAO clientedao) {
-        this.alunoDao = clientedao;
-    }
+    }    
     
     public void salvar() throws ValidacaoException, RemoteException{
         alunoDigitado.validar();

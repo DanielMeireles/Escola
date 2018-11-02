@@ -6,6 +6,7 @@
 package cesjf.br.model;
 
 import cesjf.br.enums.EnsinoEnum;
+import cesjf.br.util.ValidacaoException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -106,5 +107,10 @@ public class Turma implements Serializable {
     @Override
     public String toString() {
         return "Turma{" + "id=" + id + ", nome=" + nome + ", ensino=" + ensino + ", ano=" + ano + ", alunos=" + alunos + '}';
-    }    
+    }
+    
+    public void validar() throws ValidacaoException{
+    if (this.nome == null || this.nome.equals(""))
+        throw new ValidacaoException("Campo nome precisa ser preenchido");   
+    }
 }
