@@ -9,6 +9,7 @@ import cesjf.br.enums.EnsinoEnum;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -33,7 +34,9 @@ public class Turma implements Serializable {
     private EnsinoEnum ensino;
     @Column(name="ANO_TURMA", nullable = false)
     private int ano;
-    @OneToMany
+    @OneToMany(mappedBy = "turma",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Aluno> alunos;
 
     public Turma() {

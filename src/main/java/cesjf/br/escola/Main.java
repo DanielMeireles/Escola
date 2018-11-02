@@ -35,12 +35,12 @@ public class Main {
         aluno.setNome("Teste");
         aluno.setAnoNasc(1987);
         aluno.setPcd(0);
+        aluno.setTurma(turma);      
         
         daoAluno.salvarAtualizar(aluno);
         
         turma.getAlunos().add(aluno);
-        
-        daoTurma.salvarAtualizar(turma);
+        daoTurma.salvarAtualizar(turma);       
     }
     
 }

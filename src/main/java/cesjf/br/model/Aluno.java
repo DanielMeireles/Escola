@@ -8,9 +8,12 @@ package cesjf.br.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Aluno implements Serializable {
@@ -26,6 +29,9 @@ public class Aluno implements Serializable {
     private int anoNasc;
     @Column(name="PCD_ALUNO", nullable = false)
     private int pcd;
+    
+    @ManyToOne    
+    private Turma turma;
 
     public Long getMatricula() {
         return matricula;
@@ -58,6 +64,14 @@ public class Aluno implements Serializable {
     public void setPcd(int pcd) {
         this.pcd = pcd;
     }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
+    }    
 
     @Override
     public int hashCode() {
