@@ -16,5 +16,11 @@ public abstract class Turma_ {
 	public static volatile SingularAttribute<Turma, Long> id;
 	public static volatile SingularAttribute<Turma, EnsinoEnum> ensino;
 
+	public static final String ANO = "ano";
+	public static final String ALUNOS = "alunos";
+	public static final String NOME = "nome";
+	public static final String ID = "id";
+	public static final String ENSINO = "ensino";
+
 }
 

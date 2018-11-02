@@ -5,14 +5,13 @@
  */
 package cesjf.br.model;
 
+import cesjf.br.util.ValidacaoException;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -96,5 +95,10 @@ public class Aluno implements Serializable {
     @Override
     public String toString() {
         return "Aluno{" + "matricula=" + matricula + ", nome=" + nome + ", ano_nasc=" + anoNasc + ", pcd=" + pcd + '}';
-    }    
+    } 
+    
+    public void validar() throws ValidacaoException{
+    if (this.nome == null || this.nome.equals(""))
+        throw new ValidacaoException("Campo nome precisa ser preenchido");   
+    }
 }
