@@ -102,8 +102,10 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         lbMatricula.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbMatricula.setText("Matrícula:");
 
-        tfMatricula.setEditable(false);
         tfMatricula.setEnabled(false);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.matricula}"), tfMatricula, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome:");

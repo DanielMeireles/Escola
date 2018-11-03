@@ -5,25 +5,26 @@
  */
 package cesjf.br.view;
 
-import cesjf.br.dao.TurmaDAO;
+import cesjf.br.controller.AlunoController;
 import cesjf.br.model.Turma;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 public class BuscarAluno extends javax.swing.JInternalFrame {
 
-    private final TurmaDAO turmaDAO;
-    private final List<Turma> turmas;
+    private final AlunoController alunoController;
+    
+    
     /**
-     * Creates new form CadastrarAluno
+     * Creates new form BuscarAluno
      */
     public BuscarAluno() {
+        alunoController = new AlunoController();
         initComponents();
-        turmaDAO = new TurmaDAO();
-        turmas = turmaDAO.pesquisar(new Turma());
-        populaAno();
     }
+
+    public AlunoController getAlunoController() {
+        return alunoController;
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,11 +34,9 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jPanel1 = new javax.swing.JPanel();
-        lbAno = new javax.swing.JLabel();
-        cbAno = new javax.swing.JComboBox<>();
-        lbTurma = new javax.swing.JLabel();
         cbTurma = new javax.swing.JComboBox<>();
         lbMatricula = new javax.swing.JLabel();
         tfMatricula = new javax.swing.JTextField();
@@ -48,30 +47,27 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         lbPcd = new javax.swing.JLabel();
         cbPcd = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        btRemover = new javax.swing.JButton();
+        btcadastrar = new javax.swing.JButton();
         btlimpar = new javax.swing.JButton();
         btsair = new javax.swing.JButton();
-        btBuscar = new javax.swing.JButton();
+        btPesquisar = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("BuscarAluno");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Turma", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        lbAno.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbAno.setText("Ano:");
+        cbTurma.setEditable(true);
+        cbTurma.setEnabled(false);
 
-        cbAno.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbAnoItemStateChanged(evt);
-            }
-        });
-
-        lbTurma.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbTurma.setText("Turma:");
-
-        cbTurma.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbTurmaItemStateChanged(evt);
-            }
-        });
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.turma}");
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, cbTurma);
+        bindingGroup.addBinding(jComboBoxBinding);
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.turma}"), cbTurma, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,38 +75,30 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbAno, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbAno))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbTurma)
-                        .addGap(0, 241, Short.MAX_VALUE))
-                    .addComponent(cbTurma, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(cbTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbAno)
-                    .addComponent(lbTurma))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cbTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         lbMatricula.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbMatricula.setText("Matrícula:");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.matricula}"), tfMatricula, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome:");
 
         tfNome.setEnabled(false);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.nome}"), tfNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         lbAnoNascimento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbAnoNascimento.setText("Ano Nascimento:");
@@ -118,16 +106,26 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         tfAnoNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         tfAnoNascimento.setEnabled(false);
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControl.alunoDigitado.anoNasc}"), tfAnoNascimento, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         lbPcd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPcd.setText("PCD:");
 
         cbPcd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
-        cbPcd.setSelectedIndex(-1);
         cbPcd.setEnabled(false);
 
-        btRemover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btRemover.setText("Remover");
-        jPanel2.add(btRemover);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControl.alunoDigitado.pcd}"), cbPcd, org.jdesktop.beansbinding.BeanProperty.create("selectedIndex"));
+        bindingGroup.addBinding(binding);
+
+        btcadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btcadastrar.setText("Cadastrar");
+        btcadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btcadastrarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btcadastrar);
 
         btlimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btlimpar.setText("Limpar");
@@ -147,8 +145,13 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         });
         jPanel2.add(btsair);
 
-        btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btBuscar.setText("Buscar");
+        btPesquisar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btPesquisar.setText("Pesquisar");
+        btPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,25 +161,25 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
                     .addComponent(tfNome)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbMatricula)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(tfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btBuscar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btPesquisar))
                             .addComponent(lbNome)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbAnoNascimento)
-                                .addGap(45, 45, 45)
-                                .addComponent(lbPcd))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfAnoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfAnoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbAnoNascimento))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbPcd, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbPcd)
+                                    .addComponent(cbPcd, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -187,7 +190,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscar))
+                    .addComponent(btPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,46 +203,29 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfAnoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbPcd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbAnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAnoItemStateChanged
-        if(cbAno.getSelectedIndex()>=0){
-            cbTurma.setEnabled(true);
-            populaTurma();
-        }else{
-            cbTurma.setEnabled(false);
-            cbTurma.setSelectedIndex(-1);
-        }
-    }//GEN-LAST:event_cbAnoItemStateChanged
-
-    private void cbTurmaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTurmaItemStateChanged
-        if(cbTurma.getSelectedIndex()>=0){
-            tfMatricula.setEnabled(true);
-            tfNome.setEnabled(true);
-            tfAnoNascimento.setEnabled(true);
-            cbPcd.setEnabled(true);
-        }else{
-            tfMatricula.setEnabled(false);
-            tfNome.setEnabled(false);
-            tfAnoNascimento.setEnabled(false);
-            cbPcd.setEnabled(false);
-        }
-    }//GEN-LAST:event_cbTurmaItemStateChanged
+    private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
+        
+    }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
-        cbAno.setSelectedIndex(-1);
+        alunoController.novo();
         cbTurma.setSelectedIndex(-1);
         tfMatricula.setText("");
+        tfNome.setText("");
         tfAnoNascimento.setText("");
-        cbPcd.setSelectedIndex(-1);
+        cbPcd.setSelectedIndex(0);
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
@@ -249,44 +235,26 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btsairActionPerformed
 
-    private void populaAno(){
-        ArrayList anos = new ArrayList<>();
-        for(Turma t: turmas){
-            if(!anos.contains(t.getAno())){
-                anos.add(t.getAno());
-                cbAno.addItem(Integer.toString(t.getAno()));
-            }
-        }
-        cbAno.setSelectedIndex(-1);
-    }
-    
-    private void populaTurma(){
-        for(Turma t: turmas){
-            if(t.getAno()==Integer.parseInt(cbAno.getSelectedItem().toString())){
-                cbTurma.addItem(t.getNome());
-            }
-        }
-        cbTurma.setSelectedIndex(-1);
-    }
+    private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
+        alunoController.getAlunoDigitado();
+    }//GEN-LAST:event_btPesquisarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscar;
-    private javax.swing.JButton btRemover;
+    private javax.swing.JButton btPesquisar;
+    private javax.swing.JButton btcadastrar;
     private javax.swing.JButton btlimpar;
     private javax.swing.JButton btsair;
-    private javax.swing.JComboBox<String> cbAno;
     private javax.swing.JComboBox<String> cbPcd;
-    private javax.swing.JComboBox<String> cbTurma;
+    private javax.swing.JComboBox<Turma> cbTurma;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lbAno;
     private javax.swing.JLabel lbAnoNascimento;
     private javax.swing.JLabel lbMatricula;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbPcd;
-    private javax.swing.JLabel lbTurma;
     private javax.swing.JFormattedTextField tfAnoNascimento;
     private javax.swing.JTextField tfMatricula;
     private javax.swing.JTextField tfNome;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

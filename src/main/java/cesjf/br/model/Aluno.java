@@ -20,6 +20,8 @@ public class Aluno implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID_ALUNO")
+    private Long id;
     @Column(name="MATRICULA_ALUNO")
     private Long matricula;
     @Column(name="NOME_ALUNO", length = 255, nullable = false)
@@ -30,6 +32,14 @@ public class Aluno implements Serializable {
     private int pcd;    
     @ManyToOne    
     private Turma turma;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getMatricula() {
         return matricula;

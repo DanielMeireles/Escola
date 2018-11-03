@@ -143,9 +143,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tfMatricula">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <BindingProperties>
+        <BindingProperty name="text" source="Form" sourcePath="${alunoController.alunoDigitado.matricula}" target="tfMatricula" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbNome">
       <Properties>
