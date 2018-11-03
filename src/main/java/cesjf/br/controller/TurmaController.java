@@ -6,6 +6,7 @@
 package cesjf.br.controller;
 
 import cesjf.br.dao.TurmaDAO;
+import cesjf.br.model.Aluno;
 import cesjf.br.model.Turma;
 import cesjf.br.util.ValidacaoException;
 import java.beans.PropertyChangeListener;
@@ -53,6 +54,22 @@ public class TurmaController {
 
     public List<Turma> getTurmasTabelas() {
         return turmasTabelas;
+    }
+    
+    public List<Turma> getTurmasTabelasPCD() {
+        List<Turma> turmas = new ArrayList<>();
+        for(Turma t: turmasTabelas){
+            int i = 0;
+            for(Aluno a: t.getAlunos()){
+                if(a.getPcd()==1){
+                    i++;
+                }
+            }
+            if(i>0){
+                turmas.add(t);
+            }
+        }
+        return turmas;
     }
 
     public void setTurmasTabelas(List<Turma> turmasTabelas) {

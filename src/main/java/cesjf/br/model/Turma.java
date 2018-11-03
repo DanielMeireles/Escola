@@ -35,6 +35,8 @@ public class Turma implements Serializable {
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<Aluno> alunos;
+    @Column(name="QTDE_TURMA", nullable = false)
+    private int quantidadeAlunos;
 
     public Turma() {
         alunos = new ArrayList<>();
@@ -78,6 +80,14 @@ public class Turma implements Serializable {
 
     public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
+    }
+
+    public int getQuantidadeAlunos() {
+        return quantidadeAlunos;
+    }
+
+    public void setQuantidadeAlunos() {
+        this.quantidadeAlunos = alunos.size();
     }
 
     @Override

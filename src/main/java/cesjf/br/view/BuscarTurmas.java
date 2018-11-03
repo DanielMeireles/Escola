@@ -24,6 +24,7 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
     public BuscarTurmas() {
         turmaController = new TurmaController();
         initComponents();
+        spTurmasPcd.setVisible(false);
     }
     
     public String getSelecionado() {
@@ -50,42 +51,42 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         lbPcd = new javax.swing.JLabel();
         rbSim = new javax.swing.JRadioButton();
         rbNao = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbTurmas = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         btAlunosTurma = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        spTurmasPcd = new javax.swing.JScrollPane();
+        tbTurmasPcd = new javax.swing.JTable();
+        spTurmas = new javax.swing.JScrollPane();
+        tbTurmas = new javax.swing.JTable();
 
         setClosable(true);
         setMaximizable(true);
         setTitle("Buscar Turmas");
         setToolTipText("");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbPcd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPcd.setText("Filtrar PCD?");
+        getContentPane().add(lbPcd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         bgPcd.add(rbSim);
         rbSim.setText("Sim");
+        rbSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbSimActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rbSim, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 7, -1, -1));
 
         bgPcd.add(rbNao);
         rbNao.setSelected(true);
         rbNao.setText("Não");
-
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelas}");
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbTurmas);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
-        columnBinding.setColumnName("Id");
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
-        columnBinding.setColumnName("Nome");
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ensino}"));
-        columnBinding.setColumnName("Ensino");
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ano}"));
-        columnBinding.setColumnName("Ano");
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaSelecionada}"), tbTurmas, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
-        bindingGroup.addBinding(binding);
-
-        jScrollPane1.setViewportView(tbTurmas);
+        rbNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbNaoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rbNao, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 7, -1, -1));
 
         btAlunosTurma.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAlunosTurma.setText("Alunos turma");
@@ -98,37 +99,64 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
         jPanel1.add(btSair);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbPcd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rbNao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rbSim)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbPcd)
-                    .addComponent(rbSim)
-                    .addComponent(rbNao))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 206, 574, -1));
+
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelasPCD}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbTurmasPcd);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
+        columnBinding.setColumnName("Id");
+        columnBinding.setColumnClass(Long.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
+        columnBinding.setColumnName("Nome");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ensino}"));
+        columnBinding.setColumnName("Ensino");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ano}"));
+        columnBinding.setColumnName("Ano");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${quantidadeAlunos}"));
+        columnBinding.setColumnName("Quantidade Alunos");
+        columnBinding.setColumnClass(Integer.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaSelecionada}"), tbTurmasPcd, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
+
+        spTurmasPcd.setViewportView(tbTurmasPcd);
+
+        getContentPane().add(spTurmasPcd, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 32, 570, 170));
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelas}");
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbTurmas);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
+        columnBinding.setColumnName("Id");
+        columnBinding.setColumnClass(Long.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
+        columnBinding.setColumnName("Nome");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ensino}"));
+        columnBinding.setColumnName("Ensino");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ano}"));
+        columnBinding.setColumnName("Ano");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${quantidadeAlunos}"));
+        columnBinding.setColumnName("Quantidade Alunos");
+        columnBinding.setColumnClass(Integer.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaSelecionada}"), tbTurmas, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
+
+        spTurmas.setViewportView(tbTurmas);
+
+        getContentPane().add(spTurmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 32, 570, 170));
 
         bindingGroup.bind();
 
@@ -139,17 +167,36 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null, getSelecionado());
     }//GEN-LAST:event_btAlunosTurmaActionPerformed
 
+    private void rbNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNaoActionPerformed
+        spTurmasPcd.setVisible(false);
+        spTurmas.setVisible(true);
+    }//GEN-LAST:event_rbNaoActionPerformed
+
+    private void rbSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSimActionPerformed
+        spTurmas.setVisible(false);
+        spTurmasPcd.setVisible(true);
+    }//GEN-LAST:event_rbSimActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(opcao == JOptionPane.YES_OPTION){
+            this.dispose();
+        }
+    }//GEN-LAST:event_btSairActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgPcd;
     private javax.swing.JButton btAlunosTurma;
     private javax.swing.JButton btSair;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbPcd;
     private javax.swing.JRadioButton rbNao;
     private javax.swing.JRadioButton rbSim;
+    private javax.swing.JScrollPane spTurmas;
+    private javax.swing.JScrollPane spTurmasPcd;
     private javax.swing.JTable tbTurmas;
+    private javax.swing.JTable tbTurmasPcd;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

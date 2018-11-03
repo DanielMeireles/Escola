@@ -28,6 +28,7 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
         initComponents();        
         cbEnsino.setModel(new javax.swing.DefaultComboBoxModel(EnsinoEnum.enumsToStringArray()));
         cbEnsino.setSelectedIndex(-1);
+        tfAno.setText(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
     } 
 
     public TurmaController getTurmaController() {
@@ -164,7 +165,8 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, 
                 "Turma salva com sucesso",
                 "Salvar cliente",
-                JOptionPane.INFORMATION_MESSAGE);              
+                JOptionPane.INFORMATION_MESSAGE);
+            btlimparActionPerformed(evt);
         } catch(ValidacaoException ex) {
             JOptionPane.showMessageDialog(this, 
                 ex.getMessage(),
@@ -181,8 +183,9 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
+        turmaController.novo();
         tfNome.setText("");
-        tfAno.setText("");
+        tfAno.setText(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
         cbEnsino.setSelectedIndex(-1);
         tfNome.requestFocus();
     }//GEN-LAST:event_btlimparActionPerformed

@@ -238,7 +238,8 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, 
                 "Aluno salvo com sucesso",
                 "Salvar aluno",
-                JOptionPane.INFORMATION_MESSAGE);              
+                JOptionPane.INFORMATION_MESSAGE);
+            btlimparActionPerformed(evt);
         } catch(ValidacaoException ex) {
             JOptionPane.showMessageDialog(this, 
                 ex.getMessage(),
@@ -256,6 +257,11 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
         alunoController.novo();
+        cbTurma.setSelectedIndex(-1);
+        tfMatricula.setText("");
+        tfNome.setText("");
+        tfAnoNascimento.setText("");
+        cbPcd.setSelectedIndex(0);
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed

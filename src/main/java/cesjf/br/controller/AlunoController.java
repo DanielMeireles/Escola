@@ -6,6 +6,7 @@
 package cesjf.br.controller;
 
 import cesjf.br.dao.AlunoDAO;
+import cesjf.br.dao.TurmaDAO;
 import cesjf.br.model.Aluno;
 import cesjf.br.util.ValidacaoException;
 import java.beans.PropertyChangeListener;
@@ -22,9 +23,11 @@ public class AlunoController {
     private Aluno alunoSelecionado;
     private List<Aluno> alunosTabela;
     private final AlunoDAO alunoDAO;
+    private final TurmaDAO turmaDAO;
 
     public AlunoController() {
         alunoDAO = new AlunoDAO();
+        turmaDAO = new TurmaDAO();
         alunosTabela = ObservableCollections.observableList(new ArrayList<>());
         novo();
         //pesquisar();
@@ -62,12 +65,16 @@ public class AlunoController {
     public void salvar() throws ValidacaoException, RemoteException{
         alunoDigitado.validar();
         alunoDAO.salvarAtualizar(alunoDigitado);
+        alunoDigitado.getTurma().setQuantidadeAlunos();
+        turmaDAO.salvarAtualizar(alunoDigitado.getTurma());
         novo();
         //pesquisar();
     }
     
     public void excluir(){
         alunoDAO.excluir(alunoDigitado);
+        alunoDigitado.getTurma().setQuantidadeAlunos();
+        turmaDAO.salvarAtualizar(alunoDigitado.getTurma());
         novo();
         //pesquisar();
     }
