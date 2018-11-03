@@ -36,7 +36,6 @@ public class Principal extends javax.swing.JFrame {
         mnBusca = new javax.swing.JMenu();
         mniBuscarAluno = new javax.swing.JMenuItem();
         mniTurmasPcd = new javax.swing.JMenuItem();
-        mniListaAlunos = new javax.swing.JMenuItem();
         mnSobre = new javax.swing.JMenu();
         mniAjuda = new javax.swing.JMenuItem();
         mniSobre = new javax.swing.JMenuItem();
@@ -99,15 +98,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mnBusca.add(mniTurmasPcd);
-
-        mniListaAlunos.setMnemonic('p');
-        mniListaAlunos.setText("Buscar Alunos por Turma");
-        mniListaAlunos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniListaAlunosActionPerformed(evt);
-            }
-        });
-        mnBusca.add(mniListaAlunos);
 
         menuBar.add(mnBusca);
 
@@ -172,12 +162,6 @@ public class Principal extends javax.swing.JFrame {
         buscarTurmas.setVisible(true);
     }//GEN-LAST:event_mniTurmasPcdActionPerformed
 
-    private void mniListaAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaAlunosActionPerformed
-        BuscarAlunosTurma buscarAlunosTurma = new BuscarAlunosTurma();
-        this.desktopPane.add(buscarAlunosTurma);
-        buscarAlunosTurma.setVisible(true);
-    }//GEN-LAST:event_mniListaAlunosActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -224,7 +208,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniAjuda;
     private javax.swing.JMenuItem mniBuscarAluno;
     private javax.swing.JMenuItem mniCadastrarTurma;
-    private javax.swing.JMenuItem mniListaAlunos;
     private javax.swing.JMenuItem mniMatricularAluno;
     private javax.swing.JMenu mniSair;
     private javax.swing.JMenuItem mniSobre;
