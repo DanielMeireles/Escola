@@ -5,13 +5,35 @@
  */
 package cesjf.br.view;
 
+import cesjf.br.controller.TurmaController;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
+
 public class BuscarTurmas extends javax.swing.JInternalFrame {
 
+    private final TurmaController turmaController;
+
+    public TurmaController getTurmaController() {
+        return turmaController;
+    }
+    
     /**
      * Creates new form BuscarTurmas
      */
     public BuscarTurmas() {
+        turmaController = new TurmaController();
         initComponents();
+    }
+    
+    public String getSelecionado() {
+        for (Enumeration<AbstractButton> buttons = bgPcd.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+        return null;
     }
 
     /**
@@ -22,6 +44,7 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         bgPcd = new javax.swing.ButtonGroup();
         lbPcd = new javax.swing.JLabel();
@@ -33,6 +56,11 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         btAlunosTurma = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
 
+        setClosable(true);
+        setMaximizable(true);
+        setTitle("Buscar Turmas");
+        setToolTipText("");
+
         lbPcd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPcd.setText("Filtrar PCD?");
 
@@ -43,18 +71,29 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         rbNao.setSelected(true);
         rbNao.setText("Não");
 
-        tbTurmas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelas}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbTurmas);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
+        columnBinding.setColumnName("Id");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
+        columnBinding.setColumnName("Nome");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ensino}"));
+        columnBinding.setColumnName("Ensino");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ano}"));
+        columnBinding.setColumnName("Ano");
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaSelecionada}"), tbTurmas, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
 
-            },
-            new String [] {
-
-            }
-        ));
         jScrollPane1.setViewportView(tbTurmas);
 
         btAlunosTurma.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAlunosTurma.setText("Alunos turma");
+        btAlunosTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlunosTurmaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btAlunosTurma);
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -91,8 +130,14 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btAlunosTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunosTurmaActionPerformed
+        JOptionPane.showMessageDialog(null, getSelecionado());
+    }//GEN-LAST:event_btAlunosTurmaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -105,5 +150,6 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rbNao;
     private javax.swing.JRadioButton rbSim;
     private javax.swing.JTable tbTurmas;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

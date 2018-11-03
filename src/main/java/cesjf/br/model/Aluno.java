@@ -54,13 +54,21 @@ public class Aluno implements Serializable {
     public void setAnoNasc(int anoNasc) {
         this.anoNasc = anoNasc;
     }
-
+    
     public int getPcd() {
-        return pcd;
+        return pcd;      
     }
 
     public void setPcd(int pcd) {
         this.pcd = pcd;
+    }
+
+    public void setPcd(String pcd) {
+        if(pcd.equals("Sim")){
+            this.pcd = 1;
+        }else{
+            this.pcd = 0;
+        }
     }
 
     public Turma getTurma() {

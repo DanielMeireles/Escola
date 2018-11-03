@@ -5,8 +5,8 @@
  */
 package cesjf.br.view;
 
-import cesjf.br.controle.AlunoControl;
-import cesjf.br.controle.TurmaControl;
+import cesjf.br.controller.AlunoController;
+import cesjf.br.controller.TurmaController;
 import cesjf.br.model.Turma;
 import cesjf.br.util.ValidacaoException;
 import java.util.logging.Level;
@@ -16,32 +16,25 @@ import javax.swing.JOptionPane;
 
 public class MatricularAluno extends javax.swing.JInternalFrame {
 
-    //private final TurmaDAO turmaDAO;
-    //private final List<Turma> turmas; 
-    private TurmaControl turmaControl;
-    private AlunoControl alunoControl;
+    private final TurmaController turmaController;
+    private final AlunoController alunoController;
     
     
     /**
      * Creates new form CadastrarAluno
      */
     public MatricularAluno() {
-        turmaControl = new TurmaControl();
-        alunoControl = new AlunoControl();
+        turmaController = new TurmaController();
+        alunoController = new AlunoController();
         initComponents();
-        
-        
-        //turmaDAO = new TurmaDAO();
-        //turmas = turmaDAO.pesquisar(new Turma());
-        //populaAno();
     }
 
-    public TurmaControl getTurmaControl() {
-        return turmaControl;
+    public TurmaController getTurmaController() {
+        return turmaController;
     }  
 
-    public AlunoControl getAlunoControl() {
-        return alunoControl;
+    public AlunoController getAlunoController() {
+        return alunoController;
     }    
 
     /**
@@ -77,10 +70,10 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Turma", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaControl.turmasTabelas}");
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelas}");
         org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, cbTurma);
         bindingGroup.addBinding(jComboBoxBinding);
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControl.alunoDigitado.turma}"), cbTurma, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.turma}"), cbTurma, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
         cbTurma.addItemListener(new java.awt.event.ItemListener() {
@@ -117,7 +110,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
         tfNome.setEnabled(false);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControl.alunoDigitado.nome}"), tfNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.nome}"), tfNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         lbAnoNascimento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -180,13 +173,13 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
                             .addComponent(tfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbNome)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbAnoNascimento)
-                                .addGap(45, 45, 45)
-                                .addComponent(lbPcd))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfAnoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfAnoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbAnoNascimento))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbPcd, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbPcd)
+                                    .addComponent(cbPcd, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE))
                 .addContainerGap())
@@ -214,7 +207,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
                     .addComponent(cbPcd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -239,8 +232,9 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
     private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
         try {
-            //JOptionPane.showMessageDialog(null, alunoControl.getAlunoDigitado());            
-            alunoControl.salvar();            
+            alunoController.getAlunoDigitado().setPcd(cbPcd.getSelectedItem().toString());
+            alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));
+            alunoController.salvar();            
             JOptionPane.showMessageDialog(this, 
                 "Aluno salvo com sucesso",
                 "Salvar aluno",
@@ -261,7 +255,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
-        alunoControl.novo();
+        alunoController.novo();
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
@@ -270,27 +264,6 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btsairActionPerformed
-
-    /*private void populaAno(){
-        ArrayList anos = new ArrayList<>();
-        for(Turma t: turmas){
-            if(!anos.contains(t.getAno())){
-                anos.add(t.getAno());
-                cbAno.addItem(Integer.toString(t.getAno()));
-            }
-        }
-        cbAno.setSelectedIndex(-1);
-    }
-    
-    private void populaTurma(){
-        cbTurma.removeAllItems();        
-        for(Turma t: turmas){
-            if(t.getAno()==Integer.parseInt(cbAno.getSelectedItem().toString())){
-                cbTurma.addItem(t.getNome());
-            }
-        }
-        cbTurma.setSelectedIndex(-1);
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btcadastrar;

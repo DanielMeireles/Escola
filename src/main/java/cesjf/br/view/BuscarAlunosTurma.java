@@ -5,26 +5,26 @@
  */
 package cesjf.br.view;
 
-import cesjf.br.controle.AlunoControl;
+import cesjf.br.controller.AlunoController;
 
 public class BuscarAlunosTurma extends javax.swing.JInternalFrame {
     
-    private AlunoControl alunoControl;
+    private AlunoController alunoControl;
 
     /**
      * Creates new form BuscarTurmas
      */
     public BuscarAlunosTurma() {
         
-        alunoControl = new AlunoControl();
+        alunoControl = new AlunoController();
         initComponents();
     }
 
-    public AlunoControl getAlunoControl() {
+    public AlunoController getAlunoControl() {
         return alunoControl;
     }
 
-    public void setAlunoControl(AlunoControl alunoControl) {
+    public void setAlunoControl(AlunoController alunoControl) {
         this.alunoControl = alunoControl;
     }    
 

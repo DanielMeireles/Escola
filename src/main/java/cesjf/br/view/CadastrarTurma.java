@@ -5,9 +5,10 @@
  */
 package cesjf.br.view;
 
-import cesjf.br.controle.TurmaControl;
+import cesjf.br.controller.TurmaController;
 import cesjf.br.enums.EnsinoEnum;
 import cesjf.br.util.ValidacaoException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javassist.tools.rmi.RemoteException;
@@ -15,20 +16,22 @@ import javax.swing.JOptionPane;
 
 public class CadastrarTurma extends javax.swing.JInternalFrame {
     
-    private TurmaControl turmaControl;  
-
+    private final TurmaController turmaController;  
+    
+    //Criação de uma nova data apenas para capturar o ano atual
+    
     /**
      * Creates new form CadastrarTurma
      */
     public CadastrarTurma() {
-        turmaControl = new TurmaControl();        
+        turmaController = new TurmaController();        
         initComponents();        
         cbEnsino.setModel(new javax.swing.DefaultComboBoxModel(EnsinoEnum.enumsToStringArray()));
         cbEnsino.setSelectedIndex(-1);
     } 
 
-    public TurmaControl getTurmaControl() {
-        return turmaControl;
+    public TurmaController getTurmaController() {
+        return turmaController;
     }       
 
     /**
@@ -62,16 +65,16 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome:");
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaControl.turmaDigitada.nome}"), tfNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaDigitada.nome}"), tfNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         lbensino.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbensino.setText("Ensino:");
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaControl.turmaDigitada.ensino}"), cbEnsino, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaDigitada.ensino}"), cbEnsino, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaControl.turmaDigitada.ano}"), tfAno, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaDigitada.ano}"), tfAno, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         lbAno.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -156,9 +159,8 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
-        try { 
-            JOptionPane.showMessageDialog(null, turmaControl.getTurmaDigitada());
-            turmaControl.salvar();            
+        try {
+            turmaController.salvar();            
             JOptionPane.showMessageDialog(this, 
                 "Turma salva com sucesso",
                 "Salvar cliente",

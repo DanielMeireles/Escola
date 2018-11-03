@@ -95,7 +95,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tfNome">
       <BindingProperties>
-        <BindingProperty name="text" source="Form" sourcePath="${turmaControl.turmaDigitada.nome}" target="tfNome" targetPath="text" updateStrategy="0" immediately="false"/>
+        <BindingProperty name="text" source="Form" sourcePath="${turmaController.turmaDigitada.nome}" target="tfNome" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
       </BindingProperties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbensino">
@@ -108,7 +110,7 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cbEnsino">
       <BindingProperties>
-        <BindingProperty name="selectedItem" source="Form" sourcePath="${turmaControl.turmaDigitada.ensino}" target="cbEnsino" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+        <BindingProperty name="selectedItem" source="Form" sourcePath="${turmaController.turmaDigitada.ensino}" target="cbEnsino" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
       </BindingProperties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="CadastrarTurma_cbEnsino"/>
@@ -117,7 +119,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tfAno">
       <BindingProperties>
-        <BindingProperty name="text" source="Form" sourcePath="${turmaControl.turmaDigitada.ano}" target="tfAno" targetPath="text" updateStrategy="0" immediately="false"/>
+        <BindingProperty name="text" source="Form" sourcePath="${turmaController.turmaDigitada.ano}" target="tfAno" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
       </BindingProperties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbAno">

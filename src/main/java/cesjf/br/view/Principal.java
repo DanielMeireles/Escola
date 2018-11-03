@@ -43,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gerenciamento Escolar");
+        setName("Principal"); // NOI18N
 
         mniSair.setMnemonic('C');
         mniSair.setText("Cadastro");

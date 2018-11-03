@@ -5,10 +5,6 @@
  */
 package cesjf.br.util;
 
-/**
- *
- * @author JohnPeter
- */
 public class ValidacaoException extends Exception{
 
     public ValidacaoException(String message) {

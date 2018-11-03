@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cesjf.br.controle;
+package cesjf.br.controller;
 
 import cesjf.br.dao.AlunoDAO;
 import cesjf.br.model.Aluno;
@@ -15,21 +15,17 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jdesktop.observablecollections.ObservableCollections;
 
-/**
- *
- * @author JohnPeter
- */
-public class AlunoControl {
+public class AlunoController {
     
     private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);  
     private Aluno alunoDigitado;
     private Aluno alunoSelecionado;
     private List<Aluno> alunosTabela;
-    private AlunoDAO alunoDao;
+    private final AlunoDAO alunoDAO;
 
-    public AlunoControl() {
-        alunoDao = new AlunoDAO();
-        alunosTabela = ObservableCollections.observableList(new ArrayList<Aluno>());
+    public AlunoController() {
+        alunoDAO = new AlunoDAO();
+        alunosTabela = ObservableCollections.observableList(new ArrayList<>());
         novo();
         //pesquisar();
     }
@@ -65,13 +61,13 @@ public class AlunoControl {
     
     public void salvar() throws ValidacaoException, RemoteException{
         alunoDigitado.validar();
-        alunoDao.salvarAtualizar(alunoDigitado);
+        alunoDAO.salvarAtualizar(alunoDigitado);
         novo();
         //pesquisar();
     }
     
     public void excluir(){
-        alunoDao.excluir(alunoDigitado);
+        alunoDAO.excluir(alunoDigitado);
         novo();
         //pesquisar();
     }
@@ -82,7 +78,7 @@ public class AlunoControl {
     
     public final void pesquisar(){
         alunosTabela.clear();
-        alunosTabela.addAll(alunoDao.pesquisar(alunoSelecionado));
+        alunosTabela.addAll(alunoDAO.pesquisar(alunoSelecionado));
     }
     
     public void addPropertyChangeListener(PropertyChangeListener e){
@@ -92,5 +88,4 @@ public class AlunoControl {
     public void removePropertyChangeListener(PropertyChangeListener e){
         propertyChangeSupport.removePropertyChangeListener(e);
     }
-    
 }

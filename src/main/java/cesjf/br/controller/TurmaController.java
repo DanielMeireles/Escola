@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cesjf.br.controle;
+package cesjf.br.controller;
 
 import cesjf.br.dao.TurmaDAO;
 import cesjf.br.model.Turma;
@@ -15,23 +15,19 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jdesktop.observablecollections.ObservableCollections;
 
-/**
- *
- * @author JohnPeter
- */
-public class TurmaControl {
+public class TurmaController {
     
     private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);  
     private Turma turmaDigitada;
-    private Turma TurmaSelecionada;
+    private Turma turmaSelecionada;
     private List<Turma> turmasTabelas;
-    private TurmaDAO turmadao;
+    private final TurmaDAO turmaDAO;
 
-    public TurmaControl() {
-        turmadao = new TurmaDAO();
+    public TurmaController() {
+        turmaDAO = new TurmaDAO();
         turmasTabelas = ObservableCollections.observableList(new ArrayList<Turma>());
         novo();
-        pesquisar();        
+        pesquisar();
     }
 
     public Turma getTurmaDigitada() {
@@ -45,33 +41,33 @@ public class TurmaControl {
     }
 
     public Turma getTurmaSelecionada() {
-        return TurmaSelecionada;
+        return turmaSelecionada;
     }
 
-    public void setTurmaSelecionada(Turma TurmaSelecionada) {
-        if(this.TurmaSelecionada != null){
-            setTurmaDigitada(this.TurmaSelecionada);
+    public void setTurmaSelecionada(Turma turmaSelecionada) {
+        if(this.turmaSelecionada != null){
+            setTurmaDigitada(turmaSelecionada);
         }
-        this.TurmaSelecionada = this.TurmaSelecionada;
+        this.turmaSelecionada = turmaSelecionada;
     }
 
     public List<Turma> getTurmasTabelas() {
         return turmasTabelas;
     }
 
-    public void setTurmasTabelas(List<Turma> TurmasTabelas) {
-        this.turmasTabelas = TurmasTabelas;
+    public void setTurmasTabelas(List<Turma> turmasTabelas) {
+        this.turmasTabelas = turmasTabelas;
     }
     
     public void salvar() throws ValidacaoException, RemoteException{
         turmaDigitada.validar();
-        turmadao.salvarAtualizar(turmaDigitada);
+        turmaDAO.salvarAtualizar(turmaDigitada);
         novo();
         pesquisar();
     }
     
     public void excluir(){
-        turmadao.excluir(turmaDigitada);
+        turmaDAO.excluir(turmaDigitada);
         novo();
         pesquisar();        
     }
@@ -82,7 +78,7 @@ public class TurmaControl {
     
     public final void pesquisar(){
         turmasTabelas.clear();
-        turmasTabelas.addAll(turmadao.pesquisar(turmaDigitada));
+        turmasTabelas.addAll(turmaDAO.pesquisar(turmaDigitada));
     }
     
     public void addPropertyChangeListener(PropertyChangeListener e){
