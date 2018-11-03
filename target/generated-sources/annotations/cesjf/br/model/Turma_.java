@@ -1,6 +1,5 @@
 package cesjf.br.model;
 
-import cesjf.br.enums.EnsinoEnum;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
@@ -14,7 +13,7 @@ public abstract class Turma_ {
 	public static volatile ListAttribute<Turma, Aluno> alunos;
 	public static volatile SingularAttribute<Turma, String> nome;
 	public static volatile SingularAttribute<Turma, Long> id;
-	public static volatile SingularAttribute<Turma, EnsinoEnum> ensino;
+	public static volatile SingularAttribute<Turma, String> ensino;
 
 	public static final String ANO = "ano";
 	public static final String ALUNOS = "alunos";

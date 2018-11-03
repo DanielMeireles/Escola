@@ -105,7 +105,7 @@ public class Turma implements Serializable {
 
     @Override
     public String toString() {
-        return "Turma{" + "id=" + id + ", nome=" + nome + ", ensino=" + ensino + ", ano=" + ano + ", alunos=" + alunos + '}';
+        return nome + ", " + ano;
     }
     
     public void validar() throws ValidacaoException{

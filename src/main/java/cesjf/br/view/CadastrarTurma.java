@@ -55,7 +55,9 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
         setBorder(null);
         setClosable(true);
         setIconifiable(true);
+        setMaximizable(true);
         setResizable(true);
+        setTitle("Cadastro de Turma");
 
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome:");
@@ -154,7 +156,8 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
-        try {            
+        try { 
+            JOptionPane.showMessageDialog(null, turmaControl.getTurmaDigitada());
             turmaControl.salvar();            
             JOptionPane.showMessageDialog(this, 
                 "Turma salva com sucesso",

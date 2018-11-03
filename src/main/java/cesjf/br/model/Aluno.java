@@ -93,11 +93,11 @@ public class Aluno implements Serializable {
 
     @Override
     public String toString() {
-        return "Aluno{" + "matricula=" + matricula + ", nome=" + nome + ", ano_nasc=" + anoNasc + ", pcd=" + pcd + '}';
+        return matricula + ", " + nome + ", " + anoNasc + ", Turma: " + getTurma().getNome();
     } 
     
     public void validar() throws ValidacaoException{
     if (this.nome == null || this.nome.equals(""))
-        throw new ValidacaoException("Campo nome precisa ser preenchido");   
+        throw new ValidacaoException("Campo nome precisa ser preenchido");
     }
 }

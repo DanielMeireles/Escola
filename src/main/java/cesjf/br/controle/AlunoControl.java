@@ -21,8 +21,7 @@ import org.jdesktop.observablecollections.ObservableCollections;
  */
 public class AlunoControl {
     
-    private final PropertyChangeSupport propertyChangeSupport = 
-            new PropertyChangeSupport(this);  
+    private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);  
     private Aluno alunoDigitado;
     private Aluno alunoSelecionado;
     private List<Aluno> alunosTabela;
@@ -32,24 +31,24 @@ public class AlunoControl {
         alunoDao = new AlunoDAO();
         alunosTabela = ObservableCollections.observableList(new ArrayList<Aluno>());
         novo();
-        pesquisar();
+        //pesquisar();
     }
 
     public Aluno getAlunoDigitado() {
         return alunoDigitado;
     }
 
-    public void setAlunoDigitado(Aluno clienteDigitado) {
-        Aluno oldAluno = this.alunoDigitado;
+    public void setAlunoDigitado(Aluno alunoDigitado) {
+        Aluno oldAlunoDigitado = this.alunoDigitado;
         this.alunoDigitado = alunoDigitado;
-        propertyChangeSupport.firePropertyChange("alunoDigitado", oldAluno, alunoDigitado);
+        propertyChangeSupport.firePropertyChange("alunoDigitado", oldAlunoDigitado, alunoDigitado);
     }
 
     public Aluno getAlunoSelecionado() {
         return alunoSelecionado;
     }
 
-    public void setAlunoSelecionado(Aluno clienteSelecionado) {
+    public void setAlunoSelecionado(Aluno alunoSelecionado) {
         if(this.alunoSelecionado != null){
             setAlunoDigitado(alunoSelecionado);
         }
@@ -60,21 +59,21 @@ public class AlunoControl {
         return alunosTabela;
     }
 
-    public void setAlunosTabelas(List<Aluno> clientesTabelas) {
-        this.alunosTabela = clientesTabelas;
+    public void setAlunosTabelas(List<Aluno> alunosTabelas) {
+        this.alunosTabela = alunosTabelas;
     }    
     
     public void salvar() throws ValidacaoException, RemoteException{
         alunoDigitado.validar();
         alunoDao.salvarAtualizar(alunoDigitado);
         novo();
-        pesquisar();
+        //pesquisar();
     }
     
     public void excluir(){
         alunoDao.excluir(alunoDigitado);
         novo();
-        pesquisar();
+        //pesquisar();
     }
     
     public final void novo(){

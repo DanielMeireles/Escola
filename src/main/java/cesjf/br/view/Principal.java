@@ -42,11 +42,13 @@ public class Principal extends javax.swing.JFrame {
         mniSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Gerenciamento Escolar");
 
-        mniSair.setMnemonic('f');
+        mniSair.setMnemonic('C');
         mniSair.setText("Cadastro");
+        mniSair.setToolTipText("");
 
-        mniCadastrarTurma.setMnemonic('o');
+        mniCadastrarTurma.setMnemonic('C');
         mniCadastrarTurma.setText("Cadastrar Turma");
         mniCadastrarTurma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,7 +57,7 @@ public class Principal extends javax.swing.JFrame {
         });
         mniSair.add(mniCadastrarTurma);
 
-        mniMatricularAluno.setMnemonic('s');
+        mniMatricularAluno.setMnemonic('M');
         mniMatricularAluno.setText("Matricular Aluno");
         mniMatricularAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,7 +67,7 @@ public class Principal extends javax.swing.JFrame {
         mniSair.add(mniMatricularAluno);
         mniSair.add(jSeparator1);
 
-        exitMenuItem.setMnemonic('x');
+        exitMenuItem.setMnemonic('S');
         exitMenuItem.setText("Sair");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,10 +78,10 @@ public class Principal extends javax.swing.JFrame {
 
         menuBar.add(mniSair);
 
-        mnBusca.setMnemonic('e');
+        mnBusca.setMnemonic('B');
         mnBusca.setText("Busca");
 
-        mniBuscarAluno.setMnemonic('t');
+        mniBuscarAluno.setMnemonic('A');
         mniBuscarAluno.setText("Buscar Aluno");
         mniBuscarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +90,7 @@ public class Principal extends javax.swing.JFrame {
         });
         mnBusca.add(mniBuscarAluno);
 
-        mniTurmasPcd.setMnemonic('y');
+        mniTurmasPcd.setMnemonic('T');
         mniTurmasPcd.setText("Buscar Turmas");
         mniTurmasPcd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,14 +110,14 @@ public class Principal extends javax.swing.JFrame {
 
         menuBar.add(mnBusca);
 
-        mnSobre.setMnemonic('h');
+        mnSobre.setMnemonic('S');
         mnSobre.setText("Sobre");
 
-        mniAjuda.setMnemonic('c');
+        mniAjuda.setMnemonic('u');
         mniAjuda.setText("Ajuda");
         mnSobre.add(mniAjuda);
 
-        mniSobre.setMnemonic('a');
+        mniSobre.setMnemonic('o');
         mniSobre.setText("Sobre");
         mnSobre.add(mniSobre);
 
