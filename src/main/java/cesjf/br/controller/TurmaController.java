@@ -61,7 +61,7 @@ public class TurmaController {
         for(Turma t: turmasTabelas){
             int i = 0;
             for(Aluno a: t.getAlunos()){
-                if(a.getPcd()==1){
+                if(a.getPcd()=="Sim"){
                     i++;
                 }
             }

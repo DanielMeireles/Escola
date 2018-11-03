@@ -236,7 +236,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btsairActionPerformed
 
     private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
-        alunoController.getAlunoDigitado();
+        alunoController.pesquisarAluno();
     }//GEN-LAST:event_btPesquisarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

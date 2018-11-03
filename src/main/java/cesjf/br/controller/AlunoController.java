@@ -88,6 +88,12 @@ public class AlunoController {
         alunosTabela.addAll(alunoDAO.pesquisar(alunoSelecionado));
     }
     
+    public void pesquisarAluno(){
+        for(Aluno a: alunoDAO.pesquisar(alunoDigitado)){
+            alunoDigitado = a;
+        }
+    }
+    
     public void addPropertyChangeListener(PropertyChangeListener e){
         propertyChangeSupport.addPropertyChangeListener(e);
     }

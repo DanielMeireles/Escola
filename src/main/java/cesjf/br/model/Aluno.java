@@ -22,8 +22,8 @@ public class Aluno implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_ALUNO")
     private Long id;
-    @Column(name="MATRICULA_ALUNO")
-    private Long matricula;
+    @Column(name="MATRICULA_ALUNO", length = 30, nullable = false)
+    private String matricula;
     @Column(name="NOME_ALUNO", length = 255, nullable = false)
     private String nome;
     @Column(name="ANO_NASC_ALUNO", nullable = false)
@@ -41,11 +41,11 @@ public class Aluno implements Serializable {
         this.id = id;
     }
 
-    public Long getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(Long matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
@@ -65,12 +65,12 @@ public class Aluno implements Serializable {
         this.anoNasc = anoNasc;
     }
     
-    public int getPcd() {
-        return pcd;      
-    }
-
-    public void setPcd(int pcd) {
-        this.pcd = pcd;
+    public String getPcd() {
+        if(pcd==1){
+            return "Sim";
+        }else{
+            return "Não";
+        }      
     }
 
     public void setPcd(String pcd) {
