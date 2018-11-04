@@ -90,7 +90,7 @@ public class AlunoController {
     
     public void pesquisarAluno(){
         for(Aluno a: alunoDAO.pesquisar(alunoDigitado)){
-            alunoDigitado = a;
+            alunoSelecionado = a;
         }
     }
     
