@@ -89,7 +89,8 @@ public class AlunoController {
     }
     
     public void pesquisarAluno(){
-        alunoSelecionado = alunoDAO.pesquisarAluno(alunoDigitado);
+        alunoDigitado = alunoDAO.pesquisarAluno(alunoDigitado);
+        alunoSelecionado = alunoDigitado;
     }
     
     public void addPropertyChangeListener(PropertyChangeListener e){

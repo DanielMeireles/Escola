@@ -132,7 +132,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="elements" source="Form" sourcePath="${alunoController.alunoSelecionado.turma}" target="cbTurma" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="elements" source="Form" sourcePath="${alunoController.alunoDigitado.turma}" target="cbTurma" targetPath="elements" updateStrategy="0" immediately="false"/>
             <BindingProperty name="selectedItem" source="Form" sourcePath="${alunoController.alunoSelecionado.turma}" target="cbTurma" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
           </BindingProperties>
           <AuxValues>
@@ -169,7 +169,7 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <BindingProperties>
-        <BindingProperty name="text" source="Form" sourcePath="${alunoController.alunoSelecionado.nome}" target="tfNome" targetPath="text" updateStrategy="0" immediately="false">
+        <BindingProperty name="text" source="Form" sourcePath="${alunoController.alunoDigitado.nome}" target="tfNome" targetPath="text" updateStrategy="0" immediately="false">
           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
         </BindingProperty>
       </BindingProperties>
@@ -190,7 +190,7 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <BindingProperties>
-        <BindingProperty name="value" source="Form" sourcePath="${alunoController.alunoSelecionado.anoNasc}" target="tfAnoNascimento" targetPath="value" updateStrategy="0" immediately="false"/>
+        <BindingProperty name="value" source="Form" sourcePath="${alunoController.alunoDigitado.anoNasc}" target="tfAnoNascimento" targetPath="value" updateStrategy="0" immediately="false"/>
         <BindingProperty name="text" source="Form" sourcePath="${alunoControl.alunoDigitado.anoNasc}" target="tfAnoNascimento" targetPath="text" updateStrategy="0" immediately="false"/>
       </BindingProperties>
     </Component>
@@ -213,7 +213,7 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <BindingProperties>
-        <BindingProperty name="selectedItem" source="Form" sourcePath="${alunoController.alunoSelecionado.pcd}" target="cbPcd" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+        <BindingProperty name="selectedItem" source="Form" sourcePath="${alunoController.alunoDigitado.pcd}" target="cbPcd" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
         <BindingProperty name="selectedIndex" source="Form" sourcePath="${alunoControl.alunoDigitado.pcd}" target="cbPcd" targetPath="selectedIndex" updateStrategy="0" immediately="false"/>
       </BindingProperties>
       <AuxValues>

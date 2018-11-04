@@ -16,8 +16,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Entity
+@Entity(name = "Turma")
+@Table(name = "turma")
 public class Turma implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,9 +33,11 @@ public class Turma implements Serializable {
     private String ensino;
     @Column(name="ANO_TURMA", nullable = false)
     private int ano;
-    @OneToMany(mappedBy = "turma",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @OneToMany(
+        mappedBy = "turma", 
+        cascade = CascadeType.ALL, 
+        orphanRemoval = true
+    )
     private List<Aluno> alunos;
     @Column(name="QTDE_TURMA", nullable = false)
     private int quantidadeAlunos;

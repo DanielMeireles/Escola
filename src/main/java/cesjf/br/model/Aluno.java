@@ -9,12 +9,16 @@ import cesjf.br.util.ValidacaoException;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity
+@Entity(name = "Aluno")
+@Table(name = "aluno")
 public class Aluno implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,7 +34,8 @@ public class Aluno implements Serializable {
     private int anoNasc;
     @Column(name="PCD_ALUNO", nullable = false)
     private int pcd;    
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "turma_id")
     private Turma turma;
 
     public Long getId() {

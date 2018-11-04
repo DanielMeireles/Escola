@@ -36,7 +36,7 @@ public class AlunoDAO {
         StringBuilder sql = new StringBuilder("from Aluno a where 1=1");
                 
         if(aluno.getMatricula()!=null && !aluno.getMatricula().equals("")){
-            sql.append("and a.matricula = :matricula");
+            sql.append("and a.matricula like :matricula");
         }
         
         Query query = em.createQuery(sql.toString());
@@ -53,7 +53,7 @@ public class AlunoDAO {
         StringBuilder sql = new StringBuilder("from Aluno a where 1=1");
                 
         if(aluno.getMatricula()!=null && !aluno.getMatricula().equals("")){
-            sql.append("and a.matricula = :matricula");
+            sql.append("and a.matricula like :matricula");
         }
         
         Query query = em.createQuery(sql.toString());
