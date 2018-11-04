@@ -42,9 +42,26 @@ public class AlunoDAO {
         Query query = em.createQuery(sql.toString());
         
         if(aluno.getMatricula()!=null){
-            query.setParameter("matricula", aluno.getMatricula());
+            query.setParameter("matricula", "%" + aluno.getMatricula());
         }
         
         return query.getResultList();
+    }
+    
+    public Aluno pesquisarAluno(Aluno aluno){
+        EntityManager em = Connection.getEntityManager();
+        StringBuilder sql = new StringBuilder("from Aluno a where 1=1");
+                
+        if(aluno.getMatricula()!=null && !aluno.getMatricula().equals("")){
+            sql.append("and a.matricula = :matricula");
+        }
+        
+        Query query = em.createQuery(sql.toString());
+        
+        if(aluno.getMatricula()!=null){
+            query.setParameter("matricula", "%" + aluno.getMatricula());
+        }
+        
+        return (Aluno) query.getSingleResult();
     }
 }

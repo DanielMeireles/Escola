@@ -30,7 +30,7 @@ public class Aluno implements Serializable {
     private int anoNasc;
     @Column(name="PCD_ALUNO", nullable = false)
     private int pcd;    
-    @ManyToOne    
+    @ManyToOne
     private Turma turma;
 
     public Long getId() {
