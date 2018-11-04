@@ -60,8 +60,10 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         tbTurmas = new javax.swing.JTable();
 
         setClosable(true);
+        setIconifiable(true);
         setMaximizable(true);
-        setTitle("Buscar Turmas");
+        setResizable(true);
+        setTitle("Busca de Turmas");
         setToolTipText("");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
