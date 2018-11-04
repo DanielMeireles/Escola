@@ -82,6 +82,7 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
         lbAno.setText("Ano:");
 
         btcadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btcadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Science-Classroom-icon.png"))); // NOI18N
         btcadastrar.setText("Cadastrar");
         btcadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +92,7 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
         jPanel1.add(btcadastrar);
 
         btlimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btlimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Refresh-icon.png"))); // NOI18N
         btlimpar.setText("Limpar");
         btlimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +102,7 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
         jPanel1.add(btlimpar);
 
         btsair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
         btsair.setText("Sair");
         btsair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +118,7 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbNome)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -151,7 +154,7 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
                         .addComponent(cbEnsino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();

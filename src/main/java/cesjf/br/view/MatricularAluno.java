@@ -134,6 +134,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         bindingGroup.addBinding(binding);
 
         btcadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btcadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/user-add-icon.png"))); // NOI18N
         btcadastrar.setText("Cadastrar");
         btcadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +144,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         jPanel2.add(btcadastrar);
 
         btlimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btlimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Refresh-icon.png"))); // NOI18N
         btlimpar.setText("Limpar");
         btlimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,6 +154,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         jPanel2.add(btlimpar);
 
         btsair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
         btsair.setText("Sair");
         btsair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +212,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
                     .addComponent(cbPcd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -259,11 +262,6 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
         alunoController.novo();
-        cbTurma.setSelectedIndex(-1);
-        tfMatricula.setText("");
-        tfNome.setText("");
-        tfAnoNascimento.setText("");
-        cbPcd.setSelectedIndex(0);
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
