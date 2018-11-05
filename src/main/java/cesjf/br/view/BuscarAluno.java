@@ -48,6 +48,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         cbPcd = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         btcadastrar = new javax.swing.JButton();
+        btremover = new javax.swing.JButton();
         btlimpar = new javax.swing.JButton();
         btsair = new javax.swing.JButton();
         btPesquisar = new javax.swing.JButton();
@@ -125,6 +126,16 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(btcadastrar);
+
+        btremover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btremover.setText("Remover");
+        btremover.setEnabled(false);
+        btremover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btremoverActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btremover);
 
         btlimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btlimpar.setText("Limpar");
@@ -246,16 +257,28 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             }
             cbTurma.addItem(alunoController.getAlunoDigitado().getTurma());
             cbTurma.setSelectedIndex(0);
+            btremover.setEnabled(true);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Aluno não encontrado!", "Informação de Aluno", JOptionPane.INFORMATION_MESSAGE);
             alunoController.novo();
         }
     }//GEN-LAST:event_btPesquisarActionPerformed
 
+    private void btremoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btremoverActionPerformed
+        int recebe = JOptionPane.showConfirmDialog(null, "Deseja remover o aluno?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(recebe == JOptionPane.YES_OPTION){
+            alunoController.excluir();
+            JOptionPane.showMessageDialog(null, "Aluno removido com sucesso!", "Remoção", JOptionPane.INFORMATION_MESSAGE);
+            btlimparActionPerformed(evt);
+            btremover.setEnabled(false);
+        }
+    }//GEN-LAST:event_btremoverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btPesquisar;
     private javax.swing.JButton btcadastrar;
     private javax.swing.JButton btlimpar;
+    private javax.swing.JButton btremover;
     private javax.swing.JButton btsair;
     private javax.swing.JComboBox<String> cbPcd;
     private javax.swing.JComboBox<Turma> cbTurma;
