@@ -8,6 +8,7 @@ package cesjf.br.controller;
 import cesjf.br.dao.AlunoDAO;
 import cesjf.br.dao.TurmaDAO;
 import cesjf.br.model.Aluno;
+import cesjf.br.model.Turma;
 import cesjf.br.util.ValidacaoException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -72,9 +73,10 @@ public class AlunoController {
     }
     
     public void excluir(){
+        Turma turma = alunoDigitado.getTurma();
         alunoDAO.excluir(alunoDigitado);
-        alunoDigitado.getTurma().setQuantidadeAlunos();
-        turmaDAO.salvarAtualizar(alunoDigitado.getTurma());
+        turma.setQuantidadeAlunos();
+        turmaDAO.salvarAtualizar(turma);
         novo();
         //pesquisar();
     }
