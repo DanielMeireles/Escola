@@ -104,6 +104,6 @@ public class TurmaController {
     
     public void removePropertyChangeListener(PropertyChangeListener e){
         propertyChangeSupport.removePropertyChangeListener(e);
-    }  
+    }
     
 }

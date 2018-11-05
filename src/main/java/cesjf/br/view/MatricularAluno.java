@@ -222,11 +222,20 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
     private void cbTurmaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTurmaItemStateChanged
         if(cbTurma.getSelectedIndex()>=0){
-            tfMatricula.setEnabled(true);
-            tfNome.setEnabled(true);
-            tfAnoNascimento.setEnabled(true);
-            cbPcd.setEnabled(true);
-            btcadastrar.setEnabled(true);
+            Turma turma = (Turma) cbTurma.getSelectedItem();
+            if(turma.getQuantidadeAlunos()>40 && cbTurma.hasFocus()){
+                JOptionPane.showMessageDialog(this, "Está turma já está cheia", "Turma cheia", JOptionPane.INFORMATION_MESSAGE);
+                tfMatricula.setEnabled(false);
+                tfNome.setEnabled(false);
+                tfAnoNascimento.setEnabled(false);
+                cbPcd.setEnabled(false);
+            }else{
+                tfMatricula.setEnabled(true);
+                tfNome.setEnabled(true);
+                tfAnoNascimento.setEnabled(true);
+                cbPcd.setEnabled(true);
+                btcadastrar.setEnabled(true);
+            }
         }else{
             tfMatricula.setEnabled(false);
             tfNome.setEnabled(false);

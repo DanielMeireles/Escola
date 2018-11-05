@@ -31,7 +31,7 @@ public class AlunoController {
         turmaDAO = new TurmaDAO();
         alunosTabela = ObservableCollections.observableList(new ArrayList<>());
         novo();
-        //pesquisar();
+        pesquisar();
     }
 
     public Aluno getAlunoDigitado() {
@@ -69,7 +69,7 @@ public class AlunoController {
         alunoDigitado.getTurma().setQuantidadeAlunos();
         turmaDAO.salvarAtualizar(alunoDigitado.getTurma());
         novo();
-        //pesquisar();
+        pesquisar();
     }
     
     public void excluir(){
@@ -78,7 +78,7 @@ public class AlunoController {
         turma.setQuantidadeAlunos();
         turmaDAO.salvarAtualizar(turma);
         novo();
-        //pesquisar();
+        pesquisar();
     }
     
     public final void novo(){
@@ -87,7 +87,7 @@ public class AlunoController {
     
     public final void pesquisar(){
         alunosTabela.clear();
-        alunosTabela.addAll(alunoDAO.pesquisar(alunoSelecionado));
+        alunosTabela.addAll(alunoDAO.pesquisar(alunoDigitado));
     }
     
     public void pesquisarAluno(){
