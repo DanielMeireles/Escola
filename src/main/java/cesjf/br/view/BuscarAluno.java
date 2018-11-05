@@ -61,7 +61,6 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Turma", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         cbTurma.setEditable(true);
-        cbTurma.setEnabled(false);
 
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.turma}");
         org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, cbTurma);
@@ -95,8 +94,6 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome:");
 
-        tfNome.setEnabled(false);
-
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.nome}"), tfNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -104,7 +101,6 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         lbAnoNascimento.setText("Ano Nascimento:");
 
         tfAnoNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        tfAnoNascimento.setEnabled(false);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.anoNasc}"), tfAnoNascimento, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
@@ -115,7 +111,6 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         lbPcd.setText("PCD:");
 
         cbPcd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
-        cbPcd.setEnabled(false);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.pcd}"), cbPcd, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
@@ -240,16 +235,21 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btsairActionPerformed
 
     private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
-        alunoController.pesquisarAluno();
-        tfNome.setText(alunoController.getAlunoDigitado().getNome());
-        tfAnoNascimento.setText(Integer.toString(alunoController.getAlunoDigitado().getAnoNasc()));
-        for(int i = 0; i < cbPcd.getItemCount(); i++){
-            if (cbPcd.getItemAt(i).equals(alunoController.getAlunoDigitado().getPcd())){
-                cbPcd.setSelectedIndex(i);
+        try{
+            alunoController.pesquisarAluno();//        
+            tfNome.setText(alunoController.getAlunoDigitado().getNome());
+            tfAnoNascimento.setText(Integer.toString(alunoController.getAlunoDigitado().getAnoNasc()));
+            for(int i = 0; i < cbPcd.getItemCount(); i++){
+                if (cbPcd.getItemAt(i).equals(alunoController.getAlunoDigitado().getPcd())){
+                    cbPcd.setSelectedIndex(i);
+                }
             }
+            cbTurma.addItem(alunoController.getAlunoDigitado().getTurma());
+            cbTurma.setSelectedIndex(0);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Aluno não encontrado!", "Informação de Aluno", JOptionPane.INFORMATION_MESSAGE);
+            alunoController.novo();
         }
-        cbTurma.addItem(alunoController.getAlunoDigitado().getTurma());
-        cbTurma.setSelectedIndex(0);
     }//GEN-LAST:event_btPesquisarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
