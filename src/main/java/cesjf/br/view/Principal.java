@@ -49,6 +49,7 @@ public class Principal extends javax.swing.JFrame {
         mniSair.setText("Cadastro");
         mniSair.setToolTipText("");
 
+        mniCadastrarTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Science-Classroom-icon.png"))); // NOI18N
         mniCadastrarTurma.setMnemonic('C');
         mniCadastrarTurma.setText("Cadastrar Turma");
         mniCadastrarTurma.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +59,7 @@ public class Principal extends javax.swing.JFrame {
         });
         mniSair.add(mniCadastrarTurma);
 
+        mniMatricularAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/user-add-icon.png"))); // NOI18N
         mniMatricularAluno.setMnemonic('M');
         mniMatricularAluno.setText("Matricular Aluno");
         mniMatricularAluno.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +70,7 @@ public class Principal extends javax.swing.JFrame {
         mniSair.add(mniMatricularAluno);
         mniSair.add(jSeparator1);
 
+        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
         exitMenuItem.setMnemonic('S');
         exitMenuItem.setText("Sair");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +85,7 @@ public class Principal extends javax.swing.JFrame {
         mnBusca.setMnemonic('B');
         mnBusca.setText("Busca");
 
+        mniBuscarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Student-Male-icon.png"))); // NOI18N
         mniBuscarAluno.setMnemonic('A');
         mniBuscarAluno.setText("Buscar Aluno");
         mniBuscarAluno.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +95,7 @@ public class Principal extends javax.swing.JFrame {
         });
         mnBusca.add(mniBuscarAluno);
 
+        mniTurmasPcd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Science-Classroom2-icon.png"))); // NOI18N
         mniTurmasPcd.setMnemonic('T');
         mniTurmasPcd.setText("Buscar Turmas");
         mniTurmasPcd.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +105,7 @@ public class Principal extends javax.swing.JFrame {
         });
         mnBusca.add(mniTurmasPcd);
 
+        mmiBuscarAlunos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Students-icon.png"))); // NOI18N
         mmiBuscarAlunos.setText("Buscar Alunos");
         mmiBuscarAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

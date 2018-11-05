@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
       <SubComponents>
@@ -13,6 +13,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mniCadastrarTurma">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cesjf/br/img/Science-Classroom-icon.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="67"/>
                 <Property name="text" type="java.lang.String" value="Cadastrar Turma"/>
               </Properties>
@@ -22,6 +25,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniMatricularAluno">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cesjf/br/img/user-add-icon.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="77"/>
                 <Property name="text" type="java.lang.String" value="Matricular Aluno"/>
               </Properties>
@@ -33,6 +39,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cesjf/br/img/symbol-delete-icon.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="83"/>
                 <Property name="text" type="java.lang.String" value="Sair"/>
               </Properties>
@@ -50,6 +59,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mniBuscarAluno">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cesjf/br/img/Student-Male-icon.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="65"/>
                 <Property name="text" type="java.lang.String" value="Buscar Aluno"/>
               </Properties>
@@ -59,6 +71,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniTurmasPcd">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cesjf/br/img/Science-Classroom2-icon.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="84"/>
                 <Property name="text" type="java.lang.String" value="Buscar Turmas"/>
               </Properties>
@@ -68,6 +83,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mmiBuscarAlunos">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cesjf/br/img/Students-icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Buscar Alunos"/>
               </Properties>
               <Events>

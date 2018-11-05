@@ -52,12 +52,12 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         rbSim = new javax.swing.JRadioButton();
         rbNao = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
-        btAlunosTurma = new javax.swing.JButton();
-        btSair = new javax.swing.JButton();
         spTurmasPcd = new javax.swing.JScrollPane();
         tbTurmasPcd = new javax.swing.JTable();
         spTurmas = new javax.swing.JScrollPane();
         tbTurmas = new javax.swing.JTable();
+        btAlunosTurma = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -65,11 +65,9 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Busca de Turmas");
         setToolTipText("");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbPcd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPcd.setText("Filtrar PCD?");
-        getContentPane().add(lbPcd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         bgPcd.add(rbSim);
         rbSim.setText("Sim");
@@ -78,7 +76,6 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
                 rbSimActionPerformed(evt);
             }
         });
-        getContentPane().add(rbSim, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 7, -1, -1));
 
         bgPcd.add(rbNao);
         rbNao.setSelected(true);
@@ -88,27 +85,6 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
                 rbNaoActionPerformed(evt);
             }
         });
-        getContentPane().add(rbNao, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 7, -1, -1));
-
-        btAlunosTurma.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btAlunosTurma.setText("Alunos turma");
-        btAlunosTurma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAlunosTurmaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btAlunosTurma);
-
-        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btSair.setText("Sair");
-        btSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSairActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btSair);
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 206, 574, -1));
 
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelasPCD}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbTurmasPcd);
@@ -133,8 +109,6 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
 
         spTurmasPcd.setViewportView(tbTurmasPcd);
 
-        getContentPane().add(spTurmasPcd, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 32, 570, 170));
-
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelas}");
         jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbTurmas);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
@@ -158,7 +132,66 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
 
         spTurmas.setViewportView(tbTurmas);
 
-        getContentPane().add(spTurmas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 32, 570, 170));
+        btAlunosTurma.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAlunosTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Students-icon.png"))); // NOI18N
+        btAlunosTurma.setText("Alunos turma");
+        btAlunosTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlunosTurmaActionPerformed(evt);
+            }
+        });
+
+        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
+        btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbPcd)
+                .addGap(6, 6, 6)
+                .addComponent(rbNao)
+                .addGap(2, 2, 2)
+                .addComponent(rbSim))
+            .addComponent(spTurmasPcd, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(spTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(btAlunosTurma)
+                .addGap(5, 5, 5)
+                .addComponent(btSair))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(lbPcd))
+                    .addComponent(rbNao)
+                    .addComponent(rbSim))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spTurmasPcd, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btAlunosTurma)
+                    .addComponent(btSair))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         bindingGroup.bind();
 

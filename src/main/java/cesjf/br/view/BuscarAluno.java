@@ -119,17 +119,16 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         bindingGroup.addBinding(binding);
 
         btcadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btcadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/user-add-icon.png"))); // NOI18N
         btcadastrar.setText("Cadastrar");
-        btcadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btcadastrarActionPerformed(evt);
-            }
-        });
         jPanel2.add(btcadastrar);
 
         btremover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btremover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Male-user-remove-icon.png"))); // NOI18N
         btremover.setText("Remover");
         btremover.setEnabled(false);
+        btremover.setMaximumSize(new java.awt.Dimension(125, 41));
+        btremover.setPreferredSize(new java.awt.Dimension(125, 41));
         btremover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btremoverActionPerformed(evt);
@@ -138,7 +137,10 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         jPanel2.add(btremover);
 
         btlimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btlimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Refresh-icon.png"))); // NOI18N
         btlimpar.setText("Limpar");
+        btlimpar.setMaximumSize(new java.awt.Dimension(125, 41));
+        btlimpar.setPreferredSize(new java.awt.Dimension(125, 41));
         btlimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btlimparActionPerformed(evt);
@@ -147,7 +149,10 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         jPanel2.add(btlimpar);
 
         btsair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
         btsair.setText("Sair");
+        btsair.setMaximumSize(new java.awt.Dimension(125, 41));
+        btsair.setPreferredSize(new java.awt.Dimension(125, 41));
         btsair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btsairActionPerformed(evt);
@@ -156,7 +161,10 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         jPanel2.add(btsair);
 
         btPesquisar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Zoom-icon.png"))); // NOI18N
         btPesquisar.setText("Pesquisar");
+        btPesquisar.setMaximumSize(new java.awt.Dimension(125, 41));
+        btPesquisar.setPreferredSize(new java.awt.Dimension(125, 41));
         btPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btPesquisarActionPerformed(evt);
@@ -171,7 +179,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
                     .addComponent(tfNome)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +187,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(tfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btPesquisar))
+                                .addComponent(btPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lbNome)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +208,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btPesquisar))
+                    .addComponent(btPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -224,10 +232,6 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
-        
-    }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
         alunoController.novo();
