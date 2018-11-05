@@ -24,7 +24,6 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
     public BuscarTurmas() {
         turmaController = new TurmaController();
         initComponents();
-        spTurmasPcd.setVisible(false);
     }
     
     public String getSelecionado() {
@@ -52,10 +51,10 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         rbSim = new javax.swing.JRadioButton();
         rbNao = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
-        spTurmasPcd = new javax.swing.JScrollPane();
-        tbTurmasPcd = new javax.swing.JTable();
         spTurmas = new javax.swing.JScrollPane();
         tbTurmas = new javax.swing.JTable();
+        spTurmasPcd = new javax.swing.JScrollPane();
+        tbTurmasPcd = new javax.swing.JTable();
         btAlunosTurma = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
 
@@ -70,6 +69,7 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         lbPcd.setText("Filtrar PCD?");
 
         bgPcd.add(rbSim);
+        rbSim.setSelected(true);
         rbSim.setText("Sim");
         rbSim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +78,6 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         });
 
         bgPcd.add(rbNao);
-        rbNao.setSelected(true);
         rbNao.setText("Não");
         rbNao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,8 +85,8 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
             }
         });
 
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelasPCD}");
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbTurmasPcd);
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelas}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbTurmas);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
         columnBinding.setColumnName("Id");
         columnBinding.setColumnClass(Long.class);
@@ -104,33 +103,33 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         columnBinding.setColumnName("Quantidade Alunos");
         columnBinding.setColumnClass(Integer.class);
         bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaSelecionada}"), tbTurmasPcd, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        jTableBinding.bind();org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaSelecionada}"), tbTurmas, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
         bindingGroup.addBinding(binding);
 
-        spTurmasPcd.setViewportView(tbTurmasPcd);
+        spTurmas.setViewportView(tbTurmas);
 
-        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelas}");
-        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbTurmas);
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelasPCD}");
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbTurmasPcd);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
         columnBinding.setColumnName("Id");
         columnBinding.setColumnClass(Long.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
         columnBinding.setColumnName("Nome");
         columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ensino}"));
-        columnBinding.setColumnName("Ensino");
-        columnBinding.setColumnClass(String.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ano}"));
         columnBinding.setColumnName("Ano");
         columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ensino}"));
+        columnBinding.setColumnName("Ensino");
+        columnBinding.setColumnClass(String.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${quantidadeAlunos}"));
         columnBinding.setColumnName("Quantidade Alunos");
         columnBinding.setColumnClass(Integer.class);
         bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaSelecionada}"), tbTurmas, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaSelecionada}"), tbTurmasPcd, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
         bindingGroup.addBinding(binding);
 
-        spTurmas.setViewportView(tbTurmas);
+        spTurmasPcd.setViewportView(tbTurmasPcd);
 
         btAlunosTurma.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAlunosTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Students-icon.png"))); // NOI18N
@@ -157,10 +156,10 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(lbPcd)
-                .addGap(6, 6, 6)
-                .addComponent(rbNao)
-                .addGap(2, 2, 2)
-                .addComponent(rbSim))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbSim)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbNao))
             .addComponent(spTurmasPcd, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(spTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,13 +172,11 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(lbPcd))
-                    .addComponent(rbNao)
-                    .addComponent(rbSim))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbPcd)
+                    .addComponent(rbSim)
+                    .addComponent(rbNao))
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(spTurmasPcd, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -7,6 +7,10 @@ package cesjf.br.view;
 
 import cesjf.br.controller.AlunoController;
 import cesjf.br.model.Turma;
+import cesjf.br.util.ValidacaoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javassist.tools.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 public class BuscarAluno extends javax.swing.JInternalFrame {
@@ -47,9 +51,9 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         lbPcd = new javax.swing.JLabel();
         cbPcd = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        btcadastrar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
+        btSalvar = new javax.swing.JButton();
         btremover = new javax.swing.JButton();
-        btlimpar = new javax.swing.JButton();
         btsair = new javax.swing.JButton();
         btPesquisar = new javax.swing.JButton();
 
@@ -61,7 +65,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Turma", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        cbTurma.setEditable(true);
+        cbTurma.setEnabled(false);
 
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.turma}");
         org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, cbTurma);
@@ -95,6 +99,8 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome:");
 
+        tfNome.setEnabled(false);
+
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.nome}"), tfNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -102,6 +108,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         lbAnoNascimento.setText("Ano Nascimento:");
 
         tfAnoNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        tfAnoNascimento.setEnabled(false);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.anoNasc}"), tfAnoNascimento, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
@@ -112,16 +119,36 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         lbPcd.setText("PCD:");
 
         cbPcd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
+        cbPcd.setEnabled(false);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.pcd}"), cbPcd, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControl.alunoDigitado.pcd}"), cbPcd, org.jdesktop.beansbinding.BeanProperty.create("selectedIndex"));
         bindingGroup.addBinding(binding);
 
-        btcadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btcadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/user-add-icon.png"))); // NOI18N
-        btcadastrar.setText("Cadastrar");
-        jPanel2.add(btcadastrar);
+        btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Refresh-icon.png"))); // NOI18N
+        btEditar.setText("Editar");
+        btEditar.setEnabled(false);
+        btEditar.setMaximumSize(new java.awt.Dimension(125, 41));
+        btEditar.setPreferredSize(new java.awt.Dimension(125, 41));
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btEditar);
+
+        btSalvar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/user-add-icon.png"))); // NOI18N
+        btSalvar.setText("Salvar");
+        btSalvar.setEnabled(false);
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btSalvar);
 
         btremover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btremover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Male-user-remove-icon.png"))); // NOI18N
@@ -135,18 +162,6 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(btremover);
-
-        btlimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btlimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Refresh-icon.png"))); // NOI18N
-        btlimpar.setText("Limpar");
-        btlimpar.setMaximumSize(new java.awt.Dimension(125, 41));
-        btlimpar.setPreferredSize(new java.awt.Dimension(125, 41));
-        btlimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btlimparActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btlimpar);
 
         btsair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
@@ -233,14 +248,12 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
-        alunoController.novo();
-        cbTurma.setSelectedIndex(-1);
-        tfMatricula.setText("");
-        tfNome.setText("");
-        tfAnoNascimento.setText("");
-        cbPcd.setSelectedIndex(0);
-    }//GEN-LAST:event_btlimparActionPerformed
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        tfNome.setEnabled(true);
+        tfAnoNascimento.setEnabled(true);
+        cbPcd.setEnabled(true);
+        cbTurma.setEnabled(true);
+    }//GEN-LAST:event_btEditarActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -263,6 +276,8 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             cbTurma.addItem(alunoController.getAlunoDigitado().getTurma());
             cbTurma.setSelectedIndex(0);
             btremover.setEnabled(true);
+            btSalvar.setEnabled(true);
+            btEditar.setEnabled(true);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Aluno não encontrado!", "Informação de Aluno", JOptionPane.INFORMATION_MESSAGE);
             alunoController.novo();
@@ -274,15 +289,54 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         if(recebe == JOptionPane.YES_OPTION){
             alunoController.excluir();
             JOptionPane.showMessageDialog(null, "Aluno removido com sucesso!", "Remoção", JOptionPane.INFORMATION_MESSAGE);
-            btlimparActionPerformed(evt);
+            limpar();
             btremover.setEnabled(false);
+            btSalvar.setEnabled(false);
+            btEditar.setEnabled(false);
         }
     }//GEN-LAST:event_btremoverActionPerformed
 
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        try {
+            alunoController.getAlunoDigitado().setPcd(cbPcd.getSelectedItem().toString());
+            alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));
+            alunoController.salvar();            
+            JOptionPane.showMessageDialog(this, 
+                "Aluno salvo com sucesso",
+                "Salvar aluno",
+                JOptionPane.INFORMATION_MESSAGE);
+            limpar();
+        } catch(ValidacaoException ex) {
+            JOptionPane.showMessageDialog(this, 
+                ex.getMessage(),
+                "Falha de Validação",
+                JOptionPane.WARNING_MESSAGE);              
+        } catch(RemoteException e ){
+            JOptionPane.showMessageDialog(this,
+                    "Erro "+e.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (java.rmi.RemoteException ex) {
+            Logger.getLogger(CadastrarTurma.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }//GEN-LAST:event_btSalvarActionPerformed
+
+    private void limpar(){
+        alunoController.novo();
+        cbTurma.setSelectedIndex(-1);
+        tfMatricula.setText("");
+        tfNome.setText("");
+        tfAnoNascimento.setText("");
+        cbPcd.setSelectedIndex(0);
+        tfNome.setEnabled(false);
+        tfAnoNascimento.setEnabled(false);
+        cbPcd.setEnabled(false);
+        cbTurma.setEnabled(false);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btEditar;
     private javax.swing.JButton btPesquisar;
-    private javax.swing.JButton btcadastrar;
-    private javax.swing.JButton btlimpar;
+    private javax.swing.JButton btSalvar;
     private javax.swing.JButton btremover;
     private javax.swing.JButton btsair;
     private javax.swing.JComboBox<String> cbPcd;
