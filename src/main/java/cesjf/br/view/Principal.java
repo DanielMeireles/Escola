@@ -36,6 +36,7 @@ public class Principal extends javax.swing.JFrame {
         mnBusca = new javax.swing.JMenu();
         mniBuscarAluno = new javax.swing.JMenuItem();
         mniTurmasPcd = new javax.swing.JMenuItem();
+        mmiBuscarAlunos = new javax.swing.JMenuItem();
         mnSobre = new javax.swing.JMenu();
         mniAjuda = new javax.swing.JMenuItem();
         mniSobre = new javax.swing.JMenuItem();
@@ -98,6 +99,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mnBusca.add(mniTurmasPcd);
+
+        mmiBuscarAlunos.setText("Buscar Alunos");
+        mmiBuscarAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmiBuscarAlunosActionPerformed(evt);
+            }
+        });
+        mnBusca.add(mmiBuscarAlunos);
 
         menuBar.add(mnBusca);
 
@@ -162,6 +171,12 @@ public class Principal extends javax.swing.JFrame {
         buscarTurmas.setVisible(true);
     }//GEN-LAST:event_mniTurmasPcdActionPerformed
 
+    private void mmiBuscarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmiBuscarAlunosActionPerformed
+        BuscarAlunos buscarAlunos = new BuscarAlunos();
+        this.desktopPane.add(buscarAlunos);
+        buscarAlunos.setVisible(true);
+    }//GEN-LAST:event_mmiBuscarAlunosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,6 +218,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem mmiBuscarAlunos;
     private javax.swing.JMenu mnBusca;
     private javax.swing.JMenu mnSobre;
     private javax.swing.JMenuItem mniAjuda;
