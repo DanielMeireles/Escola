@@ -116,7 +116,7 @@ public class Turma implements Serializable {
 
     @Override
     public String toString() {
-        return nome + ", " + ano;
+        return nome + ", " + ano + ", " + quantidadeAlunos + "alunos";
     }
     
     public void validar() throws ValidacaoException{
