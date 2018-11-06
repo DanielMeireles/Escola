@@ -309,8 +309,8 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         try {
             alunoController.getAlunoDigitado().setPcd(cbPcd.getSelectedItem().toString());
             alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));           
-            Turma nova = (Turma) cbTurma.getSelectedItem();           
-            alunoController.atualizar(nova);
+                       
+            alunoController.atualizar(turmaAtual);
             JOptionPane.showMessageDialog(this, 
                 "Aluno salvo com sucesso",
                 "Salvar aluno",
@@ -326,6 +326,8 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
                     "Erro "+e.getMessage(),
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
+        } catch (java.rmi.RemoteException ex) {
+            Logger.getLogger(BuscarAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 

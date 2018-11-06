@@ -72,15 +72,18 @@ public class AlunoController {
         pesquisar();
     }
     
-    public void atualizar(Turma turma) throws ValidacaoException{
+    public void atualizar(Turma turmaOld) throws ValidacaoException, RemoteException{
         alunoDigitado.validar();
-        alunoDAO.salvarAtualizar(alunoDigitado);
-        if(getAlunoDigitado().getTurma() != turma){
-            alunoDigitado.getTurma().setQuantidadeAlunos();
-            turmaDAO.salvarAtualizar(alunoDigitado.getTurma()); 
-            turma.getAlunos().remove(alunoDigitado);
-            turmaDAO.salvarAtualizar(turma);
-        }       
+        
+        if(getAlunoDigitado().getTurma() != turmaOld){
+            salvar();            
+             
+            turmaOld.getAlunos().remove(alunoDigitado);
+            turmaOld.setQuantidadeAlunos();
+            turmaDAO.salvarAtualizar(turmaOld);
+            turmaDAO.salvarAtualizar(alunoDigitado.getTurma());
+        } 
+        alunoDAO.salvarAtualizar(alunoDigitado);        
     }
     
     public void excluir(){
