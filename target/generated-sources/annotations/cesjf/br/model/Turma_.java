@@ -10,12 +10,14 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Turma_ {
 
 	public static volatile SingularAttribute<Turma, Integer> ano;
+	public static volatile SingularAttribute<Turma, Integer> quantidadeAlunos;
 	public static volatile ListAttribute<Turma, Aluno> alunos;
 	public static volatile SingularAttribute<Turma, String> nome;
 	public static volatile SingularAttribute<Turma, Long> id;
 	public static volatile SingularAttribute<Turma, String> ensino;
 
 	public static final String ANO = "ano";
+	public static final String QUANTIDADE_ALUNOS = "quantidadeAlunos";
 	public static final String ALUNOS = "alunos";
 	public static final String NOME = "nome";
 	public static final String ID = "id";

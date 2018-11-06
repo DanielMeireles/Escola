@@ -10,14 +10,16 @@ public abstract class Aluno_ {
 
 	public static volatile SingularAttribute<Aluno, Integer> pcd;
 	public static volatile SingularAttribute<Aluno, Integer> anoNasc;
-	public static volatile SingularAttribute<Aluno, Long> matricula;
+	public static volatile SingularAttribute<Aluno, String> matricula;
 	public static volatile SingularAttribute<Aluno, String> nome;
+	public static volatile SingularAttribute<Aluno, Long> id;
 	public static volatile SingularAttribute<Aluno, Turma> turma;
 
 	public static final String PCD = "pcd";
 	public static final String ANO_NASC = "anoNasc";
 	public static final String MATRICULA = "matricula";
 	public static final String NOME = "nome";
+	public static final String ID = "id";
 	public static final String TURMA = "turma";
 
 }
