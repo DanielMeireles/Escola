@@ -119,10 +119,12 @@ public class Principal extends javax.swing.JFrame {
         mnSobre.setMnemonic('S');
         mnSobre.setText("Sobre");
 
+        mniAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/sign-question-icon.png"))); // NOI18N
         mniAjuda.setMnemonic('u');
         mniAjuda.setText("Ajuda");
         mnSobre.add(mniAjuda);
 
+        mniSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/sign-info-icon.png"))); // NOI18N
         mniSobre.setMnemonic('o');
         mniSobre.setText("Sobre");
         mnSobre.add(mniSobre);
