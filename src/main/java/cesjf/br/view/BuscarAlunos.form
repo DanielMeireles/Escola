@@ -73,6 +73,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfturma">
+      <BindingProperties>
+        <BindingProperty name="text" source="Form" sourcePath="${turmaController.turmaDigitada.nome}" target="tfturma" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>

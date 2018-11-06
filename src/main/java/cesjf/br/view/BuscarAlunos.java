@@ -44,6 +44,9 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
         lbturma.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbturma.setText("Turma:");
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmaDigitada.nome}"), tfturma, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         tbalunos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

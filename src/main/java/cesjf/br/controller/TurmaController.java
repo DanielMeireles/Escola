@@ -102,8 +102,7 @@ public class TurmaController {
     }
     
     public final void pesquisarAlunos(){
-        turmasTabelas.clear();
-        turmasTabelas.addAll(turmaDAO.pesquisar(turmaDigitada));
+        pesquisar();
         turmaSelecionada = turmasTabelas.get(0);
         alunosTurmaSelecionada.clear();
         alunosTurmaSelecionada.addAll(turmaSelecionada.getAlunos());

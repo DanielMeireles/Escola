@@ -35,26 +35,15 @@ public class TurmaDAO {
         EntityManager em = Connection.getEntityManager();
         StringBuilder sql = new StringBuilder("from Turma t where 1=1");
         
-        if(turma.getId()!=null){
-            sql.append("and t.id_turma = :id");
-        }
         if(turma.getNome()!=null && !turma.getNome().equals("")){
-            sql.append("and t.nome_turma = :nome");
-        }
-        if(turma.getAno()>0){
-            sql.append("and t.ano_turma = :ano");
+            sql.append("and t.nome like :nome");
         }
         Query query = em.createQuery(sql.toString());
         
-        if(turma.getId()!=null){
-            query.setParameter("id", "%" + turma.getId());
-        }
         if(turma.getNome()!=null && !turma.getNome().equals("")){
             query.setParameter("nome", "%" + turma.getNome());
         }
-        if(turma.getAno()>0){
-            query.setParameter("ano", "%" + turma.getAno());
-        }
+        
         return query.getResultList();
     }
 }
