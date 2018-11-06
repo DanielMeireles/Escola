@@ -308,17 +308,9 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         try {
             alunoController.getAlunoDigitado().setPcd(cbPcd.getSelectedItem().toString());
-            alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));
-            
-            Turma nova = (Turma) cbTurma.getSelectedItem();
-            if(turmaAtual != nova){
-                turmaAtual.saidaAluno();
-                nova.entradaAluno();
-                turmaController.atualizarQntTurma(nova);
-                turmaController.atualizarQntTurma(turmaAtual);
-            }
-            
-            alunoController.salvar();            
+            alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));           
+            Turma nova = (Turma) cbTurma.getSelectedItem();           
+            alunoController.atualizar(nova);
             JOptionPane.showMessageDialog(this, 
                 "Aluno salvo com sucesso",
                 "Salvar aluno",
@@ -334,9 +326,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
                     "Erro "+e.getMessage(),
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
-        } catch (java.rmi.RemoteException ex) {
-            Logger.getLogger(CadastrarTurma.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void cbTurmaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTurmaItemStateChanged

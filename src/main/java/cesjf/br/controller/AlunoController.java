@@ -72,6 +72,17 @@ public class AlunoController {
         pesquisar();
     }
     
+    public void atualizar(Turma turma) throws ValidacaoException{
+        alunoDigitado.validar();
+        alunoDAO.salvarAtualizar(alunoDigitado);
+        if(getAlunoDigitado().getTurma() != turma){
+            alunoDigitado.getTurma().setQuantidadeAlunos();
+            turmaDAO.salvarAtualizar(alunoDigitado.getTurma()); 
+            turma.getAlunos().remove(alunoDigitado);
+            turmaDAO.salvarAtualizar(turma);
+        }       
+    }
+    
     public void excluir(){
         Turma turma = alunoDigitado.getTurma();
         alunoDAO.excluir(alunoDigitado);

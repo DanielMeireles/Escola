@@ -92,15 +92,7 @@ public class Turma implements Serializable {
 
     public void setQuantidadeAlunos() {
         this.quantidadeAlunos = alunos.size();
-    }
-    
-    public void saidaAluno(){
-        this.quantidadeAlunos--;
-    }
-    
-    public void entradaAluno(){
-        this.quantidadeAlunos++;
-    }
+    }    
 
     @Override
     public int hashCode() {
