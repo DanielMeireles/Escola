@@ -13,12 +13,10 @@ import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.observablecollections.ObservableCollections;
 
-/**
- *
- * @author Luis
- */
 public class UsuarioController {
     private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);  
     private Usuario usuarioDigitado;
@@ -29,6 +27,7 @@ public class UsuarioController {
     public UsuarioController() {
         usuarioDAO = new UsuarioDAO();
         usuariosTabelas = ObservableCollections.observableList(new ArrayList<Usuario>());
+        verificacaoPrimeiroLogin();
         novo();
         pesquisar();
     }
@@ -85,7 +84,7 @@ public class UsuarioController {
     }
     
     public void pesquisarUsuario(){
-        setUsuarioDigitado(usuarioDAO.pesquisarUsuario(usuarioDigitado));
+        setUsuarioSelecionado(usuarioDAO.pesquisarUsuario(usuarioDigitado));
     }
     
     public void addPropertyChangeListener(PropertyChangeListener e){
@@ -94,5 +93,28 @@ public class UsuarioController {
     
     public void removePropertyChangeListener(PropertyChangeListener e){
         propertyChangeSupport.removePropertyChangeListener(e);
+    }
+    
+    public boolean validaLogin(){
+        if(usuarioDigitado.getNome().equals(usuarioSelecionado.getNome()) && usuarioDigitado.getNome().equals(usuarioSelecionado.getNome())){
+            return true;
+        }
+        return false;
+    }
+
+    private void verificacaoPrimeiroLogin() {
+        novo();
+        usuarioDigitado.setNome("admin");
+        usuarioDigitado.setSenha("admin");
+        pesquisar();
+        if(getUsuariosTabelas().size()==0){
+            try {
+                salvar();
+            } catch (ValidacaoException ex) {
+                Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (RemoteException ex) {
+                Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

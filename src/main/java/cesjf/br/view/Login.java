@@ -13,17 +13,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Luis
- */
 public class Login extends javax.swing.JFrame {
 
     private final UsuarioController usuarioController;
+
+    public UsuarioController getUsuarioController() {
+        return usuarioController;
+    }
     /**
      * Creates new form Login
-     * @throws cesjf.br.util.ValidacaoException
-     * @throws java.rmi.RemoteException
      */
     public Login(){
         usuarioController = new UsuarioController();
@@ -38,6 +36,7 @@ public class Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -55,8 +54,14 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Nome:");
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${usuarioController.usuarioDigitado.nome}"), jTextField1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Senha:");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${usuarioController.usuarioDigitado.senha}"), jPasswordField1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Entrar");
@@ -120,6 +125,8 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
+        bindingGroup.bind();
+
         setSize(new java.awt.Dimension(416, 287));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -127,7 +134,7 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
             usuarioController.pesquisarUsuario();
-            if(usuarioController.getUsuarioDigitado() != null){
+            if(usuarioController.validaLogin()){
                 this.dispose();
                 new Principal().setVisible(true);
             }else{
@@ -139,20 +146,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try {
-            teste();
-        } catch (ValidacaoException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (RemoteException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    public void teste() throws ValidacaoException, RemoteException{
-        usuarioController.getUsuarioDigitado().setNome("Teste");
-        usuarioController.getUsuarioDigitado().setSenha("Teste");
-        usuarioController.salvar();
-    }
     /**
      * @param args the command line arguments
      */
@@ -197,5 +192,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

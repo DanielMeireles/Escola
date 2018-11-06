@@ -39,28 +39,13 @@ public class UsuarioDAO {
     public List<Usuario> pesquisar(Usuario usuario){
         EntityManager em = Connection.getEntityManager();
         StringBuilder sql = new StringBuilder("from Usuario u where 1=1");
-                
-        if(usuario.getId()!=null){
-            sql.append("and u.id like :id");
-        }
-        if(usuario.getNome()!=null && !usuario.getNome().equals("")){
-            sql.append("and u.nome = :nome");
-        }
-        if(usuario.getSenha()!=null && !usuario.getSenha().equals("")){
-            sql.append("and u.senha = :senha");
-        }
+        sql.append(" and u.nome like :nome");
+        sql.append(" and u.senha like :senha");
         
         Query query = em.createQuery(sql.toString());
         
-        if(usuario.getId()!=null){
-            query.setParameter("id", "%" + usuario.getId());
-        }
-        if(usuario.getNome()!=null && !usuario.getNome().equals("")){
-            query.setParameter("nome", "%" + usuario.getNome());
-        }
-        if(usuario.getSenha()!=null && !usuario.getSenha().equals("")){
-            query.setParameter("senha", "%" + usuario.getSenha());
-        }
+        query.setParameter("nome", "%" + usuario.getNome());
+        query.setParameter("senha", "%" + usuario.getSenha());
         
         return query.getResultList();
     }
@@ -70,18 +55,18 @@ public class UsuarioDAO {
         StringBuilder sql = new StringBuilder("from Usuario u where 1=1");
                 
         if(usuario.getNome()!=null && !usuario.getNome().equals("")){
-            sql.append("and u.nome like :nome");
+            sql.append(" and u.nome like :nome");
         }
         if(usuario.getSenha()!=null && !usuario.getSenha().equals("")){
-            sql.append("and u.senha like :senha");
+            sql.append(" and u.senha like :senha");
         }
         
         Query query = em.createQuery(sql.toString());
         
-        if(usuario.getNome()!=null){
+        if(usuario.getNome()!=null && !usuario.getNome().equals("")){
             query.setParameter("nome", "%" + usuario.getNome());
         }
-        if(usuario.getSenha()!=null){
+        if(usuario.getSenha()!=null && !usuario.getSenha().equals("")){
             query.setParameter("senha", "%" + usuario.getSenha());
         }
         
