@@ -134,10 +134,10 @@ public class Login extends javax.swing.JFrame {
                 this.dispose();
                 new Principal().setVisible(true);
             }else{
-                JOptionPane.showMessageDialog(null, "Usuário não encontrado!", "Informação de Usuário", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Login", JOptionPane.INFORMATION_MESSAGE);
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Usuário não encontrado!", "Informação de Usuário", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Login", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
