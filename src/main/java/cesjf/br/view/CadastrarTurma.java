@@ -17,9 +17,7 @@ import javax.swing.JOptionPane;
 public class CadastrarTurma extends javax.swing.JInternalFrame {
     
     private final TurmaController turmaController;  
-    
-    //Criação de uma nova data apenas para capturar o ano atual
-    
+        
     /**
      * Creates new form CadastrarTurma
      */
@@ -172,12 +170,12 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
             btlimparActionPerformed(evt);
         } catch(ValidacaoException ex) {
             JOptionPane.showMessageDialog(this, 
-                ex.getMessage(),
+                "Erro " + ex.getMessage(),
                 "Falha de Validação",
                 JOptionPane.WARNING_MESSAGE);              
         } catch(RemoteException e ){
             JOptionPane.showMessageDialog(this,
-                    "Erro "+e.getMessage(),
+                    "Erro " + e.getMessage(),
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
         } catch (java.rmi.RemoteException ex) {
@@ -194,12 +192,14 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(opcao == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,
+                "Deseja realmente sair?",
+                "Atenção",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
             this.dispose();
         }
     }//GEN-LAST:event_btsairActionPerformed
-
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btcadastrar;

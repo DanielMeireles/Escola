@@ -143,14 +143,20 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
         try{
             turmaController.pesquisarAlunos();
         }catch(Exception erro){
-            JOptionPane.showMessageDialog(null, "Turma não encontrada!", "Informação de Turma", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,
+                    "Turma não encontrada!",
+                    "Informação de Turma",
+                    JOptionPane.INFORMATION_MESSAGE);
             turmaController.novo();
         }
     }//GEN-LAST:event_btbuscarActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(opcao == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,
+                "Deseja realmente sair?",
+                "Atenção",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
             this.dispose();
         }
     }//GEN-LAST:event_btsairActionPerformed

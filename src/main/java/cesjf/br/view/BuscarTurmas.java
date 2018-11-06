@@ -6,8 +6,7 @@
 package cesjf.br.view;
 
 import cesjf.br.controller.TurmaController;
-import java.util.Enumeration;
-import javax.swing.AbstractButton;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 public class BuscarTurmas extends javax.swing.JInternalFrame {
@@ -24,16 +23,6 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
     public BuscarTurmas() {
         turmaController = new TurmaController();
         initComponents();
-    }
-    
-    public String getSelecionado() {
-        for (Enumeration<AbstractButton> buttons = bgPcd.getElements(); buttons.hasMoreElements();) {
-            AbstractButton button = buttons.nextElement();
-            if (button.isSelected()) {
-                return button.getText();
-            }
-        }
-        return null;
     }
 
     /**
@@ -196,7 +185,12 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAlunosTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunosTurmaActionPerformed
-        JOptionPane.showMessageDialog(null, getSelecionado());
+        JDesktopPane desktopPane = getDesktopPane();
+        BuscarAlunos buscarAlunos = new BuscarAlunos();
+        desktopPane.add(buscarAlunos);
+        buscarAlunos.getTurmaController().setTurmaDigitada(turmaController.getTurmaSelecionada());
+        buscarAlunos.getTurmaController().pesquisarAlunos();
+        buscarAlunos.setVisible(true);
     }//GEN-LAST:event_btAlunosTurmaActionPerformed
 
     private void rbNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNaoActionPerformed
@@ -210,8 +204,11 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rbSimActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(opcao == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,
+                "Deseja realmente sair?",
+                "Atenção",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
             this.dispose();
         }
     }//GEN-LAST:event_btSairActionPerformed

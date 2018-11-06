@@ -131,8 +131,8 @@ public class Login extends javax.swing.JFrame {
         try{
             usuarioController.pesquisarUsuario();
             if(usuarioController.validaLogin()){
-                this.dispose();
                 new Principal().setVisible(true);
+                this.dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Login", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -148,8 +148,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(opcao == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,
+                "Deseja realmente sair?",
+                "Atenção",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
             System.exit(0);
         }
     }//GEN-LAST:event_jButton3ActionPerformed

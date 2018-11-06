@@ -19,7 +19,6 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
     private final TurmaController turmaController;
     private final AlunoController alunoController;
     
-    
     /**
      * Creates new form CadastrarAluno
      */
@@ -226,7 +225,10 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         if(cbTurma.getSelectedIndex()>=0){
             Turma turma = (Turma) cbTurma.getSelectedItem();
             if(turma.getQuantidadeAlunos()>40 && cbTurma.hasFocus()){
-                JOptionPane.showMessageDialog(this, "Está turma já está cheia", "Turma cheia", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this,
+                        "Turma cheia!",
+                        "Turma cheia",
+                        JOptionPane.INFORMATION_MESSAGE);
                 tfMatricula.setEnabled(false);
                 tfNome.setEnabled(false);
                 tfAnoNascimento.setEnabled(false);
@@ -257,12 +259,12 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
             btlimparActionPerformed(evt);
         } catch(ValidacaoException ex) {
             JOptionPane.showMessageDialog(this, 
-                ex.getMessage(),
+                "Erro " + ex.getMessage(),
                 "Falha de Validação",
                 JOptionPane.WARNING_MESSAGE);              
         } catch(RemoteException e ){
             JOptionPane.showMessageDialog(this,
-                    "Erro "+e.getMessage(),
+                    "Erro " + e.getMessage(),
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
         } catch (java.rmi.RemoteException ex) {
@@ -276,7 +278,11 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int opcao = JOptionPane.showConfirmDialog(null,
+                "Deseja realmente sair?",
+                "Atenção",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
         if(opcao == JOptionPane.YES_OPTION){
             this.dispose();
         }
