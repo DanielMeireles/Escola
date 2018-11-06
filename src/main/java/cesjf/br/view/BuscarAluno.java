@@ -79,6 +79,12 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.turma}"), cbTurma, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
+        cbTurma.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbTurmaItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -320,6 +326,15 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             Logger.getLogger(CadastrarTurma.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }//GEN-LAST:event_btSalvarActionPerformed
+
+    private void cbTurmaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTurmaItemStateChanged
+        if(cbTurma.getSelectedIndex()>=0){
+            Turma turma = (Turma) cbTurma.getSelectedItem();
+            if(turma.getQuantidadeAlunos()>40 && cbTurma.hasFocus()){
+                JOptionPane.showMessageDialog(this, "Está turma já está cheia", "Turma cheia", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_cbTurmaItemStateChanged
 
     private void limpar(){
         alunoController.novo();

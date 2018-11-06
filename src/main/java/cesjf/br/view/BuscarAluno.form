@@ -134,6 +134,9 @@
             <BindingProperty name="elements" source="Form" sourcePath="${turmaController.turmasTabelas}" target="cbTurma" targetPath="elements" updateStrategy="0" immediately="false"/>
             <BindingProperty name="selectedItem" source="Form" sourcePath="${alunoController.alunoDigitado.turma}" target="cbTurma" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
           </BindingProperties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbTurmaItemStateChanged"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Turma&gt;"/>
           </AuxValues>
