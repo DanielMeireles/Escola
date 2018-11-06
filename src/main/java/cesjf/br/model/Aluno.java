@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity(name = "Aluno")
 @Table(name = "aluno")
-public class Aluno implements Serializable {
+public class Aluno implements Serializable, Comparable<Aluno> {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -122,5 +122,10 @@ public class Aluno implements Serializable {
     public void validar() throws ValidacaoException{
     if (this.nome == null || this.nome.equals(""))
         throw new ValidacaoException("Campo nome precisa ser preenchido");
+    }
+    
+    @Override
+    public int compareTo(Aluno outroAluno) {
+        return this.nome.compareTo(outroAluno.getNome());
     }
 }

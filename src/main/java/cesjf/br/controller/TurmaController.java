@@ -13,6 +13,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.jdesktop.observablecollections.ObservableCollections;
 
@@ -106,6 +107,7 @@ public class TurmaController {
         turmaSelecionada = turmasTabelas.get(0);
         alunosTurmaSelecionada.clear();
         alunosTurmaSelecionada.addAll(turmaSelecionada.getAlunos());
+        Collections.sort(alunosTurmaSelecionada);
     }
     
     public List<Aluno> getAlunosTurmaSelecionada() {
