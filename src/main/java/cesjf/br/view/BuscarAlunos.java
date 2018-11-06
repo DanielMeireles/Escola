@@ -10,7 +10,9 @@ import cesjf.br.model.Aluno;
 import cesjf.br.model.Turma;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -147,7 +149,7 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
     private void btbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbuscarActionPerformed
         try{
             turmaController.pesquisarAlunos();
-            /*DefaultTableModel tabela = (DefaultTableModel) tbalunos.getModel();
+            DefaultTableModel tabela = (DefaultTableModel) tbalunos.getModel();
             tabela.setNumRows(0);
             turmaController.pesquisar();
             List<Turma> turmas = turmaController.getTurmasTabelas();
@@ -160,7 +162,7 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
                         });
                     } 
                 }
-            }*/
+            }
         }catch(Exception erro){
             JOptionPane.showMessageDialog(null, "Turma não encontrada!", "Informação de Turma", JOptionPane.INFORMATION_MESSAGE);
             turmaController.novo();

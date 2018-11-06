@@ -6,6 +6,7 @@
 package cesjf.br.view;
 
 import cesjf.br.controller.AlunoController;
+import cesjf.br.controller.TurmaController;
 import cesjf.br.model.Turma;
 import cesjf.br.util.ValidacaoException;
 import java.util.logging.Level;
@@ -16,19 +17,24 @@ import javax.swing.JOptionPane;
 public class BuscarAluno extends javax.swing.JInternalFrame {
 
     private final AlunoController alunoController;
-    
+    private final TurmaController turmaController;
     
     /**
      * Creates new form BuscarAluno
      */
     public BuscarAluno() {
         alunoController = new AlunoController();
+        turmaController = new TurmaController();
         initComponents();
     }
 
     public AlunoController getAlunoController() {
         return alunoController;
-    }    
+    }
+
+    public TurmaController getTurmaController() {
+        return turmaController;
+    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,10 +73,10 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
 
         cbTurma.setEnabled(false);
 
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.turma}");
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.turmasTabelas}");
         org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, cbTurma);
         bindingGroup.addBinding(jComboBoxBinding);
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoSelecionado.turma}"), cbTurma, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.turma}"), cbTurma, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -267,14 +273,8 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             alunoController.pesquisarAluno();        
             tfNome.setText(alunoController.getAlunoDigitado().getNome());
             tfAnoNascimento.setText(Integer.toString(alunoController.getAlunoDigitado().getAnoNasc()));
-            cbTurma.removeAllItems();
-            for(int i = 0; i < cbPcd.getItemCount(); i++){
-                if (cbPcd.getItemAt(i).equals(alunoController.getAlunoDigitado().getPcd())){
-                    cbPcd.setSelectedIndex(i);
-                }
-            }
-            cbTurma.addItem(alunoController.getAlunoDigitado().getTurma());
-            cbTurma.setSelectedIndex(0);
+            cbTurma.setSelectedItem(alunoController.getAlunoDigitado().getTurma());            
+            
             btremover.setEnabled(true);
             btSalvar.setEnabled(true);
             btEditar.setEnabled(true);
