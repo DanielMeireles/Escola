@@ -5,19 +5,28 @@
  */
 package cesjf.br.view;
 
+import cesjf.br.controller.AlunoController;
 import cesjf.br.controller.TurmaController;
+import cesjf.br.model.Aluno;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 public class BuscarAlunos extends javax.swing.JInternalFrame {
 
     private final TurmaController turmaController;
+    private final AlunoController alunoController;
     
     public TurmaController getTurmaController() {
         return turmaController;
     }
+
+    public AlunoController getAlunoController() {
+        return alunoController;
+    }
     
     public BuscarAlunos() {
         turmaController = new TurmaController();
+        alunoController = new AlunoController();
         initComponents();
     }
 
@@ -37,6 +46,7 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
         tbalunos = new javax.swing.JTable();
         btsair = new javax.swing.JButton();
         btbuscar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Buscar Alunos");
@@ -75,7 +85,9 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
         columnBinding.setColumnName("Pcd");
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
+        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado}"), tbalunos, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
+
         jScrollPane1.setViewportView(tbalunos);
 
         btsair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -98,6 +110,13 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,6 +135,8 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(120, 120, 120)
                         .addComponent(btsair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -130,7 +151,9 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(btsair)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btsair)
+                    .addComponent(jButton1))
                 .addGap(19, 19, 19))
         );
 
@@ -161,9 +184,19 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btsairActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JDesktopPane desktopPane = getDesktopPane();
+        BuscarAluno buscarAluno = new BuscarAluno();
+        desktopPane.add(buscarAluno);
+        buscarAluno.getAlunoController().setAlunoDigitado(alunoController.getAlunoDigitado());
+        buscarAluno.getAlunoController().pesquisar();
+        buscarAluno.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btbuscar;
     private javax.swing.JButton btsair;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbturma;
     private javax.swing.JTable tbalunos;
