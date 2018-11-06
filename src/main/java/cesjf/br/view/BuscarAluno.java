@@ -18,6 +18,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
 
     private final AlunoController alunoController;
     private final TurmaController turmaController;
+    private Turma turmaAtual;
     
     /**
      * Creates new form BuscarAluno
@@ -279,7 +280,8 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             alunoController.pesquisarAluno();        
             tfNome.setText(alunoController.getAlunoDigitado().getNome());
             tfAnoNascimento.setText(Integer.toString(alunoController.getAlunoDigitado().getAnoNasc()));
-            cbTurma.setSelectedItem(alunoController.getAlunoDigitado().getTurma());
+            turmaAtual = alunoController.getAlunoDigitado().getTurma();
+            cbTurma.setSelectedItem(turmaAtual);
             btremover.setEnabled(true);
             btSalvar.setEnabled(true);
             btEditar.setEnabled(true);
@@ -305,6 +307,15 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         try {
             alunoController.getAlunoDigitado().setPcd(cbPcd.getSelectedItem().toString());
             alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));
+            
+            Turma nova = (Turma) cbTurma.getSelectedItem();
+            if(turmaAtual != nova){
+                turmaAtual.saidaAluno();
+                nova.entradaAluno();
+                turmaController.atualizarQntTurma(nova);
+                turmaController.atualizarQntTurma(turmaAtual);
+            }
+            
             alunoController.salvar();            
             JOptionPane.showMessageDialog(this, 
                 "Aluno salvo com sucesso",

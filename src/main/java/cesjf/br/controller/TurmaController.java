@@ -86,6 +86,10 @@ public class TurmaController {
         pesquisar();
     }
     
+    public void atualizarQntTurma(Turma turma){
+        turmaDAO.salvarAtualizar(turma);
+    }
+    
     public void excluir(){
         turmaDAO.excluir(turmaDigitada);
         novo();
