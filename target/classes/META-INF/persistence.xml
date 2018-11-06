@@ -4,6 +4,7 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>cesjf.br.model.Turma</class>
     <class>cesjf.br.model.Aluno</class>
+    <class>cesjf.br.model.Usuario</class>
     <properties>
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>

@@ -215,7 +215,6 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <BindingProperties>
-        <BindingProperty name="selectedItem" source="Form" sourcePath="${alunoController.alunoDigitado.pcd}" target="cbPcd" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
         <BindingProperty name="selectedIndex" source="Form" sourcePath="${alunoControl.alunoDigitado.pcd}" target="cbPcd" targetPath="selectedIndex" updateStrategy="0" immediately="false"/>
       </BindingProperties>
       <AuxValues>
