@@ -280,8 +280,10 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             alunoController.pesquisarAluno();        
             tfNome.setText(alunoController.getAlunoDigitado().getNome());
             tfAnoNascimento.setText(Integer.toString(alunoController.getAlunoDigitado().getAnoNasc()));
-            turmaAtual = alunoController.getAlunoDigitado().getTurma();
+            turmaAtual = alunoController.getAlunoDigitado().getTurma();            
             cbTurma.setSelectedItem(turmaAtual);
+            String pcd = alunoController.getAlunoDigitado().getPcd();
+            cbPcd.setSelectedItem(pcd);
             btremover.setEnabled(true);
             btSalvar.setEnabled(true);
             btEditar.setEnabled(true);
