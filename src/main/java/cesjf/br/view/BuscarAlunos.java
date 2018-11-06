@@ -8,14 +8,9 @@ package cesjf.br.view;
 import cesjf.br.controller.TurmaController;
 import cesjf.br.model.Aluno;
 import cesjf.br.model.Turma;
-import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,6 +37,7 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         lbturma = new javax.swing.JLabel();
         tfturma = new javax.swing.JTextField();
@@ -61,28 +57,35 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Alunos"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         tbalunos.getTableHeader().setReorderingAllowed(false);
+
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${turmaController.alunosTurmaSelecionada}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tbalunos);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
+        columnBinding.setColumnName("Id");
+        columnBinding.setColumnClass(Long.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${matricula}"));
+        columnBinding.setColumnName("Matricula");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
+        columnBinding.setColumnName("Nome");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${anoNasc}"));
+        columnBinding.setColumnName("Ano Nasc");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${pcd}"));
+        columnBinding.setColumnName("Pcd");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
         jScrollPane1.setViewportView(tbalunos);
-        if (tbalunos.getColumnModel().getColumnCount() > 0) {
-            tbalunos.getColumnModel().getColumn(0).setResizable(false);
-        }
 
         btsair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
         btsair.setText("Sair");
-        btsair.setMaximumSize(new java.awt.Dimension(91, 41));
-        btsair.setPreferredSize(new java.awt.Dimension(91, 41));
         btsair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btsairActionPerformed(evt);
@@ -132,16 +135,19 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(btsair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btsair)
                 .addGap(19, 19, 19))
         );
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbuscarActionPerformed
         try{
-            DefaultTableModel tabela = (DefaultTableModel) tbalunos.getModel();
+            turmaController.pesquisarAlunos();
+            /*DefaultTableModel tabela = (DefaultTableModel) tbalunos.getModel();
             tabela.setNumRows(0);
             turmaController.pesquisar();
             List<Turma> turmas = turmaController.getTurmasTabelas();
@@ -154,7 +160,7 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
                         });
                     } 
                 }
-            }
+            }*/
         }catch(Exception erro){
             JOptionPane.showMessageDialog(null, "Turma não encontrada!", "Informação de Turma", JOptionPane.INFORMATION_MESSAGE);
             turmaController.novo();
@@ -185,5 +191,6 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbturma;
     private javax.swing.JTable tbalunos;
     private javax.swing.JTextField tfturma;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,10 +23,12 @@ public class TurmaController {
     private Turma turmaSelecionada;
     private List<Turma> turmasTabelas;
     private final TurmaDAO turmaDAO;
+    private List<Aluno> alunosTurmaSelecionada;
 
     public TurmaController() {
         turmaDAO = new TurmaDAO();
         turmasTabelas = ObservableCollections.observableList(new ArrayList<Turma>());
+        alunosTurmaSelecionada = ObservableCollections.observableList(new ArrayList<Aluno>());
         novo();
         pesquisar();
     }
@@ -96,6 +98,18 @@ public class TurmaController {
     public final void pesquisar(){
         turmasTabelas.clear();
         turmasTabelas.addAll(turmaDAO.pesquisar(turmaDigitada));
+    }
+    
+    public final void pesquisarAlunos(){
+        turmasTabelas.clear();
+        turmasTabelas.addAll(turmaDAO.pesquisar(turmaDigitada));
+        turmaSelecionada = turmasTabelas.get(0);
+        alunosTurmaSelecionada.clear();
+        alunosTurmaSelecionada.addAll(turmaSelecionada.getAlunos());
+    }
+    
+    public List<Aluno> getAlunosTurmaSelecionada() {
+        return alunosTurmaSelecionada;
     }
     
     public void addPropertyChangeListener(PropertyChangeListener e){
