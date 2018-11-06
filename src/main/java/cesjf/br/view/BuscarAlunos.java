@@ -6,18 +6,8 @@
 package cesjf.br.view;
 
 import cesjf.br.controller.TurmaController;
-import cesjf.br.model.Aluno;
-import cesjf.br.model.Turma;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Luis
- */
 public class BuscarAlunos extends javax.swing.JInternalFrame {
 
     private final TurmaController turmaController;
@@ -149,20 +139,6 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
     private void btbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbuscarActionPerformed
         try{
             turmaController.pesquisarAlunos();
-            /*DefaultTableModel tabela = (DefaultTableModel) tbalunos.getModel();
-            tabela.setNumRows(0);
-            turmaController.pesquisar();
-            List<Turma> turmas = turmaController.getTurmasTabelas();
-            for(Turma t : turmas){
-                if(t.getNome().toLowerCase().equals(tfturma.getText().toLowerCase())){
-                    ordenar(t);
-                    for(Aluno a : t.getAlunos()){
-                        tabela.addRow(new Object[]{
-                            a.getNome()
-                        });
-                    } 
-                }
-            }*/
         }catch(Exception erro){
             JOptionPane.showMessageDialog(null, "Turma não encontrada!", "Informação de Turma", JOptionPane.INFORMATION_MESSAGE);
             turmaController.novo();
@@ -175,16 +151,6 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btsairActionPerformed
-
-    private void ordenar(Turma t) {
-        Collections.sort(t.getAlunos(), new Comparator<Aluno>(){
-            @Override
-            public int compare(Aluno a1, Aluno a2){
-                return a1.getNome().compareTo(a2.getNome());
-            }
-        });
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btbuscar;
