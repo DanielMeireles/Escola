@@ -130,6 +130,8 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         cbPcd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
         cbPcd.setEnabled(false);
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.pcd}"), cbPcd, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControl.alunoDigitado.pcd}"), cbPcd, org.jdesktop.beansbinding.BeanProperty.create("selectedIndex"));
         bindingGroup.addBinding(binding);
 
@@ -246,7 +248,6 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
     private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
         try {
-            alunoController.getAlunoDigitado().setPcd(cbPcd.getSelectedItem().toString());
             alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));
             alunoController.salvar();            
             JOptionPane.showMessageDialog(this, 
@@ -271,6 +272,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
         alunoController.novo();
+        
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
@@ -279,7 +281,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btsairActionPerformed
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btcadastrar;
     private javax.swing.JButton btlimpar;
