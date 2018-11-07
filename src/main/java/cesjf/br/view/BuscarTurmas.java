@@ -185,12 +185,21 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAlunosTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunosTurmaActionPerformed
-        JDesktopPane desktopPane = getDesktopPane();
-        BuscarAlunos buscarAlunos = new BuscarAlunos();
-        desktopPane.add(buscarAlunos);
-        buscarAlunos.getTurmaController().setTurmaDigitada(turmaController.getTurmaSelecionada());
-        buscarAlunos.getTurmaController().pesquisarAlunos();
-        buscarAlunos.setVisible(true);
+        if(turmaController.getTurmaSelecionada()!=null){
+            JDesktopPane desktopPane = getDesktopPane();
+            BuscarAlunos buscarAlunos = new BuscarAlunos();
+            desktopPane.add(buscarAlunos);
+            buscarAlunos.getTurmaController().setTurmaDigitada(turmaController.getTurmaSelecionada());
+            buscarAlunos.getTurmaController().pesquisarAlunos();
+            buscarAlunos.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, 
+                "Não foi selecionada uma turma",
+                "Informação",
+                JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btAlunosTurmaActionPerformed
 
     private void rbNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNaoActionPerformed

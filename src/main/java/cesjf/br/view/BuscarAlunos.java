@@ -44,9 +44,10 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
         tfturma = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbalunos = new javax.swing.JTable();
-        btsair = new javax.swing.JButton();
         btbuscar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btAluno = new javax.swing.JButton();
+        btsair = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Buscar Alunos");
@@ -90,15 +91,6 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
 
         jScrollPane1.setViewportView(tbalunos);
 
-        btsair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
-        btsair.setText("Sair");
-        btsair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btsairActionPerformed(evt);
-            }
-        });
-
         btbuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Zoom-icon.png"))); // NOI18N
         btbuscar.setText("Buscar");
@@ -110,34 +102,42 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAluno.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Student-Male-icon.png"))); // NOI18N
+        btAluno.setText("Aluno");
+        btAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btAlunoActionPerformed(evt);
             }
         });
+        jPanel1.add(btAluno);
+
+        btsair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
+        btsair.setText("Sair");
+        btsair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btsairActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btsair);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(lbturma)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfturma, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(120, 120, 120)
-                        .addComponent(btsair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbturma)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfturma, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -150,11 +150,9 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
                     .addComponent(btbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btsair)
-                    .addComponent(jButton1))
-                .addGap(19, 19, 19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -184,19 +182,29 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btsairActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JDesktopPane desktopPane = getDesktopPane();
-        BuscarAluno buscarAluno = new BuscarAluno();
-        desktopPane.add(buscarAluno);
-        buscarAluno.getAlunoController().setAlunoDigitado(alunoController.getAlunoDigitado());
-        buscarAluno.getAlunoController().pesquisar();
-        buscarAluno.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunoActionPerformed
+        if(alunoController.getAlunoDigitado()!=null){
+            JDesktopPane desktopPane = getDesktopPane();
+            BuscarAluno buscarAluno = new BuscarAluno();
+            desktopPane.add(buscarAluno);
+            buscarAluno.getAlunoController().setAlunoDigitado(alunoController.getAlunoDigitado());
+            buscarAluno.getAlunoController().pesquisar();
+            buscarAluno.ativaBotoes();
+            buscarAluno.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, 
+                "Não foi selecionada um aluno",
+                "Informação",
+                JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btAlunoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAluno;
     private javax.swing.JButton btbuscar;
     private javax.swing.JButton btsair;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbturma;
     private javax.swing.JTable tbalunos;

@@ -9,7 +9,6 @@ import cesjf.br.controller.AlunoController;
 import cesjf.br.controller.TurmaController;
 import cesjf.br.model.Turma;
 import cesjf.br.util.ValidacaoException;
-import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javassist.tools.rmi.RemoteException;
@@ -267,6 +266,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         tfAnoNascimento.setEnabled(true);
         cbPcd.setEnabled(true);
         cbTurma.setEnabled(true);
+        btSalvar.setEnabled(true);
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
@@ -288,9 +288,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             cbTurma.setSelectedItem(turmaAtual);
             String pcd = alunoController.getAlunoDigitado().getPcd();
             cbPcd.setSelectedItem(pcd);
-            btremover.setEnabled(true);
-            btSalvar.setEnabled(true);
-            btEditar.setEnabled(true);
+            ativaBotoes();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,
                     "Aluno não encontrado!",
@@ -387,4 +385,9 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfNome;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
+
+    public void ativaBotoes() {
+        btremover.setEnabled(true);
+        btEditar.setEnabled(true);
+    }
 }

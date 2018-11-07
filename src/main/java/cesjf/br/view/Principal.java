@@ -34,9 +34,9 @@ public class Principal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
         mnBusca = new javax.swing.JMenu();
-        mniBuscarAluno = new javax.swing.JMenuItem();
         mniTurmasPcd = new javax.swing.JMenuItem();
         mmiBuscarAlunos = new javax.swing.JMenuItem();
+        mniBuscarAluno = new javax.swing.JMenuItem();
         mnSobre = new javax.swing.JMenu();
         mniAjuda = new javax.swing.JMenuItem();
         mniSobre = new javax.swing.JMenuItem();
@@ -85,16 +85,6 @@ public class Principal extends javax.swing.JFrame {
         mnBusca.setMnemonic('B');
         mnBusca.setText("Busca");
 
-        mniBuscarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Student-Male-icon.png"))); // NOI18N
-        mniBuscarAluno.setMnemonic('A');
-        mniBuscarAluno.setText("Buscar Aluno");
-        mniBuscarAluno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniBuscarAlunoActionPerformed(evt);
-            }
-        });
-        mnBusca.add(mniBuscarAluno);
-
         mniTurmasPcd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Science-Classroom2-icon.png"))); // NOI18N
         mniTurmasPcd.setMnemonic('T');
         mniTurmasPcd.setText("Buscar Turmas");
@@ -113,6 +103,16 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mnBusca.add(mmiBuscarAlunos);
+
+        mniBuscarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Student-Male-icon.png"))); // NOI18N
+        mniBuscarAluno.setMnemonic('A');
+        mniBuscarAluno.setText("Buscar Aluno");
+        mniBuscarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniBuscarAlunoActionPerformed(evt);
+            }
+        });
+        mnBusca.add(mniBuscarAluno);
 
         menuBar.add(mnBusca);
 
