@@ -80,7 +80,7 @@ public class AlunoController {
             turmaOld.setQuantidadeAlunos();
             turmaDAO.salvarAtualizar(turmaOld);            
         } 
-        salvar();       
+        salvar();
     }
     
     public void excluir(){

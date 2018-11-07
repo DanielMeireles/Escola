@@ -313,6 +313,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         try {
+            btPesquisarActionPerformed(evt);
             alunoController.getAlunoDigitado().setPcd(cbPcd.getSelectedItem().toString());
             alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));           
                        

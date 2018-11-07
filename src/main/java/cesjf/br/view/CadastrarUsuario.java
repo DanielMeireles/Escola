@@ -180,6 +180,7 @@ public class CadastrarUsuario extends javax.swing.JInternalFrame {
         usuarioController.novo();
         tfUsuario.setText("");
         pfSenha.setText("");
+        cbPerfil.setSelectedIndex(-1);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed

@@ -120,11 +120,6 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         tfAnoNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         tfAnoNascimento.setEnabled(false);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.anoNasc}"), tfAnoNascimento, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.anoNasc}"), tfAnoNascimento, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
         lbPcd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPcd.setText("PCD:");
 
@@ -252,8 +247,8 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
     private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
         try {
-            alunoController.getAlunoDigitado().validar();
             alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));
+            alunoController.getAlunoDigitado().validar();
             alunoController.salvar();            
             JOptionPane.showMessageDialog(this, 
                 "Aluno salvo com sucesso",
@@ -277,7 +272,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
         alunoController.novo();
-        
+        tfAnoNascimento.setText("");
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed

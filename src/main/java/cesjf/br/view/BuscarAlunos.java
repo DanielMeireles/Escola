@@ -181,9 +181,9 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
             BuscarAluno buscarAluno = new BuscarAluno();
             desktopPane.add(buscarAluno);
             buscarAluno.getAlunoController().setAlunoDigitado(alunoController.getAlunoDigitado());
-            buscarAluno.getAlunoController().pesquisar();
             buscarAluno.ativaBotoes();
             buscarAluno.setVisible(true);
+            buscarAluno.getAlunoController().pesquisar();
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(this, 
