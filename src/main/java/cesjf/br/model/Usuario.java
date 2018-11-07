@@ -27,6 +27,8 @@ public class Usuario implements Serializable {
     private String nome;
     @Column(name="SENHA_USUARIO", length = 20, nullable = false)
     private String senha;
+    @Column(name="PERFIL_USUARIO", length = 13, nullable = false)
+    private String perfil;
 
     public Usuario() {
     }
@@ -53,6 +55,14 @@ public class Usuario implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
     }
 
     @Override

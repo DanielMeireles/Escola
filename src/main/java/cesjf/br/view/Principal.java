@@ -31,6 +31,7 @@ public class Principal extends javax.swing.JFrame {
         mniSair = new javax.swing.JMenu();
         mniCadastrarTurma = new javax.swing.JMenuItem();
         mniMatricularAluno = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
         mnBusca = new javax.swing.JMenu();
@@ -68,6 +69,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mniSair.add(mniMatricularAluno);
+
+        jMenuItem1.setText("Cadastrar Usuário");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mniSair.add(jMenuItem1);
         mniSair.add(jSeparator1);
 
         exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
@@ -207,6 +216,12 @@ public class Principal extends javax.swing.JFrame {
         sobre.setVisible(true);
     }//GEN-LAST:event_mniSobreActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+        this.desktopPane.add(cadastrarUsuario);
+        cadastrarUsuario.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -246,6 +261,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mmiBuscarAlunos;

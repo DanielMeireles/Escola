@@ -106,6 +106,7 @@ public class UsuarioController {
         novo();
         usuarioDigitado.setNome("admin");
         usuarioDigitado.setSenha("admin");
+        usuarioDigitado.setPerfil("Administrador");
         pesquisar();
         if(getUsuariosTabelas().size()==0){
             try {
