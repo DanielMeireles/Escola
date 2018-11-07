@@ -23,7 +23,7 @@ public class Ajuda extends javax.swing.JInternalFrame {
 
     private void inicio(){
         tpVisualizar.setContentType("text/html");        
-        File arq = new File("src\\main\\resources\\cesjf\\br\\HTML\\index.html");       
+        File arq = new File("src\\main\\resources\\cesjf\\br\\HTML\\Ajuda.html");       
         if(arq != null){            
             try {
                 tpVisualizar.setPage(arq.toURI().toURL());
