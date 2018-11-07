@@ -39,7 +39,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="443" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="447" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
@@ -69,7 +69,7 @@
               </Border>
             </Property>
             <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-              <TreeModel code="Ajuda&#xa; Usu&#xe1;rio&#xa;  Cadastrar Usu&#xe1;rio&#xa;  Alterar Senha&#xa; Cadastro&#xa;  Cadastrar Turma&#xa;  Matricular Aluno&#xa; Busca&#xa;  Buscar Turmas&#xa;  Buscar Alunos&#xa;  Buscar Aluno"/>
+              <TreeModel code="Ajuda&#xa; Usu&#xe1;rio&#xa;  Cadastrar Usu&#xe1;rio&#xa;  Alterar Senha&#xa; Cadastro&#xa;  Cadastrar Turma&#xa;  Matricular Aluno&#xa; Busca&#xa;  Buscar Turmas&#xa;  Buscar Alunos&#xa;  Buscar Aluno&#xa; Sobre&#xa;  Sobre"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor em Forma de M&#xe3;o"/>

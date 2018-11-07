@@ -69,6 +69,10 @@ public class Ajuda extends javax.swing.JInternalFrame {
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Buscar Aluno");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Sobre");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Sobre");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
         treeAjuda.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         treeAjuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         treeAjuda.setRootVisible(false);
@@ -103,7 +107,7 @@ public class Ajuda extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 443, Short.MAX_VALUE)
+            .addGap(0, 447, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
