@@ -5,9 +5,14 @@
  */
 package cesjf.br.model;
 
+import cesjf.br.enums.EnsinoEnum;
+import static cesjf.br.model.Turma_.ano;
 import cesjf.br.util.ValidacaoException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -120,7 +125,14 @@ public class Turma implements Serializable {
     }
     
     public void validar() throws ValidacaoException{
-    if (this.nome == null || this.nome.equals(""))
-        throw new ValidacaoException("Campo nome precisa ser preenchido");   
+        Calendar hoje = Calendar.getInstance();		
+	int ano = hoje.get(Calendar.YEAR);
+        if (this.nome == null || this.nome.equals("")){
+            throw new ValidacaoException(": campo nome precisa ser preenchido");   
+        }else if(getAno() < ano - 110 || getAno() > ano){
+            throw new ValidacaoException(": informe corretamente o ano");
+        }else if(getEnsino() == null || getEnsino().equals("")){
+            throw new ValidacaoException(": selecione o tipo de Ensino");
+        }
     }
 }

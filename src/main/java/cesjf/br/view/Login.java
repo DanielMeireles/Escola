@@ -6,6 +6,10 @@
 package cesjf.br.view;
 
 import cesjf.br.controller.UsuarioController;
+import cesjf.br.util.ValidacaoException;
+import java.rmi.RemoteException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -18,8 +22,8 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public Login(){
-        usuarioController = new UsuarioController();
+    public Login() throws ValidacaoException, RemoteException{
+        usuarioController = new UsuarioController(); 
         initComponents();
     }
 
@@ -202,7 +206,13 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                try {
+                    new Login().setVisible(true);
+                } catch (ValidacaoException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (RemoteException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
