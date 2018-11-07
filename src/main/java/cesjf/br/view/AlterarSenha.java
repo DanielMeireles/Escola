@@ -7,11 +7,13 @@ package cesjf.br.view;
 
 import cesjf.br.controller.UsuarioController;
 import cesjf.br.model.Usuario;
+import cesjf.br.util.ValidacaoException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 public class AlterarSenha extends javax.swing.JInternalFrame {
 
-    private UsuarioController usuarioController;
+    private final UsuarioController usuarioController;
 
     public UsuarioController getUsuarioController() {
         return usuarioController;
@@ -19,8 +21,11 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
     
     /**
      * Creates new form AlterarSenha
+     * @param usuario
+     * @throws cesjf.br.util.ValidacaoException
+     * @throws java.rmi.RemoteException
      */
-    public AlterarSenha(Usuario usuario) {
+    public AlterarSenha(Usuario usuario) throws ValidacaoException, RemoteException {
         usuarioController = new UsuarioController();
         initComponents();
         usuarioController.setUsuarioDigitado(usuario);
@@ -66,6 +71,7 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
         jLabel3.setText("Confirmação:");
 
         btAlterar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Refresh-icon.png"))); // NOI18N
         btAlterar.setText("Alterar");
         btAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +81,7 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
         jPanel1.add(btAlterar);
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +97,7 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)

@@ -6,6 +6,10 @@
 package cesjf.br.view;
 
 import cesjf.br.model.Usuario;
+import cesjf.br.util.ValidacaoException;
+import java.rmi.RemoteException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
@@ -56,6 +60,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setText("Usuario");
 
+        mniCadastrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/user-add-icon.png"))); // NOI18N
         mniCadastrarUsuario.setText("Cadastrar Usuário");
         mniCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +69,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(mniCadastrarUsuario);
 
+        mniAlterarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Refresh-icon.png"))); // NOI18N
         mniAlterarSenha.setText("Alterar Senha");
         mniAlterarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,15 +243,29 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniSobreActionPerformed
 
     private void mniCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCadastrarUsuarioActionPerformed
-        CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
-        this.desktopPane.add(cadastrarUsuario);
+        CadastrarUsuario cadastrarUsuario;
+        try {
+            cadastrarUsuario = new CadastrarUsuario();
+            this.desktopPane.add(cadastrarUsuario);
         cadastrarUsuario.setVisible(true);
+        } catch (ValidacaoException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RemoteException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mniCadastrarUsuarioActionPerformed
 
     private void mniAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAlterarSenhaActionPerformed
-        AlterarSenha alterarSenha = new AlterarSenha(usuarioLogado);
-        this.desktopPane.add(alterarSenha);
-        alterarSenha.setVisible(true);
+        try {
+            AlterarSenha alterarSenha;
+            alterarSenha = new AlterarSenha(usuarioLogado);
+            this.desktopPane.add(alterarSenha);
+            alterarSenha.setVisible(true);
+        } catch (ValidacaoException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RemoteException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mniAlterarSenhaActionPerformed
 
     /**
