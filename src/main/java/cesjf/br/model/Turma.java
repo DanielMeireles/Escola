@@ -5,14 +5,10 @@
  */
 package cesjf.br.model;
 
-import cesjf.br.enums.EnsinoEnum;
-import static cesjf.br.model.Turma_.ano;
 import cesjf.br.util.ValidacaoException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

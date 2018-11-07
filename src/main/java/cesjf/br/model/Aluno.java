@@ -7,6 +7,7 @@ package cesjf.br.model;
 
 import cesjf.br.util.ValidacaoException;
 import java.io.Serializable;
+import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -120,8 +121,17 @@ public class Aluno implements Serializable, Comparable<Aluno> {
     } 
     
     public void validar() throws ValidacaoException{
-    if (this.nome == null || this.nome.equals(""))
-        throw new ValidacaoException("Campo nome precisa ser preenchido");
+        Calendar hoje = Calendar.getInstance();		
+	int ano = hoje.get(Calendar.YEAR);
+        if (this.turma == null){
+            throw new ValidacaoException(": selecione uma turma");
+        }else if(this.matricula == null || this.matricula.equals("")){
+            throw new ValidacaoException(": preencha o campo de matricula");
+        }else if(this.nome == null || this.nome.equals("")){
+            throw new ValidacaoException(": preencha o campo de nome");
+        }else if(this.anoNasc < ano - 110 || this.anoNasc> ano){
+            throw new ValidacaoException(": informe corretamente o ano");
+        }
     }
     
     @Override

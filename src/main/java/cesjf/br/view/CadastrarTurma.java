@@ -165,7 +165,7 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
             turmaController.salvar();            
             JOptionPane.showMessageDialog(this, 
                 "Turma salva com sucesso",
-                "Salvar cliente",
+                "Salvar turma",
                 JOptionPane.INFORMATION_MESSAGE);
             btlimparActionPerformed(evt);
         } catch(ValidacaoException ex) {
