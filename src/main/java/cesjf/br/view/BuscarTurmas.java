@@ -199,7 +199,6 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
                 "Informação",
                 JOptionPane.INFORMATION_MESSAGE);
         }
-        
     }//GEN-LAST:event_btAlunosTurmaActionPerformed
 
     private void rbNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNaoActionPerformed

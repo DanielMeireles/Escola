@@ -14,9 +14,10 @@ import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
 
-    private Usuario usuarioLogado;
+    private final Usuario usuarioLogado;
     /**
      * Creates new form Principal2
+     * @param usuario
      */
     public Principal(Usuario usuario) {
         initComponents();
@@ -24,6 +25,7 @@ public class Principal extends javax.swing.JFrame {
         this.usuarioLogado = usuario;
         if(usuario.getPerfil().equals("Operacional")){
             mniCadastrarUsuario.setVisible(false);
+            mniBuscarUsuario.setVisible(false);
         }
     }
 
@@ -40,6 +42,7 @@ public class Principal extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mniCadastrarUsuario = new javax.swing.JMenuItem();
+        mniBuscarUsuario = new javax.swing.JMenuItem();
         mniAlterarSenha = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -68,6 +71,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(mniCadastrarUsuario);
+
+        mniBuscarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Zoom-icon.png"))); // NOI18N
+        mniBuscarUsuario.setText("Buscar Usuário");
+        mniBuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniBuscarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mniBuscarUsuario);
 
         mniAlterarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Refresh-icon.png"))); // NOI18N
         mniAlterarSenha.setText("Alterar Senha");
@@ -243,8 +255,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniSobreActionPerformed
 
     private void mniCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCadastrarUsuarioActionPerformed
-        CadastrarUsuario cadastrarUsuario;
         try {
+            CadastrarUsuario cadastrarUsuario;
             cadastrarUsuario = new CadastrarUsuario();
             this.desktopPane.add(cadastrarUsuario);
         cadastrarUsuario.setVisible(true);
@@ -267,6 +279,19 @@ public class Principal extends javax.swing.JFrame {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_mniAlterarSenhaActionPerformed
+
+    private void mniBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBuscarUsuarioActionPerformed
+        try {
+            BuscarUsuarios buscarUsuarios;
+            buscarUsuarios = new BuscarUsuarios();
+            this.desktopPane.add(buscarUsuarios);
+        buscarUsuarios.setVisible(true);
+        } catch (ValidacaoException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RemoteException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_mniBuscarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,6 +341,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniAjuda;
     private javax.swing.JMenuItem mniAlterarSenha;
     private javax.swing.JMenuItem mniBuscarAluno;
+    private javax.swing.JMenuItem mniBuscarUsuario;
     private javax.swing.JMenuItem mniCadastrarTurma;
     private javax.swing.JMenuItem mniCadastrarUsuario;
     private javax.swing.JMenuItem mniMatricularAluno;

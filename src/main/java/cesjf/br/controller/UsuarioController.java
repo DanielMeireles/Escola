@@ -13,8 +13,6 @@ import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jdesktop.observablecollections.ObservableCollections;
 
 public class UsuarioController {
@@ -71,7 +69,7 @@ public class UsuarioController {
     public void excluir(){
         usuarioDAO.excluir(usuarioDigitado);
         novo();
-        pesquisar();        
+        pesquisar();
     }
     
     public final void novo(){
@@ -80,7 +78,7 @@ public class UsuarioController {
     
     public final void pesquisar(){
         usuariosTabelas.clear();
-        usuariosTabelas.addAll(usuarioDAO.pesquisar(usuarioDigitado));
+        usuariosTabelas.addAll(usuarioDAO.pesquisarUsuarios(usuarioDigitado));
     }
     
     public void pesquisarUsuario(){
