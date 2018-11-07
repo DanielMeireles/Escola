@@ -5,16 +5,22 @@
  */
 package cesjf.br.view;
 
+import cesjf.br.model.Usuario;
 import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
 
+    private Usuario usuarioLogado;
     /**
      * Creates new form Principal2
      */
-    public Principal() {
+    public Principal(Usuario usuario) {
         initComponents();
         this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
+        this.usuarioLogado = usuario;
+        if(usuario.getPerfil().equals("Operacional")){
+            mniCadastrarUsuario.setVisible(false);
+        }
     }
 
     /**
@@ -31,7 +37,7 @@ public class Principal extends javax.swing.JFrame {
         mniSair = new javax.swing.JMenu();
         mniCadastrarTurma = new javax.swing.JMenuItem();
         mniMatricularAluno = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mniCadastrarUsuario = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
         mnBusca = new javax.swing.JMenu();
@@ -70,13 +76,13 @@ public class Principal extends javax.swing.JFrame {
         });
         mniSair.add(mniMatricularAluno);
 
-        jMenuItem1.setText("Cadastrar Usuário");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mniCadastrarUsuario.setText("Cadastrar Usuário");
+        mniCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mniCadastrarUsuarioActionPerformed(evt);
             }
         });
-        mniSair.add(jMenuItem1);
+        mniSair.add(mniCadastrarUsuario);
         mniSair.add(jSeparator1);
 
         exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
@@ -216,11 +222,11 @@ public class Principal extends javax.swing.JFrame {
         sobre.setVisible(true);
     }//GEN-LAST:event_mniSobreActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mniCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCadastrarUsuarioActionPerformed
         CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
         this.desktopPane.add(cadastrarUsuario);
         cadastrarUsuario.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mniCadastrarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,7 +259,7 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                //new Principal().setVisible(true);
             }
         });
     }
@@ -261,7 +267,6 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mmiBuscarAlunos;
@@ -270,6 +275,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniAjuda;
     private javax.swing.JMenuItem mniBuscarAluno;
     private javax.swing.JMenuItem mniCadastrarTurma;
+    private javax.swing.JMenuItem mniCadastrarUsuario;
     private javax.swing.JMenuItem mniMatricularAluno;
     private javax.swing.JMenu mniSair;
     private javax.swing.JMenuItem mniSobre;

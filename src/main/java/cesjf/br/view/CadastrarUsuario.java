@@ -94,6 +94,11 @@ public class CadastrarUsuario extends javax.swing.JInternalFrame {
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
         jPanel1.add(btSair);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,6 +176,16 @@ public class CadastrarUsuario extends javax.swing.JInternalFrame {
         tfUsuario.setText("");
         pfSenha.setText("");
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        if(JOptionPane.showConfirmDialog(null,
+                "Deseja realmente sair?",
+                "Atenção",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+            this.dispose();
+        }
+    }//GEN-LAST:event_btSairActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

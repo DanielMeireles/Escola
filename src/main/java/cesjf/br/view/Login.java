@@ -147,7 +147,7 @@ public class Login extends javax.swing.JFrame {
         try{
             usuarioController.pesquisarUsuario();
             if(usuarioController.validaLogin()){
-                new Principal().setVisible(true);
+                new Principal(usuarioController.getUsuarioSelecionado()).setVisible(true);
                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Login", JOptionPane.INFORMATION_MESSAGE);
