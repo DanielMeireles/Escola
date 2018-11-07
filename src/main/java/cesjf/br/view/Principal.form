@@ -108,6 +108,9 @@
                 <Property name="mnemonic" type="int" value="117"/>
                 <Property name="text" type="java.lang.String" value="Ajuda"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniAjudaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniSobre">
               <Properties>
@@ -117,6 +120,9 @@
                 <Property name="mnemonic" type="int" value="111"/>
                 <Property name="text" type="java.lang.String" value="Sobre"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniSobreActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

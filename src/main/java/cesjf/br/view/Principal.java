@@ -122,11 +122,21 @@ public class Principal extends javax.swing.JFrame {
         mniAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/sign-question-icon.png"))); // NOI18N
         mniAjuda.setMnemonic('u');
         mniAjuda.setText("Ajuda");
+        mniAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAjudaActionPerformed(evt);
+            }
+        });
         mnSobre.add(mniAjuda);
 
         mniSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/sign-info-icon.png"))); // NOI18N
         mniSobre.setMnemonic('o');
         mniSobre.setText("Sobre");
+        mniSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniSobreActionPerformed(evt);
+            }
+        });
         mnSobre.add(mniSobre);
 
         menuBar.add(mnSobre);
@@ -184,6 +194,18 @@ public class Principal extends javax.swing.JFrame {
         this.desktopPane.add(buscarAlunos);
         buscarAlunos.setVisible(true);
     }//GEN-LAST:event_mmiBuscarAlunosActionPerformed
+
+    private void mniAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAjudaActionPerformed
+        Ajuda ajuda = new Ajuda();
+        this.desktopPane.add(ajuda);
+        ajuda.setVisible(true);
+    }//GEN-LAST:event_mniAjudaActionPerformed
+
+    private void mniSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSobreActionPerformed
+        Sobre sobre = new Sobre();
+        this.desktopPane.add(sobre);
+        sobre.setVisible(true);
+    }//GEN-LAST:event_mniSobreActionPerformed
 
     /**
      * @param args the command line arguments
