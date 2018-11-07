@@ -34,12 +34,14 @@ public class Principal extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        mniCadastrarUsuario = new javax.swing.JMenuItem();
+        mniAlterarSenha = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        exitMenuItem = new javax.swing.JMenuItem();
         mniSair = new javax.swing.JMenu();
         mniCadastrarTurma = new javax.swing.JMenuItem();
         mniMatricularAluno = new javax.swing.JMenuItem();
-        mniCadastrarUsuario = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        exitMenuItem = new javax.swing.JMenuItem();
         mnBusca = new javax.swing.JMenu();
         mniTurmasPcd = new javax.swing.JMenuItem();
         mmiBuscarAlunos = new javax.swing.JMenuItem();
@@ -51,6 +53,37 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gerenciamento Escolar");
         setName("Principal"); // NOI18N
+
+        jMenu1.setText("Usuario");
+
+        mniCadastrarUsuario.setText("Cadastrar Usuário");
+        mniCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniCadastrarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mniCadastrarUsuario);
+
+        mniAlterarSenha.setText("Alterar Senha");
+        mniAlterarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAlterarSenhaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mniAlterarSenha);
+        jMenu1.add(jSeparator2);
+
+        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
+        exitMenuItem.setMnemonic('S');
+        exitMenuItem.setText("Sair");
+        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(exitMenuItem);
+
+        menuBar.add(jMenu1);
 
         mniSair.setMnemonic('C');
         mniSair.setText("Cadastro");
@@ -75,25 +108,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mniSair.add(mniMatricularAluno);
-
-        mniCadastrarUsuario.setText("Cadastrar Usuário");
-        mniCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniCadastrarUsuarioActionPerformed(evt);
-            }
-        });
-        mniSair.add(mniCadastrarUsuario);
-        mniSair.add(jSeparator1);
-
-        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/symbol-delete-icon.png"))); // NOI18N
-        exitMenuItem.setMnemonic('S');
-        exitMenuItem.setText("Sair");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
-            }
-        });
-        mniSair.add(exitMenuItem);
 
         menuBar.add(mniSair);
 
@@ -166,7 +180,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(416, 339));
@@ -228,6 +242,12 @@ public class Principal extends javax.swing.JFrame {
         cadastrarUsuario.setVisible(true);
     }//GEN-LAST:event_mniCadastrarUsuarioActionPerformed
 
+    private void mniAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAlterarSenhaActionPerformed
+        AlterarSenha alterarSenha = new AlterarSenha(usuarioLogado);
+        this.desktopPane.add(alterarSenha);
+        alterarSenha.setVisible(true);
+    }//GEN-LAST:event_mniAlterarSenhaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,12 +287,14 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mmiBuscarAlunos;
     private javax.swing.JMenu mnBusca;
     private javax.swing.JMenu mnSobre;
     private javax.swing.JMenuItem mniAjuda;
+    private javax.swing.JMenuItem mniAlterarSenha;
     private javax.swing.JMenuItem mniBuscarAluno;
     private javax.swing.JMenuItem mniCadastrarTurma;
     private javax.swing.JMenuItem mniCadastrarUsuario;

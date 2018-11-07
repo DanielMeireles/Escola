@@ -5,16 +5,11 @@
  */
 package cesjf.br.dao;
 
-import cesjf.br.dao.Connection;
 import cesjf.br.model.Usuario;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-/**
- *
- * @author Luis
- */
 public class UsuarioDAO {
     public void salvarAtualizar(Usuario usuario){
         EntityManager em = Connection.getEntityManager();
@@ -68,6 +63,23 @@ public class UsuarioDAO {
         }
         if(usuario.getSenha()!=null && !usuario.getSenha().equals("")){
             query.setParameter("senha", "%" + usuario.getSenha());
+        }
+        
+        return (Usuario) query.getSingleResult();
+    }
+    
+    public Usuario verificaUsuario(Usuario usuario){
+        EntityManager em = Connection.getEntityManager();
+        StringBuilder sql = new StringBuilder("from Usuario u where 1=1");
+                
+        if(usuario.getNome()!=null && !usuario.getNome().equals("")){
+            sql.append(" and u.nome like :nome");
+        }
+        
+        Query query = em.createQuery(sql.toString());
+        
+        if(usuario.getNome()!=null && !usuario.getNome().equals("")){
+            query.setParameter("nome", "%" + usuario.getNome());
         }
         
         return (Usuario) query.getSingleResult();
