@@ -7,7 +7,6 @@ package cesjf.br.view;
 
 import cesjf.br.controller.AlunoController;
 import cesjf.br.controller.TurmaController;
-import cesjf.br.model.Aluno;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 

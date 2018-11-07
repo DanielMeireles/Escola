@@ -24,7 +24,7 @@ public class UsuarioController {
 
     public UsuarioController() throws ValidacaoException, RemoteException {
         usuarioDAO = new UsuarioDAO();
-        usuariosTabelas = ObservableCollections.observableList(new ArrayList<Usuario>());
+        usuariosTabelas = ObservableCollections.observableList(new ArrayList<>());
         verificacaoPrimeiroLogin();
         novo();
         pesquisar();
@@ -94,7 +94,7 @@ public class UsuarioController {
     }
     
     public boolean validaLogin(){
-        if(usuarioDigitado.getNome().equals(usuarioSelecionado.getNome()) && usuarioDigitado.getNome().equals(usuarioSelecionado.getNome())){
+        if(usuarioDigitado.getNome().equals(usuarioSelecionado.getNome()) && usuarioDigitado.getSenha().equals(usuarioSelecionado.getSenha())){
             return true;
         }
         return false;
