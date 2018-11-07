@@ -25,7 +25,6 @@ public class UsuarioController {
     public UsuarioController() throws ValidacaoException, RemoteException {
         usuarioDAO = new UsuarioDAO();
         usuariosTabelas = ObservableCollections.observableList(new ArrayList<>());
-        verificacaoPrimeiroLogin();
         novo();
         pesquisar();
     }
@@ -100,15 +99,16 @@ public class UsuarioController {
         return false;
     }
 
-    private void verificacaoPrimeiroLogin() throws ValidacaoException, RemoteException {
-        novo();
-        usuarioDigitado.setNome("admin");
-        usuarioDigitado.setSenha("admin");
-        usuarioDigitado.setPerfil("Administrador");
+    public void verificacaoPrimeiroLogin() throws ValidacaoException, RemoteException {
+        Usuario usuario = new Usuario();
+        usuario.setNome("admin");
+        usuario.setSenha("admin");
+        usuario.setPerfil("Administrador");
         try{
-            usuarioSelecionado = usuarioDAO.verificaUsuario(usuarioDigitado);
+            usuarioSelecionado = usuarioDAO.verificaUsuario(usuario);
         } catch (Exception ex) {
-            System.out.println(ex);
+            novo();
+            setUsuarioDigitado(usuario);
             salvar();
         }
     }

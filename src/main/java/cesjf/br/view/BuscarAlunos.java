@@ -172,13 +172,7 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btbuscarActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
-        if(JOptionPane.showConfirmDialog(null,
-                "Deseja realmente sair?",
-                "Atenção",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-            this.dispose();
-        }
+        this.dispose();
     }//GEN-LAST:event_btsairActionPerformed
 
     private void btAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlunoActionPerformed

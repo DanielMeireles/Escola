@@ -212,13 +212,7 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rbSimActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        if(JOptionPane.showConfirmDialog(null,
-                "Deseja realmente sair?",
-                "Atenção",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-            this.dispose();
-        }
+        this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
 

@@ -192,13 +192,7 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
-        if(JOptionPane.showConfirmDialog(null,
-                "Deseja realmente sair?",
-                "Atenção",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-            this.dispose();
-        }
+        this.dispose();
     }//GEN-LAST:event_btsairActionPerformed
         
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -271,18 +271,12 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
-        if(JOptionPane.showConfirmDialog(null,
-                "Deseja realmente sair?",
-                "Atenção",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-            this.dispose();
-        }
+        this.dispose();
     }//GEN-LAST:event_btsairActionPerformed
 
     private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
         try{
-            alunoController.pesquisarAluno();        
+            alunoController.pesquisarAluno();
             tfNome.setText(alunoController.getAlunoDigitado().getNome());
             tfAnoNascimento.setText(Integer.toString(alunoController.getAlunoDigitado().getAnoNasc()));
             turmaAtual = alunoController.getAlunoDigitado().getTurma();            
@@ -370,6 +364,12 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         btEditar.setEnabled(false);
         btSalvar.setEnabled(false);
     }
+    
+    public void ativaBotoes() {
+        btremover.setEnabled(true);
+        btEditar.setEnabled(true);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btPesquisar;
@@ -389,9 +389,4 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfNome;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
-
-    public void ativaBotoes() {
-        btremover.setEnabled(true);
-        btEditar.setEnabled(true);
-    }
 }

@@ -23,7 +23,8 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() throws ValidacaoException, RemoteException{
-        usuarioController = new UsuarioController(); 
+        usuarioController = new UsuarioController();
+        usuarioController.verificacaoPrimeiroLogin();
         initComponents();
     }
 
