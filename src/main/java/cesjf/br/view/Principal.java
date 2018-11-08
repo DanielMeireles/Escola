@@ -10,7 +10,7 @@ import cesjf.br.util.ValidacaoException;
 import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
-public class Principal extends javax.swing.JFrame {
+public final class Principal extends javax.swing.JFrame {
 
     private final Usuario usuarioLogado;
     /**
@@ -271,7 +271,12 @@ public class Principal extends javax.swing.JFrame {
             this.desktopPane.add(cadastrarUsuario);
             cadastrarUsuario.setPosicao();
         cadastrarUsuario.setVisible(true);
-        } catch (ValidacaoException | RemoteException ex) {}
+        } catch (ValidacaoException | RemoteException ex) {
+            JOptionPane.showMessageDialog(this, 
+                ex.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_mniCadastrarUsuarioActionPerformed
 
     private void mniAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAlterarSenhaActionPerformed
@@ -281,7 +286,12 @@ public class Principal extends javax.swing.JFrame {
             this.desktopPane.add(alterarSenha);
             alterarSenha.setVisible(true);
             alterarSenha.setPosicao();
-        } catch (ValidacaoException | RemoteException ex) {}
+        } catch (ValidacaoException | RemoteException ex) {
+            JOptionPane.showMessageDialog(this, 
+                ex.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_mniAlterarSenhaActionPerformed
 
     private void mniBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBuscarUsuarioActionPerformed
@@ -291,7 +301,12 @@ public class Principal extends javax.swing.JFrame {
             this.desktopPane.add(buscarUsuarios);
             buscarUsuarios.setVisible(true);
             buscarUsuarios.setPosicao();
-        } catch (ValidacaoException | RemoteException ex) {}
+        } catch (ValidacaoException | RemoteException ex) {
+            JOptionPane.showMessageDialog(this, 
+                ex.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_mniBuscarUsuarioActionPerformed
 
     public void desabilitaMenu(){

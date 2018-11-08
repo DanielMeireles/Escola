@@ -185,9 +185,9 @@ public class BuscarUsuarios extends javax.swing.JInternalFrame {
                 this.dispose();
             } catch (ValidacaoException | RemoteException ex) {
                 JOptionPane.showMessageDialog(this, 
-                "Não foi selecionado usuário",
-                "Informação",
-                JOptionPane.WARNING_MESSAGE);
+                    ex.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
             }
         }else{
             JOptionPane.showMessageDialog(this, 

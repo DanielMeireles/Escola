@@ -10,9 +10,7 @@ import cesjf.br.controller.TurmaController;
 import cesjf.br.model.Turma;
 import cesjf.br.util.ValidacaoException;
 import java.awt.Dimension;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javassist.tools.rmi.RemoteException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 public class BuscarAluno extends javax.swing.JInternalFrame {
@@ -324,18 +322,11 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
                 "Salvar aluno",
                 JOptionPane.INFORMATION_MESSAGE);
             limpar();
-        } catch(ValidacaoException ex) {
+        } catch(ValidacaoException | RemoteException ex) {
             JOptionPane.showMessageDialog(this, 
                 ex.getMessage(),
-                "Falha de Validação",
-                JOptionPane.WARNING_MESSAGE);              
-        } catch(RemoteException e ){
-            JOptionPane.showMessageDialog(this,
-                    "Erro "+e.getMessage(),
-                    "Erro",
-                    JOptionPane.ERROR_MESSAGE);
-        } catch (java.rmi.RemoteException ex) {
-            Logger.getLogger(BuscarAluno.class.getName()).log(Level.SEVERE, null, ex);
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 

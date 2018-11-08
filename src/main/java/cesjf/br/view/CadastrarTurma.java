@@ -167,7 +167,12 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
                 "Salvar turma",
                 JOptionPane.INFORMATION_MESSAGE);
             limparTela();
-        } catch(ValidacaoException | RemoteException ex) {}
+        } catch(ValidacaoException | RemoteException ex) {
+            JOptionPane.showMessageDialog(this, 
+                ex.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed

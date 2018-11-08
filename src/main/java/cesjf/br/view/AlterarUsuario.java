@@ -142,9 +142,9 @@ public class AlterarUsuario extends javax.swing.JInternalFrame {
                 JOptionPane.INFORMATION_MESSAGE);
         } catch(ValidacaoException | RemoteException ex) {
             JOptionPane.showMessageDialog(this, 
-                "Falha na alteração do usuário!",
-                "Falha na alteração",
-                JOptionPane.ERROR_MESSAGE);         
+                ex.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 

@@ -160,7 +160,7 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
     private void btbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbuscarActionPerformed
         try{
             turmaController.pesquisarAlunos();
-        }catch(Exception erro){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null,
                     "Turma não encontrada!",
                     "Informação de Turma",

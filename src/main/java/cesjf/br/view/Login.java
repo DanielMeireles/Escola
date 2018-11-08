@@ -8,8 +8,6 @@ package cesjf.br.view;
 import cesjf.br.controller.UsuarioController;
 import cesjf.br.util.ValidacaoException;
 import java.rmi.RemoteException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -220,10 +218,11 @@ public class Login extends javax.swing.JFrame {
             public void run() {
                 try {
                     new Login().setVisible(true);
-                } catch (ValidacaoException ex) {
-                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (RemoteException ex) {
-                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ValidacaoException | RemoteException ex) {
+                    JOptionPane.showMessageDialog(null, 
+                        ex.getMessage(),
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
