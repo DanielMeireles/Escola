@@ -140,21 +140,33 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
         try{
-            usuarioController.pesquisarUsuario();
+            //usuarioController.pesquisarUsuario();
             if(usuarioController.validaLogin()){
                 if(pfNovaSenha.getText().equals(pfConfirmacaoSenha.getText())){
                     usuarioController.getUsuarioDigitado().setSenha(pfNovaSenha.getText());
                     usuarioController.salvar();
-                    JOptionPane.showMessageDialog(null, "Senha alterada com sucesso!", "Senha alterada", JOptionPane.INFORMATION_MESSAGE);
-                    pfSenhaAtual.setText("");
-                    pfNovaSenha.setText("");
-                    pfConfirmacaoSenha.setText("");
+                    JOptionPane.showMessageDialog(null,
+                            "Senha alterada com sucesso!",
+                            "Senha alterada",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    limpaTela();
+                }else{
+                    JOptionPane.showMessageDialog(null,
+                            "Confirmação de senha não confere!",
+                            "Confirmação não confere",
+                            JOptionPane.WARNING_MESSAGE);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Senha incorreta!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                        "Senha incorreta!",
+                        "Senha incorreta",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Senha incorreta!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,
+                    "Senha incorreta!",
+                    "Senha incorreta",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btAlterarActionPerformed
 
@@ -165,6 +177,12 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
+    
+    public void limpaTela(){
+        pfSenhaAtual.setText("");
+        pfNovaSenha.setText("");
+        pfConfirmacaoSenha.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

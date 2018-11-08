@@ -81,7 +81,7 @@ public class UsuarioController {
     }
     
     public void pesquisarUsuario(){
-        setUsuarioSelecionado(usuarioDAO.pesquisarUsuario(usuarioDigitado));
+        setUsuarioSelecionado(usuarioDAO.validaLogin(usuarioDigitado));
     }
     
     public void addPropertyChangeListener(PropertyChangeListener e){
@@ -93,6 +93,7 @@ public class UsuarioController {
     }
     
     public boolean validaLogin(){
+        pesquisarUsuario();
         return usuarioSelecionado.validaLogin(usuarioDigitado);
     }
 

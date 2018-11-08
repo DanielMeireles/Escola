@@ -36,12 +36,12 @@ public class UsuarioDAO {
         StringBuilder sql = new StringBuilder("from Usuario u where 1=1");
         sql.append(" and u.nome like :nome");
         sql.append(" and u.senha like :senha");
-        
+
         Query query = em.createQuery(sql.toString());
-        
+
         query.setParameter("nome", "%" + usuario.getNome());
         query.setParameter("senha", "%" + usuario.getSenha());
-        
+
         return query.getResultList();
     }
     
@@ -62,26 +62,14 @@ public class UsuarioDAO {
         return query.getResultList();
     }
     
-    public Usuario pesquisarUsuario(Usuario usuario){
+    public Usuario validaLogin(Usuario usuario){
         EntityManager em = Connection.getEntityManager();
         StringBuilder sql = new StringBuilder("from Usuario u where 1=1");
-                
-        if(usuario.getNome()!=null && !usuario.getNome().equals("")){
-            sql.append(" and u.nome like :nome");
-        }
-        if(usuario.getSenha()!=null && !usuario.getSenha().equals("")){
-            sql.append(" and u.senha like :senha");
-        }
-        
+        sql.append(" and u.nome like :nome");
+        sql.append(" and u.senha like :senha");
         Query query = em.createQuery(sql.toString());
-        
-        if(usuario.getNome()!=null && !usuario.getNome().equals("")){
-            query.setParameter("nome", "%" + usuario.getNome());
-        }
-        if(usuario.getSenha()!=null && !usuario.getSenha().equals("")){
-            query.setParameter("senha", "%" + usuario.getSenha());
-        }
-        
+        query.setParameter("nome", "%" + usuario.getNome());
+        query.setParameter("senha", "%" + usuario.getSenha());
         return (Usuario) query.getSingleResult();
     }
 }

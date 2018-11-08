@@ -150,7 +150,6 @@ public class Login extends javax.swing.JFrame {
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         try{
-            usuarioController.pesquisarUsuario();
             if(usuarioController.validaLogin()){
                 new Principal(usuarioController.getUsuarioSelecionado()).setVisible(true);
                 this.dispose();
