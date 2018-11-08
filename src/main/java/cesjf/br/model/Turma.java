@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 @Entity(name = "Turma")
 @Table(name = "turma")
-public class Turma implements Serializable {
+public class Turma implements Serializable, Comparable<Turma> {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -130,5 +130,10 @@ public class Turma implements Serializable {
         }else if(getEnsino() == null || getEnsino().equals("")){
             throw new ValidacaoException(": selecione o tipo de Ensino");
         }
+    }
+
+    @Override
+    public int compareTo(Turma outraTurma) {
+        return this.id.compareTo(outraTurma.getId());
     }
 }

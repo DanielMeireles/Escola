@@ -93,10 +93,7 @@ public class UsuarioController {
     }
     
     public boolean validaLogin(){
-        if(usuarioDigitado.getNome().equals(usuarioSelecionado.getNome()) && usuarioDigitado.getSenha().equals(usuarioSelecionado.getSenha())){
-            return true;
-        }
-        return false;
+        return usuarioSelecionado.validaLogin(usuarioDigitado);
     }
 
     public void verificacaoPrimeiroLogin() throws ValidacaoException, RemoteException {

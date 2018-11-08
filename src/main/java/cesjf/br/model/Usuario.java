@@ -99,4 +99,11 @@ public class Usuario implements Serializable {
         } 
     }
     
+    public boolean validaLogin(Usuario login){
+        if(nome.equals(login.getNome()) && senha.equals(login.getSenha())){
+            return true;
+        }
+        return false;
+    }
+    
 }
