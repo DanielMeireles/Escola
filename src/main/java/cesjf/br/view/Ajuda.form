@@ -70,7 +70,7 @@
               </Border>
             </Property>
             <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-              <TreeModel code="Ajuda&#xa; Usu&#xe1;rio&#xa;  Cadastrar Usu&#xe1;rio&#xa;  Alterar Senha&#xa; Cadastro&#xa;  Cadastrar Turma&#xa;  Matricular Aluno&#xa; Busca&#xa;  Buscar Turmas&#xa;  Buscar Alunos&#xa;  Buscar Aluno&#xa; Sobre&#xa;  Sobre"/>
+              <TreeModel code="Ajuda&#xa; Usu&#xe1;rio&#xa;  Cadastrar Usu&#xe1;rio&#xa;  Buscar Usu&#xe1;rio&#xa;  Alterar Senha&#xa;  Sair&#xa; Cadastro&#xa;  Cadastrar Turma&#xa;  Matricular Aluno&#xa; Busca&#xa;  Buscar Turmas&#xa;  Buscar Alunos&#xa;  Buscar Aluno&#xa; Sobre&#xa;  Sobre"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor em Forma de M&#xe3;o"/>
