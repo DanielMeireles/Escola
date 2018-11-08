@@ -78,7 +78,7 @@ public class AlunoController {
             turmaOld.getAlunos().remove(alunoDigitado);
             turmaOld.setQuantidadeAlunos();
             turmaDAO.salvarAtualizar(turmaOld);            
-        } 
+        }
         salvar();
     }
     

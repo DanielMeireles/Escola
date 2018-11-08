@@ -192,7 +192,6 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <BindingProperties>
-        <BindingProperty name="value" source="Form" sourcePath="${alunoController.alunoDigitado.anoNasc}" target="tfAnoNascimento" targetPath="value" updateStrategy="0" immediately="false"/>
         <BindingProperty name="text" source="Form" sourcePath="${alunoControl.alunoDigitado.anoNasc}" target="tfAnoNascimento" targetPath="text" updateStrategy="0" immediately="false"/>
       </BindingProperties>
     </Component>
