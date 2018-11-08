@@ -97,16 +97,12 @@ public class UsuarioController {
     }
 
     public void verificacaoPrimeiroLogin() throws ValidacaoException, RemoteException {
-        Usuario usuario = new Usuario();
-        usuario.setNome("admin");
-        usuario.setSenha("admin");
-        usuario.setPerfil("Administrador");
-        try{
-            usuarioSelecionado = usuarioDAO.verificaUsuario(usuario);
-        } catch (Exception ex) {
-            novo();
-            setUsuarioDigitado(usuario);
+        usuarioDigitado.setNome("admin");
+        usuarioDigitado.setSenha("admin");
+        usuarioDigitado.setPerfil("Administrador");
+        if(usuarioDAO.pesquisarUsuarios(usuarioDigitado).isEmpty()){
             salvar();
         }
+        novo();
     }
 }
