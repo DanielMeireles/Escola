@@ -44,10 +44,10 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        jLabel1 = new javax.swing.JLabel();
+        lbSenhaAtual = new javax.swing.JLabel();
         pfSenhaAtual = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbNovaSenha = new javax.swing.JLabel();
+        lbConfirmacaoSenha = new javax.swing.JLabel();
         pfNovaSenha = new javax.swing.JPasswordField();
         pfConfirmacaoSenha = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
@@ -60,17 +60,17 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Alterar Senha");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Senha Atual:");
+        lbSenhaAtual.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbSenhaAtual.setText("Senha Atual:");
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${usuarioController.usuarioDigitado.senha}"), pfSenhaAtual, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Nova Senha:");
+        lbNovaSenha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbNovaSenha.setText("Nova Senha:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Confirmação:");
+        lbConfirmacaoSenha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbConfirmacaoSenha.setText("Confirmação:");
 
         btAlterar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Refresh-icon.png"))); // NOI18N
@@ -105,11 +105,11 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(pfSenhaAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                                 .addComponent(pfNovaSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel2))
+                                .addComponent(lbSenhaAtual, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(lbNovaSenha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(lbConfirmacaoSenha)
                             .addComponent(pfConfirmacaoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -117,13 +117,13 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lbSenhaAtual)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pfSenhaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(lbNovaSenha)
+                    .addComponent(lbConfirmacaoSenha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pfNovaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,10 +170,10 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlterar;
     private javax.swing.JButton btSair;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbConfirmacaoSenha;
+    private javax.swing.JLabel lbNovaSenha;
+    private javax.swing.JLabel lbSenhaAtual;
     private javax.swing.JPasswordField pfConfirmacaoSenha;
     private javax.swing.JPasswordField pfNovaSenha;
     private javax.swing.JPasswordField pfSenhaAtual;

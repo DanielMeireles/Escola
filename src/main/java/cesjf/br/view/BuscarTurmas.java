@@ -193,6 +193,7 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
             buscarAlunos.getTurmaController().setTurmaDigitada(turmaController.getTurmaSelecionada());
             buscarAlunos.getTurmaController().pesquisarAlunos();
             buscarAlunos.setVisible(true);
+            buscarAlunos.setPosicao();
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(this, 
