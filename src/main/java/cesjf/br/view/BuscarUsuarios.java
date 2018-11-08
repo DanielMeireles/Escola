@@ -199,12 +199,18 @@ public class BuscarUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btAlterarUsuarioActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        usuarioController.setUsuarioDigitado(usuarioController.getUsuarioSelecionado());
-        usuarioController.excluir();
-        JOptionPane.showMessageDialog(this, 
-            "Usuário excluído com sucesso",
-            "Usuário excluído",
-            JOptionPane.INFORMATION_MESSAGE);
+        if(JOptionPane.showConfirmDialog(null,
+                "Deseja excluir o usuário?",
+                "Atenção",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+            usuarioController.setUsuarioDigitado(usuarioController.getUsuarioSelecionado());
+            usuarioController.excluir();
+            JOptionPane.showMessageDialog(this, 
+                "Usuário excluído com sucesso",
+                "Usuário excluído",
+                JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
