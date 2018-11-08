@@ -122,6 +122,9 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         tfAnoNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         tfAnoNascimento.setEnabled(false);
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.anoNasc}"), tfAnoNascimento, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         lbPcd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPcd.setText("PCD:");
 
@@ -223,7 +226,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
     private void cbTurmaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTurmaItemStateChanged
         if(cbTurma.getSelectedIndex()>=0){
             Turma turma = (Turma) cbTurma.getSelectedItem();
-            if(turma.getQuantidadeAlunos()>40 && cbTurma.hasFocus()){
+            if(turma.getQuantidadeAlunos() >= 40 && cbTurma.hasFocus()){
                 JOptionPane.showMessageDialog(this,
                         "Turma cheia!",
                         "Turma cheia",
