@@ -10,9 +10,7 @@ import cesjf.br.enums.EnsinoEnum;
 import cesjf.br.util.ValidacaoException;
 import java.awt.Dimension;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javassist.tools.rmi.RemoteException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 public class CadastrarTurma extends javax.swing.JInternalFrame {
@@ -168,28 +166,12 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
                 "Turma salva com sucesso",
                 "Salvar turma",
                 JOptionPane.INFORMATION_MESSAGE);
-            btlimparActionPerformed(evt);
-        } catch(ValidacaoException ex) {
-            JOptionPane.showMessageDialog(this, 
-                "Erro " + ex.getMessage(),
-                "Falha de Validação",
-                JOptionPane.WARNING_MESSAGE);              
-        } catch(RemoteException e ){
-            JOptionPane.showMessageDialog(this,
-                    "Erro " + e.getMessage(),
-                    "Erro",
-                    JOptionPane.ERROR_MESSAGE);
-        } catch (java.rmi.RemoteException ex) {
-            Logger.getLogger(CadastrarTurma.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            limparTela();
+        } catch(ValidacaoException | RemoteException ex) {}
     }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
-        turmaController.novo();
-        tfNome.setText("");
-        tfAno.setText(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
-        cbEnsino.setSelectedIndex(-1);
-        tfNome.requestFocus();
+        limparTela();
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
@@ -199,6 +181,14 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
+    
+    public void limparTela(){
+        turmaController.novo();
+        tfNome.setText("");
+        tfAno.setText(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
+        cbEnsino.setSelectedIndex(-1);
+        tfNome.requestFocus();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
