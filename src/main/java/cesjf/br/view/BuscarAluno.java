@@ -262,12 +262,15 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        btPesquisarActionPerformed(evt);
         tfNome.setEnabled(true);
         tfAnoNascimento.setEnabled(true);
         cbPcd.setEnabled(true);
         cbTurma.setEnabled(true);
         btSalvar.setEnabled(true);
         btEditar.setEnabled(false);
+        tfMatricula.setEnabled(false);
+        btPesquisar.setEnabled(false);
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
@@ -315,8 +318,7 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         try {
             btPesquisarActionPerformed(evt);
             alunoController.getAlunoDigitado().setPcd(cbPcd.getSelectedItem().toString());
-            alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));           
-                       
+            alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));              
             alunoController.atualizar(turmaAtual);
             JOptionPane.showMessageDialog(this, 
                 "Aluno salvo com sucesso",
@@ -364,6 +366,8 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         btremover.setEnabled(false);
         btEditar.setEnabled(false);
         btSalvar.setEnabled(false);
+        tfMatricula.setEnabled(true);
+        btPesquisar.setEnabled(true);
     }
     
     public void ativaBotoes() {

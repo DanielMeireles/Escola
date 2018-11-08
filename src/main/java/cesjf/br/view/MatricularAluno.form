@@ -143,6 +143,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tfMatricula">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <BindingProperties>

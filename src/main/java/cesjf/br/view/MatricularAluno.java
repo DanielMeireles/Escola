@@ -101,6 +101,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         lbMatricula.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbMatricula.setText("Matrícula:");
 
+        tfMatricula.setEditable(false);
         tfMatricula.setEnabled(false);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoController.alunoDigitado.matricula}"), tfMatricula, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -226,19 +227,16 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
                         "Turma cheia!",
                         "Turma cheia",
                         JOptionPane.INFORMATION_MESSAGE);
-                tfMatricula.setEnabled(false);
                 tfNome.setEnabled(false);
                 tfAnoNascimento.setEnabled(false);
                 cbPcd.setEnabled(false);
             }else{
-                tfMatricula.setEnabled(true);
                 tfNome.setEnabled(true);
                 tfAnoNascimento.setEnabled(true);
                 cbPcd.setEnabled(true);
                 btcadastrar.setEnabled(true);
             }
         }else{
-            tfMatricula.setEnabled(false);
             tfNome.setEnabled(false);
             tfAnoNascimento.setEnabled(false);
             cbPcd.setEnabled(false);
@@ -254,7 +252,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
                 "Aluno salvo com sucesso",
                 "Salvar aluno",
                 JOptionPane.INFORMATION_MESSAGE);
-            btlimparActionPerformed(evt);
+            tfMatricula.setText(Integer.toString(alunoController.getAlunoDigitado().getMatricula()));
         } catch(ValidacaoException ex) {
             JOptionPane.showMessageDialog(this, 
                 "Erro " + ex.getMessage(),

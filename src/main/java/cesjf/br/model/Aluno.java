@@ -25,10 +25,8 @@ public class Aluno implements Serializable, Comparable<Aluno> {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID_ALUNO")
-    private Long id;
-    @Column(name="MATRICULA_ALUNO", length = 30, nullable = false)
-    private String matricula;
+    @Column(name="MATRICULA_ALUNO")
+    private int matricula;
     @Column(name="NOME_ALUNO", length = 255, nullable = false)
     private String nome;
     @Column(name="ANO_NASC_ALUNO", nullable = false)
@@ -39,19 +37,11 @@ public class Aluno implements Serializable, Comparable<Aluno> {
     @JoinColumn(name = "turma_id")
     private Turma turma;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getMatricula() {
+    public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 
@@ -97,24 +87,28 @@ public class Aluno implements Serializable, Comparable<Aluno> {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (matricula != null ? matricula.hashCode() : 0);
+        int hash = 3;
+        hash = 83 * hash + this.matricula;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the matricula fields are not set
-        if (!(object instanceof Aluno)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Aluno other = (Aluno) object;
-        if ((this.matricula == null && other.matricula != null) || (this.matricula != null && !this.matricula.equals(other.matricula))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aluno other = (Aluno) obj;
+        if (this.matricula != other.matricula) {
             return false;
         }
         return true;
     }
-
     @Override
     public String toString() {
         return matricula + ", " + nome + ", " + anoNasc + ", Turma: " + getTurma().getNome();
@@ -125,8 +119,6 @@ public class Aluno implements Serializable, Comparable<Aluno> {
 	int ano = hoje.get(Calendar.YEAR);
         if (this.turma == null){
             throw new ValidacaoException(": selecione uma turma");
-        }else if(this.matricula == null || this.matricula.equals("")){
-            throw new ValidacaoException(": preencha o campo de matricula");
         }else if(this.nome == null || this.nome.equals("")){
             throw new ValidacaoException(": preencha o campo de nome");
         }else if(this.anoNasc < ano - 110 || this.anoNasc> ano){

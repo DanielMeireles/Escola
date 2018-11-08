@@ -96,11 +96,8 @@
           </Properties>
           <BindingProperties>
             <BindingProperty name="elements" source="Form" sourcePath="${turmaController.alunosTurmaSelecionada}" target="tbalunos" targetPath="elements" updateStrategy="0" immediately="true">
-              <Subbinding sourcePath="${id}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Long.class"/>
-              </Subbinding>
               <Subbinding sourcePath="${matricula}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
               </Subbinding>
               <Subbinding sourcePath="${nome}">
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>

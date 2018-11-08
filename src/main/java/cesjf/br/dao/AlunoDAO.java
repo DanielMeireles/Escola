@@ -14,7 +14,7 @@ public class AlunoDAO {
     public void salvarAtualizar(Aluno aluno){
         EntityManager em = Connection.getEntityManager();
         em.getTransaction().begin();
-        if(aluno.getMatricula()!= null){
+        if(aluno.getMatricula()>0){
             aluno = em.merge(aluno);
         }
         em.persist(aluno);
@@ -35,14 +35,14 @@ public class AlunoDAO {
         EntityManager em = Connection.getEntityManager();
         StringBuilder sql = new StringBuilder("from Aluno a where 1=1");
                 
-        if(aluno.getMatricula()!=null && !aluno.getMatricula().equals("")){
-            sql.append("and a.matricula like :matricula");
+        if(aluno.getMatricula()>0){
+            sql.append("and a.matricula = :matricula");
         }
         
         Query query = em.createQuery(sql.toString());
         
-        if(aluno.getMatricula()!=null){
-            query.setParameter("matricula", "%" + aluno.getMatricula());
+        if(aluno.getMatricula()>0){
+            query.setParameter("matricula", aluno.getMatricula());
         }
         
         return query.getResultList();
@@ -52,14 +52,14 @@ public class AlunoDAO {
         EntityManager em = Connection.getEntityManager();
         StringBuilder sql = new StringBuilder("from Aluno a where 1=1");
                 
-        if(aluno.getMatricula()!=null && !aluno.getMatricula().equals("")){
-            sql.append("and a.matricula like :matricula");
+        if(aluno.getMatricula()>0){
+            sql.append("and a.matricula = :matricula");
         }
         
         Query query = em.createQuery(sql.toString());
         
-        if(aluno.getMatricula()!=null){
-            query.setParameter("matricula", "%" + aluno.getMatricula());
+        if(aluno.getMatricula()>0){
+            query.setParameter("matricula", aluno.getMatricula());
         }
         
         return (Aluno) query.getSingleResult();
