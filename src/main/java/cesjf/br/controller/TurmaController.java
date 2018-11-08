@@ -99,6 +99,8 @@ public class TurmaController {
     public final void pesquisar(){
         turmasTabelas.clear();
         turmasTabelas.addAll(turmaDAO.pesquisar(turmaDigitada));
+        Collections.sort(turmasTabelas);
+        Collections.sort(turmasTabelas);
     }
     
     public final void pesquisarAlunos(){
