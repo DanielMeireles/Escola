@@ -12,7 +12,7 @@ import java.awt.Dimension;
 import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
-public class AlterarSenha extends javax.swing.JInternalFrame {
+public final class AlterarSenha extends javax.swing.JInternalFrame {
 
     private final UsuarioController usuarioController;
 
@@ -28,10 +28,9 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
      */
     public AlterarSenha(Usuario usuario) throws ValidacaoException, RemoteException {
         usuarioController = new UsuarioController();
-        initComponents();
         usuarioController.setUsuarioDigitado(usuario);
-        usuarioController.getUsuarioDigitado().setSenha("");
-        pfSenhaAtual.setText("");
+        initComponents();
+        limpaTela();
     }
 
     /**
@@ -140,7 +139,6 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
         try{
-            //usuarioController.pesquisarUsuario();
             if(usuarioController.validaLogin()){
                 if(pfNovaSenha.getText().equals(pfConfirmacaoSenha.getText())){
                     usuarioController.getUsuarioDigitado().setSenha(pfNovaSenha.getText());

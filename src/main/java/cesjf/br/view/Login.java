@@ -21,6 +21,8 @@ public class Login extends javax.swing.JFrame {
     }
     /**
      * Creates new form Login
+     * @throws cesjf.br.util.ValidacaoException
+     * @throws java.rmi.RemoteException
      */
     public Login() throws ValidacaoException, RemoteException{
         usuarioController = new UsuarioController();
@@ -154,17 +156,22 @@ public class Login extends javax.swing.JFrame {
                 new Principal(usuarioController.getUsuarioSelecionado()).setVisible(true);
                 this.dispose();
             }else{
-                JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Login", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                        "Usuário ou senha inválidos!",
+                        "Login",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!", "Login", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,
+                    "Usuário ou senha inválidos!",
+                    "Login",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btEntrarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         usuarioController.novo();
-        tfNome.setText("");
-        tfSenha.setText("");
+        limparTela();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
@@ -176,6 +183,11 @@ public class Login extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_btSairActionPerformed
+    
+    public void limparTela(){
+        tfNome.setText("");
+        tfSenha.setText("");
+    }
     /**
      * @param args the command line arguments
      */
