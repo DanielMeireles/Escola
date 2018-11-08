@@ -162,7 +162,7 @@ public final class AlterarSenha extends javax.swing.JInternalFrame {
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,
-                    "A senha não pode ser nula!",
+                    "A nova senha não pode ser nula!",
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
         }
