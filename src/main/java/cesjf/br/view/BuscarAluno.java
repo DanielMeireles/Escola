@@ -279,18 +279,13 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
             turmaController.novo();
             turmaController.pesquisar();
             alunoController.pesquisarAluno();
-            tfNome.setText(alunoController.getAlunoDigitado().getNome());
-            tfAnoNascimento.setText(Integer.toString(alunoController.getAlunoDigitado().getAnoNasc()));
-            turmaAtual = alunoController.getAlunoDigitado().getTurma();            
-            cbTurma.setSelectedItem(turmaAtual);
-            String pcd = alunoController.getAlunoDigitado().getPcd();
-            cbPcd.setSelectedItem(pcd);
+            preencheTela();
             ativaBotoes();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,
                     "Aluno não encontrado!",
                     "Informação de Aluno",
-                    JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE);
             alunoController.novo();
         }
     }//GEN-LAST:event_btPesquisarActionPerformed
@@ -358,6 +353,14 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
         btSalvar.setEnabled(false);
         tfMatricula.setEnabled(true);
         btPesquisar.setEnabled(true);
+    }
+    
+    public void preencheTela(){
+        tfNome.setText(alunoController.getAlunoDigitado().getNome());
+        tfAnoNascimento.setText(Integer.toString(alunoController.getAlunoDigitado().getAnoNasc()));
+        turmaAtual = alunoController.getAlunoDigitado().getTurma();            
+        cbTurma.setSelectedItem(turmaAtual);
+        cbPcd.setSelectedItem(alunoController.getAlunoDigitado().getPcd());
     }
     
     public void ativaBotoes() {
