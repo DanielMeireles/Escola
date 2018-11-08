@@ -9,8 +9,6 @@ import cesjf.br.controller.UsuarioController;
 import cesjf.br.util.ValidacaoException;
 import java.awt.Dimension;
 import java.rmi.RemoteException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
