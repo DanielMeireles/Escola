@@ -80,20 +80,8 @@ public class UsuarioController {
         usuariosTabelas.addAll(usuarioDAO.pesquisar(usuarioDigitado));
     }
     
-    public void pesquisarUsuario(){
-        setUsuarioSelecionado(usuarioDAO.validaLogin(usuarioDigitado));
-    }
-    
-    public void addPropertyChangeListener(PropertyChangeListener e){
-        propertyChangeSupport.addPropertyChangeListener(e);
-    }
-    
-    public void removePropertyChangeListener(PropertyChangeListener e){
-        propertyChangeSupport.removePropertyChangeListener(e);
-    }
-    
     public boolean validaLogin(){
-        pesquisarUsuario();
+        setUsuarioSelecionado(usuarioDAO.validaLogin(usuarioDigitado));
         return usuarioSelecionado.validaLogin(usuarioDigitado);
     }
 
@@ -105,5 +93,13 @@ public class UsuarioController {
             salvar();
         }
         novo();
+    }
+    
+    public void addPropertyChangeListener(PropertyChangeListener e){
+        propertyChangeSupport.addPropertyChangeListener(e);
+    }
+    
+    public void removePropertyChangeListener(PropertyChangeListener e){
+        propertyChangeSupport.removePropertyChangeListener(e);
     }
 }

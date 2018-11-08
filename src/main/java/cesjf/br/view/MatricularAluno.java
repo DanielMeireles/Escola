@@ -10,12 +10,10 @@ import cesjf.br.controller.TurmaController;
 import cesjf.br.model.Turma;
 import cesjf.br.util.ValidacaoException;
 import java.awt.Dimension;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javassist.tools.rmi.RemoteException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
-public class MatricularAluno extends javax.swing.JInternalFrame {
+public final class MatricularAluno extends javax.swing.JInternalFrame {
 
     private final TurmaController turmaController;
     private final AlunoController alunoController;
@@ -27,6 +25,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
         turmaController = new TurmaController();
         alunoController = new AlunoController();
         initComponents();
+        limparTela();
     }
 
     public TurmaController getTurmaController() {
@@ -230,7 +229,7 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this,
                         "Turma cheia!",
                         "Turma cheia",
-                        JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.WARNING_MESSAGE);
                 tfNome.setEnabled(false);
                 tfAnoNascimento.setEnabled(false);
                 cbPcd.setEnabled(false);
@@ -256,25 +255,12 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
                 "Aluno salvo com sucesso",
                 "Salvar aluno",
                 JOptionPane.INFORMATION_MESSAGE);
-            tfMatricula.setText(Integer.toString(alunoController.getAlunoDigitado().getMatricula()));
-        } catch(ValidacaoException ex) {
-            JOptionPane.showMessageDialog(this, 
-                "Erro " + ex.getMessage(),
-                "Falha de Validação",
-                JOptionPane.WARNING_MESSAGE);              
-        } catch(RemoteException e ){
-            JOptionPane.showMessageDialog(this,
-                    "Erro " + e.getMessage(),
-                    "Erro",
-                    JOptionPane.ERROR_MESSAGE);
-        } catch (java.rmi.RemoteException ex) {
-            Logger.getLogger(CadastrarTurma.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+            limparTela();
+        } catch(ValidacaoException | RemoteException ex) {} 
     }//GEN-LAST:event_btcadastrarActionPerformed
 
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
-        alunoController.novo();
-        tfAnoNascimento.setText("");
+        limparTela();
     }//GEN-LAST:event_btlimparActionPerformed
 
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
@@ -284,6 +270,14 @@ public class MatricularAluno extends javax.swing.JInternalFrame {
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
+    
+    public void limparTela(){
+        alunoController.novo();
+        tfAnoNascimento.setText("");
+        turmaController.novo();
+        turmaController.pesquisar();
+        cbTurma.setSelectedIndex(-1);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

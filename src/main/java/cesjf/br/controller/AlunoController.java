@@ -68,7 +68,7 @@ public class AlunoController {
         alunoDAO.salvarAtualizar(alunoDigitado);
         alunoDigitado.getTurma().setQuantidadeAlunos();
         turmaDAO.salvarAtualizar(alunoDigitado.getTurma());
-        //novo();
+        novo();
         pesquisar();
     }
     

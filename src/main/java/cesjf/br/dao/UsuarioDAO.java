@@ -34,17 +34,13 @@ public class UsuarioDAO {
     public List<Usuario> pesquisar(Usuario usuario){
         EntityManager em = Connection.getEntityManager();
         StringBuilder sql = new StringBuilder("from Usuario u where 1=1");
-        
         if(usuario != null && usuario.getNome()!=null && !usuario.getNome().equals("")){
             sql.append(" and u.nome like :nome");
         }
-        
         Query query = em.createQuery(sql.toString());
-        
         if(usuario != null && usuario.getNome()!=null && !usuario.getNome().equals("")){
             query.setParameter("nome", "%" + usuario.getNome());
         }
-        
         return query.getResultList();
     }
     
