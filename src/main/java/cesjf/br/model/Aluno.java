@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Table(name = "aluno")
 public class Aluno implements Serializable, Comparable<Aluno> {
 
-    private static final long serialVersionUID = 1L;
+    private static final int serialVersionUID = 1;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="MATRICULA_ALUNO")
