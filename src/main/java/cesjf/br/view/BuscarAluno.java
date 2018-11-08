@@ -9,6 +9,7 @@ import cesjf.br.controller.AlunoController;
 import cesjf.br.controller.TurmaController;
 import cesjf.br.model.Turma;
 import cesjf.br.util.ValidacaoException;
+import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javassist.tools.rmi.RemoteException;
@@ -373,6 +374,11 @@ public class BuscarAluno extends javax.swing.JInternalFrame {
     public void ativaBotoes() {
         btremover.setEnabled(true);
         btEditar.setEnabled(true);
+    }
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

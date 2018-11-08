@@ -8,6 +8,7 @@ package cesjf.br.view;
 import cesjf.br.controller.UsuarioController;
 import cesjf.br.model.Usuario;
 import cesjf.br.util.ValidacaoException;
+import java.awt.Dimension;
 import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
@@ -57,6 +58,7 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Alterar Senha");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Senha Atual:");
@@ -160,6 +162,10 @@ public class AlterarSenha extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlterar;

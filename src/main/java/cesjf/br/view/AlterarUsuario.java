@@ -8,6 +8,7 @@ package cesjf.br.view;
 import cesjf.br.controller.UsuarioController;
 import cesjf.br.model.Usuario;
 import cesjf.br.util.ValidacaoException;
+import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javassist.tools.rmi.RemoteException;
@@ -159,7 +160,11 @@ public class AlterarUsuario extends javax.swing.JInternalFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
-
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSair;

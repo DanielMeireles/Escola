@@ -6,6 +6,7 @@
 package cesjf.br.view;
 
 import cesjf.br.controller.TurmaController;
+import java.awt.Dimension;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -215,6 +216,10 @@ public class BuscarTurmas extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgPcd;

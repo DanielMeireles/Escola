@@ -7,6 +7,7 @@ package cesjf.br.view;
 
 import cesjf.br.controller.AlunoController;
 import cesjf.br.controller.TurmaController;
+import java.awt.Dimension;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -190,6 +191,11 @@ public class BuscarAlunos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btAlunoActionPerformed
 
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAluno;
     private javax.swing.JButton btbuscar;

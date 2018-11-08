@@ -8,6 +8,7 @@ package cesjf.br.view;
 import cesjf.br.controller.TurmaController;
 import cesjf.br.enums.EnsinoEnum;
 import cesjf.br.util.ValidacaoException;
+import java.awt.Dimension;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -194,7 +195,12 @@ public class CadastrarTurma extends javax.swing.JInternalFrame {
     private void btsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btsairActionPerformed
-        
+       
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btcadastrar;
     private javax.swing.JButton btlimpar;

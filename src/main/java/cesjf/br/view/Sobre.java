@@ -5,6 +5,7 @@
  */
 package cesjf.br.view;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -74,6 +75,10 @@ public class Sobre extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane2;

@@ -39,6 +39,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mniCadastrarUsuario = new javax.swing.JMenuItem();
@@ -60,6 +61,10 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gerenciamento Escolar");
         setName("Principal"); // NOI18N
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cesjf/br/img/Escola_aprendiz_tcm14-2982.png"))); // NOI18N
+        desktopPane.add(jLabel1);
+        jLabel1.setBounds(150, 100, 840, 370);
 
         jMenu1.setText("Usuario");
 
@@ -194,14 +199,14 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1257, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(416, 339));
+        setSize(new java.awt.Dimension(1273, 747));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -216,42 +221,49 @@ public class Principal extends javax.swing.JFrame {
         CadastrarTurma cadastrarTurma = new CadastrarTurma();
         this.desktopPane.add(cadastrarTurma);
         cadastrarTurma.setVisible(true);
+        cadastrarTurma.setPosicao();
     }//GEN-LAST:event_mniCadastrarTurmaActionPerformed
 
     private void mniMatricularAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMatricularAlunoActionPerformed
         MatricularAluno matricularAluno = new MatricularAluno();
         this.desktopPane.add(matricularAluno);
         matricularAluno.setVisible(true);
+        matricularAluno.setPosicao();
     }//GEN-LAST:event_mniMatricularAlunoActionPerformed
 
     private void mniBuscarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBuscarAlunoActionPerformed
         BuscarAluno buscarAluno = new BuscarAluno();
         this.desktopPane.add(buscarAluno);
         buscarAluno.setVisible(true);
+        buscarAluno.setPosicao();
     }//GEN-LAST:event_mniBuscarAlunoActionPerformed
 
     private void mniTurmasPcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTurmasPcdActionPerformed
         BuscarTurmas buscarTurmas = new BuscarTurmas();
         this.desktopPane.add(buscarTurmas);
         buscarTurmas.setVisible(true);
+        buscarTurmas.setPosicao();
     }//GEN-LAST:event_mniTurmasPcdActionPerformed
 
     private void mmiBuscarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmiBuscarAlunosActionPerformed
         BuscarAlunos buscarAlunos = new BuscarAlunos();
         this.desktopPane.add(buscarAlunos);
         buscarAlunos.setVisible(true);
+        buscarAlunos.setPosicao();
     }//GEN-LAST:event_mmiBuscarAlunosActionPerformed
 
     private void mniAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAjudaActionPerformed
         Ajuda ajuda = new Ajuda();
         this.desktopPane.add(ajuda);
         ajuda.setVisible(true);
+        ajuda.setPosicao();
     }//GEN-LAST:event_mniAjudaActionPerformed
 
     private void mniSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSobreActionPerformed
         Sobre sobre = new Sobre();
         this.desktopPane.add(sobre);
         sobre.setVisible(true);
+        sobre.setPosicao();
     }//GEN-LAST:event_mniSobreActionPerformed
 
     private void mniCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCadastrarUsuarioActionPerformed
@@ -259,6 +271,7 @@ public class Principal extends javax.swing.JFrame {
             CadastrarUsuario cadastrarUsuario;
             cadastrarUsuario = new CadastrarUsuario();
             this.desktopPane.add(cadastrarUsuario);
+            cadastrarUsuario.setPosicao();
         cadastrarUsuario.setVisible(true);
         } catch (ValidacaoException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -273,6 +286,7 @@ public class Principal extends javax.swing.JFrame {
             alterarSenha = new AlterarSenha(usuarioLogado);
             this.desktopPane.add(alterarSenha);
             alterarSenha.setVisible(true);
+            alterarSenha.setPosicao();
         } catch (ValidacaoException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (RemoteException ex) {
@@ -285,7 +299,8 @@ public class Principal extends javax.swing.JFrame {
             BuscarUsuarios buscarUsuarios;
             buscarUsuarios = new BuscarUsuarios();
             this.desktopPane.add(buscarUsuarios);
-        buscarUsuarios.setVisible(true);
+            buscarUsuarios.setVisible(true);
+            buscarUsuarios.setPosicao();
         } catch (ValidacaoException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (RemoteException ex) {
@@ -332,6 +347,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuBar menuBar;
