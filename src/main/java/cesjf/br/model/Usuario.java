@@ -96,6 +96,9 @@ public class Usuario implements Serializable {
         } 
         if (this.senha == null || this.senha.equals("")){
             throw new ValidacaoException("Campo senha precisa ser preenchido"); 
+        }
+        if (this.perfil == null || this.perfil.equals("")){
+            throw new ValidacaoException("Campo perfil precisa ser selecionado"); 
         } 
     }
     

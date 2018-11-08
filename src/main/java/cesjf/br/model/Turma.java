@@ -124,11 +124,11 @@ public class Turma implements Serializable, Comparable<Turma> {
         Calendar hoje = Calendar.getInstance();		
 	int ano = hoje.get(Calendar.YEAR);
         if (this.nome == null || this.nome.equals("")){
-            throw new ValidacaoException(": campo nome precisa ser preenchido");   
+            throw new ValidacaoException("Campo nome precisa ser preenchido");   
         }else if(getAno() < ano - 110 || getAno() > ano){
-            throw new ValidacaoException(": informe corretamente o ano");
+            throw new ValidacaoException("Informe corretamente o ano");
         }else if(getEnsino() == null || getEnsino().equals("")){
-            throw new ValidacaoException(": selecione o tipo de Ensino");
+            throw new ValidacaoException("Selecione o tipo de Ensino");
         }
     }
 

@@ -248,7 +248,9 @@ public final class MatricularAluno extends javax.swing.JInternalFrame {
 
     private void btcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcadastrarActionPerformed
         try {
-            alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));
+            if(!tfAnoNascimento.getText().equals("")){
+                alunoController.getAlunoDigitado().setAnoNasc(Integer.parseInt(tfAnoNascimento.getText()));
+            }
             alunoController.getAlunoDigitado().validar();
             alunoController.salvar();            
             JOptionPane.showMessageDialog(this, 

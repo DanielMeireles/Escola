@@ -118,11 +118,13 @@ public class Aluno implements Serializable, Comparable<Aluno> {
         Calendar hoje = Calendar.getInstance();		
 	int ano = hoje.get(Calendar.YEAR);
         if (this.turma == null){
-            throw new ValidacaoException(": selecione uma turma");
-        }else if(this.nome == null || this.nome.equals("")){
-            throw new ValidacaoException(": preencha o campo de nome");
-        }else if(this.anoNasc < ano - 110 || this.anoNasc> ano){
-            throw new ValidacaoException(": informe corretamente o ano");
+            throw new ValidacaoException("Selecione uma turma");
+        }
+        if(this.nome == null || this.nome.equals("")){
+            throw new ValidacaoException("Preencha o campo de nome");
+        }
+        if(this.anoNasc < ano - 110 || this.anoNasc > ano){
+            throw new ValidacaoException("Informe corretamente o ano");
         }
     }
     
