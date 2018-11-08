@@ -185,16 +185,17 @@ public class BuscarUsuarios extends javax.swing.JInternalFrame {
                 alterarUsuario.setVisible(true);
                 alterarUsuario.setPosicao();
                 this.dispose();
-            } catch (ValidacaoException ex) {
-                Logger.getLogger(BuscarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (RemoteException ex) {
-                Logger.getLogger(BuscarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ValidacaoException | RemoteException ex) {
+                JOptionPane.showMessageDialog(this, 
+                "Não foi selecionado usuário",
+                "Informação",
+                JOptionPane.WARNING_MESSAGE);
             }
         }else{
             JOptionPane.showMessageDialog(this, 
                 "Não foi selecionado usuário",
                 "Informação",
-                JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btAlterarUsuarioActionPerformed
 

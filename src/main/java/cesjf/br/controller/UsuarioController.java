@@ -77,7 +77,7 @@ public class UsuarioController {
     
     public final void pesquisar(){
         usuariosTabelas.clear();
-        usuariosTabelas.addAll(usuarioDAO.pesquisarUsuarios(usuarioDigitado));
+        usuariosTabelas.addAll(usuarioDAO.pesquisar(usuarioDigitado));
     }
     
     public void pesquisarUsuario(){
@@ -101,7 +101,7 @@ public class UsuarioController {
         usuarioDigitado.setNome("admin");
         usuarioDigitado.setSenha("admin");
         usuarioDigitado.setPerfil("Administrador");
-        if(usuarioDAO.pesquisarUsuarios(usuarioDigitado).isEmpty()){
+        if(usuarioDAO.pesquisar(usuarioDigitado).isEmpty()){
             salvar();
         }
         novo();
