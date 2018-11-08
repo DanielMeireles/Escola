@@ -8,25 +8,20 @@ package cesjf.br.view;
 import cesjf.br.model.Usuario;
 import cesjf.br.util.ValidacaoException;
 import java.rmi.RemoteException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
 
     private final Usuario usuarioLogado;
     /**
-     * Creates new form Principal2
+     * Creates new form Principal
      * @param usuario
      */
     public Principal(Usuario usuario) {
         initComponents();
-        this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
+        this.setExtendedState(this.getExtendedState() | Principal.MAXIMIZED_BOTH);
         this.usuarioLogado = usuario;
-        if(usuario.getPerfil().equals("Operacional")){
-            mniCadastrarUsuario.setVisible(false);
-            mniBuscarUsuario.setVisible(false);
-        }
+        desabilitaMenu();
     }
 
     /**
@@ -211,8 +206,11 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(opcao == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,
+                "Deseja realmente sair?",
+                "Atenção",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
             System.exit(0);
         }
     }//GEN-LAST:event_exitMenuItemActionPerformed
@@ -273,11 +271,7 @@ public class Principal extends javax.swing.JFrame {
             this.desktopPane.add(cadastrarUsuario);
             cadastrarUsuario.setPosicao();
         cadastrarUsuario.setVisible(true);
-        } catch (ValidacaoException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (RemoteException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (ValidacaoException | RemoteException ex) {}
     }//GEN-LAST:event_mniCadastrarUsuarioActionPerformed
 
     private void mniAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAlterarSenhaActionPerformed
@@ -287,11 +281,7 @@ public class Principal extends javax.swing.JFrame {
             this.desktopPane.add(alterarSenha);
             alterarSenha.setVisible(true);
             alterarSenha.setPosicao();
-        } catch (ValidacaoException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (RemoteException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (ValidacaoException | RemoteException ex) {}
     }//GEN-LAST:event_mniAlterarSenhaActionPerformed
 
     private void mniBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBuscarUsuarioActionPerformed
@@ -301,13 +291,15 @@ public class Principal extends javax.swing.JFrame {
             this.desktopPane.add(buscarUsuarios);
             buscarUsuarios.setVisible(true);
             buscarUsuarios.setPosicao();
-        } catch (ValidacaoException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (RemoteException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (ValidacaoException | RemoteException ex) {}
     }//GEN-LAST:event_mniBuscarUsuarioActionPerformed
 
+    public void desabilitaMenu(){
+        if(usuarioLogado.getPerfil().equals("Operacional")){
+            mniCadastrarUsuario.setVisible(false);
+            mniBuscarUsuario.setVisible(false);
+        }
+    }
     /**
      * @param args the command line arguments
      */
