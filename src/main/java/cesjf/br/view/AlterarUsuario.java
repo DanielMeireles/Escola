@@ -9,9 +9,7 @@ import cesjf.br.controller.UsuarioController;
 import cesjf.br.model.Usuario;
 import cesjf.br.util.ValidacaoException;
 import java.awt.Dimension;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javassist.tools.rmi.RemoteException;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 public class AlterarUsuario extends javax.swing.JInternalFrame {
@@ -142,18 +140,11 @@ public class AlterarUsuario extends javax.swing.JInternalFrame {
                 "Usuário salvo com sucesso",
                 "Salvar usuário",
                 JOptionPane.INFORMATION_MESSAGE);
-        } catch(ValidacaoException ex) {
+        } catch(ValidacaoException | RemoteException ex) {
             JOptionPane.showMessageDialog(this, 
-                "Erro " + ex.getMessage(),
-                "Falha de Validação",
-                JOptionPane.WARNING_MESSAGE);              
-        } catch(RemoteException e ){
-            JOptionPane.showMessageDialog(this,
-                    "Erro " + e.getMessage(),
-                    "Erro",
-                    JOptionPane.ERROR_MESSAGE);
-        } catch (java.rmi.RemoteException ex) {
-            Logger.getLogger(CadastrarTurma.class.getName()).log(Level.SEVERE, null, ex);
+                "Falha na alteração do usuário!",
+                "Falha na alteração",
+                JOptionPane.ERROR_MESSAGE);         
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
